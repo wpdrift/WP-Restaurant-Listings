@@ -1,0 +1,24 @@
+/nbproject/private/
+/node_modules/
+package-lock.json
+project.xml
+project.properties
+.DS_Store
+Thumbs.db
+.buildpath
+.project
+.settings*
+sftp-config.json
+/deploy/
+/vendor/
+/tmp/
+.idea
+
+# Ignore lib/wprl_rest but keep folder
+lib/wprl_rest/*
+!lib/wprl_rest/.gitkeep
+tmp/mt
+
+# Ignore all log files except for .htaccess
+/logs/*
+!/logs/.htaccess

@@ -1,0 +1,10 @@
+{
+  "name"       : "automattic/wp-restaurant-listings",
+  "description": "WP Restaurant Listings is a lightweight restaurant listings plugin for adding restaurant-board like functionality to your WordPress site. Being shortcode based, it can work with any theme and is really simple to setup.",
+  "homepage"   : "http://wprestaurantmanager.com/",
+  "type"       : "wordpress-plugin",
+  "license"    : "GPL-3.0+",
+  "require-dev"    : {
+    "phpunit/phpunit": "^5.7"
+  }
+}
