@@ -4,7 +4,7 @@
  * Plugin URI: http://restaurants.wpdrift.com/
  * Description: Manage restaurant listings from the WordPress admin panel, and allow users to post restaurants directly to your site.
  * Version: 1.0.0
- * Author: WPDrift
+ * Author: WPdrift
  * Author URI: https://wpdrift.com/
  * Requires at least: 4.1
  * Tested up to: 4.8
