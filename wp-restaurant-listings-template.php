@@ -505,8 +505,9 @@ function get_the_restaurant_street( $post = null ) {
  * @param null $post
  */
 function the_restaurant_latest_story( $post = null ) {
-
-    if ( $comment = get_the_restaurant_latest_story( $post ) ) {
+ 
+	$comment = get_the_restaurant_latest_story( $post );
+    if ( $comment instanceof WP_Comment ) {
         ?>
         <div id="comment-<?php $comment->comment_ID ?>" class="comment_container">
 
@@ -535,6 +536,7 @@ function the_restaurant_latest_story( $post = null ) {
  */
 function get_the_restaurant_latest_story( $post = null ) {
     $post = get_post( $post );
+    $comment = new stdClass();
 
     if ( $post->post_type !== 'restaurant_listings' ) {
         return;
@@ -542,7 +544,7 @@ function get_the_restaurant_latest_story( $post = null ) {
 
     $comments = get_comments(array( 'status' => 'approve', 'post_id' => $post->ID, 'number' => 1,  'orderby' => array('comment_date'), 'order' => 'DESC' ) );
 
-    $comment = $comments[0];
+    is_array($comments) && sizeof($comments) > 0 && $comment = $comments[0];
 
     return apply_filters( 'the_restaurant_location', $comment, $post );
 }

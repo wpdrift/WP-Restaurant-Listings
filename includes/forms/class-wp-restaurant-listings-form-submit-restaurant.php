@@ -729,37 +729,42 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 
                     $field_values = $values[$group_key][$key];
 
-                    foreach ($field_values as $image) {
-                        $attachment_id = is_numeric($image) ? absint($image) : $this->create_attachment($image);
-                        if (!empty($attachment_id)) {
-                            $image_gallery[] = $attachment_id;
-                        }
+                    if (is_array($field_values) && sizeof($field_values) >0 ) {
+	
+	                    foreach ( $field_values as $image ) {
+		                    $attachment_id = is_numeric( $image ) ? absint( $image ) : $this->create_attachment( $image );
+		                    if ( !empty( $attachment_id ) ) {
+			                    $image_gallery[] = $attachment_id;
+		                    }
+	                    }
+	
+	                    $image_gallery = array_filter( $image_gallery );
+	
+	                    if ( sizeof( $image_gallery ) ) {
+		                    $this->fields['extra']['restaurant_image_gallery']['value'] = $image_gallery;
+		                    update_post_meta( $this->restaurant_id, '_restaurant_image_gallery', join( ',', $image_gallery ) );
+	                    }
                     }
-
-                    $image_gallery = array_filter( $image_gallery );
-
-                    if ( sizeof( $image_gallery ) ) {
-                        $this->fields['extra']['restaurant_image_gallery']['value'] = $image_gallery;
-                        update_post_meta( $this->restaurant_id, '_restaurant_image_gallery', join(',', $image_gallery ) );
-                    }
-
+                    
                     // Restaurant menu
                 } elseif ( 'restaurant_menu' === $key ) {
 
                     $field_values = $values[$group_key][$key];
 
-                    foreach ($field_values as $image) {
-                        $attachment_id = is_numeric($image) ? absint($image) : $this->create_attachment($image);
-                        if (!empty($attachment_id)) {
-                            $menu[] = $attachment_id;
-                        }
-                    }
-
-                    $menu = array_filter( $menu );
-
-                    if ( sizeof( $menu ) ) {
-                        $this->fields['extra']['restaurant_menu']['value'] = $menu;
-                        update_post_meta( $this->restaurant_id, '_restaurant_menu', join(',', $menu ) );
+                    if ( is_array($field_values) && sizeof($field_values) > 0 ) {
+	                    foreach ( $field_values as $image ) {
+		                    $attachment_id = is_numeric( $image ) ? absint( $image ) : $this->create_attachment( $image );
+		                    if ( !empty( $attachment_id ) ) {
+			                    $menu[] = $attachment_id;
+		                    }
+	                    }
+	
+	                    $menu = array_filter( $menu );
+	
+	                    if ( sizeof( $menu ) ) {
+		                    $this->fields['extra']['restaurant_menu']['value'] = $menu;
+		                    update_post_meta( $this->restaurant_id, '_restaurant_menu', join( ',', $menu ) );
+	                    }
                     }
 
                     // Save meta data
