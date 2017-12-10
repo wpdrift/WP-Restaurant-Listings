@@ -28,7 +28,7 @@ and
 
   WP Restaurant Listing
 
-  WP Restaurant Listing is Copyright (c) 2017 Upnrunn
+  WP Restaurant Listing is Copyright (c) 2017 WPdrift
 
   WP Restaurant Listing is released under the GPL
 
