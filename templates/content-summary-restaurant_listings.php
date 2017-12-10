@@ -1,4 +1,4 @@
-<?php global $restaurant_listing; ?>
+<?php global $restaurant_listings; ?>
 
 <a href="<?php the_permalink(); ?>">
 	<?php if ( get_option( 'restaurant_listings_enable_types' ) ) { ?>

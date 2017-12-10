@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-global $restaurant_listing;
+global $restaurant_listings;
 ?>
 <form action="<?php echo esc_url( $action ); ?>" method="post" id="submit-restaurant-form" class="restaurant-listings-form" enctype="multipart/form-data">
 

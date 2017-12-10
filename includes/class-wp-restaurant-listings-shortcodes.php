@@ -232,9 +232,9 @@ class WP_Restaurant_Listings_Shortcodes {
 	 * Displays edit restaurant form.
 	 */
 	public function edit_restaurant() {
-		global $restaurant_listing;
+		global $restaurant_listings;
 
-		echo $restaurant_listing->forms->get_form( 'edit-restaurant' );
+		echo $restaurant_listings->forms->get_form( 'edit-restaurant' );
 	}
 
 	/**
