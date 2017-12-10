@@ -18,7 +18,7 @@ if ( '0' === $comment->comment_approved ) { ?>
 	<p class="meta">
 		<strong class="restaurant-review__author"><?php comment_author(); ?></strong> <?php
 
-		?><span class="restaurant-review__dash">&ndash;</span> <time class="restaurant-review__published-date" datetime="<?php echo get_comment_date( 'c' ); ?>"><?php echo get_comment_date( wc_date_format() ); ?></time>
+		?><span class="restaurant-review__dash">&ndash;</span> <time class="restaurant-review__published-date" datetime="<?php echo get_comment_date( 'c' ); ?>"><?php echo get_comment_date(); ?></time>
 	</p>
 
 <?php }
