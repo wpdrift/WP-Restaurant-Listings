@@ -57,12 +57,12 @@ class WP_Restaurant_Listing {
 	 * Constructor.
 	 */
 	public function __construct() {
-		// Define constants
+		// Define constants.
 		define( 'RESTAURANT_LISTING_VERSION', '1.0' );
 		define( 'RESTAURANT_LISTING_PLUGIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 		define( 'RESTAURANT_LISTING_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 
-		// Includes
+		// Includes.
 		include_once( 'includes/class-wp-restaurant-listings-install.php' );
 		include_once( 'includes/class-wp-restaurant-listings-post-types.php' );
 		include_once( 'includes/class-wp-restaurant-listings-ajax.php' );
