@@ -28,7 +28,7 @@ The plugin comes with several shortcodes to output restaurants in various format
 
 ### Support ###
 
-Use the WordPress.org forums for community support where we try to help all users. If you spot a bug, you can log it (or fix it) on [Github](https://github.com/Automattic/WP-Job-Manager) where we can act upon them more efficiently.
+Use the WordPress.org forums for community support where we try to help all users. If you spot a bug, you can log it (or fix it) on [Github](https://github.com/wpdrift/WP-Restaurant-Listings) where we can act upon them more efficiently.
 
 If you need help with one of our add-ons, [please raise a ticket at our help desk](http://wpdrift.com/).
 

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Handles the installation of the WP Restaurant Listings plugin.s
+ * Handles the installation of the WP Restaurant Listings plugin.
  *
  * @package wp-restaurant-listings
  * @since 1.0.0
