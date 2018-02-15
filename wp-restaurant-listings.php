@@ -32,11 +32,6 @@ class WP_Restaurant_Listing {
 	private static $_instance = null;
 
 	/**
-	 * @var WP_Restaurant_Listings_REST_API
-	 */
-	private $rest_api = null;
-
-	/**
 	 * Main WP Restaurant Listings Instance.
 	 *
 	 * Ensures only one instance of WP Restaurant Listings is loaded or can be loaded.
@@ -74,9 +69,6 @@ class WP_Restaurant_Listing {
 		include_once( 'includes/class-wp-restaurant-listings-template-loader.php' );
 		include_once( 'includes/class-wp-restaurant-listings-comments.php' );
 
-
-		add_action( 'rest_api_init', array( $this, 'rest_api' ) );
-
 		if ( is_admin() ) {
 			include_once( 'includes/admin/class-wp-restaurant-listings-admin.php' );
 			include_once( 'includes/admin/class-wp-restaurant-listings-meta-box-gallery.php' );
@@ -90,18 +82,18 @@ class WP_Restaurant_Listing {
 		$this->post_types = WP_Restaurant_Listings_Post_Types::instance();
 
 
-		// Schedule cron restaurants
+		// Schedule cron restaurants.
 		self::maybe_schedule_cron_restaurants();
 
-		// Activation - works with symlinks
+		// Activation - works with symlinks.
 		register_activation_hook( basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ), array( $this, 'activate' ) );
 
-		// Switch theme
+		// Switch theme.
 		add_action( 'after_switch_theme', array( 'WP_Restaurant_Listings_Ajax', 'add_endpoint' ), 10 );
 		add_action( 'after_switch_theme', array( $this->post_types, 'register_post_types' ), 11 );
 		add_action( 'after_switch_theme', 'flush_rewrite_rules', 15 );
 
-		// Actions
+		// Actions.
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_textdomain' ) );
 		add_action( 'after_setup_theme', array( $this, 'include_template_functions' ), 11 );
 		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
@@ -137,20 +129,6 @@ class WP_Restaurant_Listing {
 	public function load_plugin_textdomain() {
 		load_textdomain( 'wp-restaurant-listings', WP_LANG_DIR . '/wp-restaurant-listings/wp-restaurant-listings-' . apply_filters( 'plugin_locale', get_locale(), 'wp-restaurant-listings' ) . '.mo' );
 		load_plugin_textdomain( 'wp-restaurant-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-	}
-
-	/**
-	 * Initialize our REST API.
-	 *
-	 * @return WP_Restaurant_Listings_REST_API|WP_Error
-	 */
-	public function rest_api() {
-		if ( null === $this->rest_api ) {
-			include( 'includes/rest-api/class-wp-restaurant-listings-rest-api.php' );
-			$this->rest_api = new WP_Restaurant_Listings_REST_API( dirname( __FILE__ ) );
-			$this->rest_api->init();
-		}
-		return $this->rest_api;
 	}
 
 	/**
