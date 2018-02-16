@@ -7,7 +7,7 @@
   "repository": "automattic/wp-restaurant-listings",
   "main": "Gruntfile.js",
   "devDependencies": {
-    "grunt": "~1.0.1",
+    "grunt": "^1.0.2",
     "grunt-checkbranch": "^1.0.4",
     "grunt-checkrepo": "^0.1.0",
     "grunt-checktextdomain": "~1.0.0",
