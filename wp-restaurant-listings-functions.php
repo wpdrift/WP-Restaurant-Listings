@@ -22,7 +22,6 @@ function get_restaurant_listings( $args = array() ) {
 		'orderby'           => 'date',
 		'order'             => 'DESC',
 		'featured'          => null,
-		'filled'            => null,
 		'fields'            => 'all'
 	) );
 
@@ -1028,7 +1027,6 @@ function restaurant_listings_duplicate_listing( $post_id ) {
 		}
 	}
 
-	update_post_meta( $new_post_id, '_filled', 0 );
 	update_post_meta( $new_post_id, '_featured', 0 );
 
 	return $new_post_id;

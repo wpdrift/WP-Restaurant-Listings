@@ -13,7 +13,6 @@ jQuery( document ).ready( function ( $ ) {
 		var orderby      = target.data( 'orderby' );
 		var order        = target.data( 'order' );
 		var featured     = target.data( 'featured' );
-		var filled       = target.data( 'filled' );
 		var restaurant_types    = target.data( 'restaurant_types' );
 		var post_status  = target.data( 'post_status' );
 		var index        = $( 'div.restaurant_listings' ).index(this);
@@ -80,7 +79,6 @@ jQuery( document ).ready( function ( $ ) {
 				order: order,
 				page: page,
 				featured: featured,
-				filled: filled,
 				show_pagination: target.data( 'show_pagination' ),
 				form_data: form.serialize()
 			};
@@ -109,7 +107,6 @@ jQuery( document ).ready( function ( $ ) {
 				order: order,
 				page: page,
 				featured: featured,
-				filled: filled,
 				show_pagination: target.data( 'show_pagination' )
 			};
 

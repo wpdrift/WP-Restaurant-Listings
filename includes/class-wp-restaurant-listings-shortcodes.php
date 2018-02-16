@@ -263,7 +263,6 @@ class WP_Restaurant_Listings_Shortcodes {
 			'restaurant_types'                 => '',
 			'post_status'               => '',
 			'featured'                  => null, // True to show only featured, false to hide featured, leave null to show both.
-			'filled'                    => null, // True to show only filled, false to hide filled, leave null to show both/use the settings.
 
 			// Default values for filters
 			'location'                  => '',
@@ -287,10 +286,6 @@ class WP_Restaurant_Listings_Shortcodes {
 
 		if ( ! is_null( $featured ) ) {
 			$featured = ( is_bool( $featured ) && $featured ) || in_array( $featured, array( '1', 'true', 'yes' ) ) ? true : false;
-		}
-
-		if ( ! is_null( $filled ) ) {
-			$filled = ( is_bool( $filled ) && $filled ) || in_array( $filled, array( '1', 'true', 'yes' ) ) ? true : false;
 		}
 
 		// Array handling
@@ -342,7 +337,6 @@ class WP_Restaurant_Listings_Shortcodes {
 				'order'             => $order,
 				'posts_per_page'    => $per_page,
 				'featured'          => $featured,
-				'filled'            => $filled
 			) ) );
 
 			if ( ! empty( $restaurant_types ) ) {
@@ -381,9 +375,6 @@ class WP_Restaurant_Listings_Shortcodes {
 		$data_attributes_string = '';
 		if ( ! is_null( $featured ) ) {
 			$data_attributes[ 'featured' ]    = $featured ? 'true' : 'false';
-		}
-		if ( ! is_null( $filled ) ) {
-			$data_attributes[ 'filled' ]      = $filled ? 'true' : 'false';
 		}
 		if ( ! empty( $post_status ) ) {
 			$data_attributes[ 'post_status' ] = implode( ',', $post_status );

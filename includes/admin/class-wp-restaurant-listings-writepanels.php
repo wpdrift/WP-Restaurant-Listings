@@ -675,7 +675,6 @@ class WP_Restaurant_Listings_Writepanels {
 		global $wpdb;
 
 		// These need to exist
-		add_post_meta( $post_id, '_filled', 0, true );
 		add_post_meta( $post_id, '_featured', 0, true );
 
 		// Save fields

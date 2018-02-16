@@ -658,7 +658,6 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 	 */
 	protected function update_restaurant_data( $values ) {
 		// Set defaults
-		add_post_meta( $this->restaurant_id, '_filled', 0, true );
 		add_post_meta( $this->restaurant_id, '_featured', 0, true );
 
 		$maybe_attach = array();

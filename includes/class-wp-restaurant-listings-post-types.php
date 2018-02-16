@@ -628,7 +628,6 @@ class WP_Restaurant_Listings_Post_Types {
 	 */
 	public function maybe_add_default_meta_data( $post_id, $post = '' ) {
 		if ( empty( $post ) || 'restaurant_listings' === $post->post_type ) {
-			add_post_meta( $post_id, '_filled', 0, true );
 			add_post_meta( $post_id, '_featured', 0, true );
 		}
 	}

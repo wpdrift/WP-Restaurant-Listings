@@ -146,10 +146,6 @@ class WP_Restaurant_Listings_Ajax {
 			'posts_per_page'     => absint( $_REQUEST['per_page'] ),
 		);
 
-		if ( isset( $_REQUEST['filled'] ) && ( $_REQUEST['filled'] === 'true' || $_REQUEST['filled'] === 'false' ) ) {
-			$args['filled'] = $_REQUEST['filled'] === 'true' ? true : false;
-		}
-
 		if ( isset( $_REQUEST['featured'] ) && ( $_REQUEST['featured'] === 'true' || $_REQUEST['featured'] === 'false' ) ) {
 			$args['featured'] = $_REQUEST['featured'] === 'true' ? true : false;
 			$args['orderby']  = 'featured' === $orderby ? 'date' : $orderby;
@@ -312,9 +308,9 @@ class WP_Restaurant_Listings_Ajax {
 
         // Source: https://stackoverflow.com/questions/29553895/querying-mysql-for-latitude-and-longitude-coordinates-that-are-within-a-given-mi
         // Spherical Law of Cosines Formula
-        $query_posts = "SELECT l.post_id, l.lat, l.lng, p.post_title, ( 3959 * acos( cos( radians({$restaurnat_lat}) ) * cos( radians( l.lat ) ) 
-                    	* cos( radians( l.lng ) - radians({$restaurant_lng}) ) + sin( radians({$restaurnat_lat}) ) * sin(radians(l.lat)) ) ) as distance 
-                    	FROM {$wpdb->prefix}restaurants_location l INNER JOIN {$wpdb->posts} p ON p.ID = l.post_id HAVING distance < {$radius} 
+        $query_posts = "SELECT l.post_id, l.lat, l.lng, p.post_title, ( 3959 * acos( cos( radians({$restaurnat_lat}) ) * cos( radians( l.lat ) )
+                    	* cos( radians( l.lng ) - radians({$restaurant_lng}) ) + sin( radians({$restaurnat_lat}) ) * sin(radians(l.lat)) ) ) as distance
+                    	FROM {$wpdb->prefix}restaurants_location l INNER JOIN {$wpdb->posts} p ON p.ID = l.post_id HAVING distance < {$radius}
                     	ORDER BY distance";
 
         $restaurants = $wpdb->get_results( $query_posts );
