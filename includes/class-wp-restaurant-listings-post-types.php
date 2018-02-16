@@ -53,9 +53,6 @@ class WP_Restaurant_Listings_Post_Types {
 			add_filter( 'the_restaurant_description', array( $GLOBALS['wp_embed'], 'autoembed' ), 8 );
 		}
 
-		add_action( 'restaurant_listings_application_details_email', array( $this, 'application_details_email' ) );
-		add_action( 'restaurant_listings_application_details_url', array( $this, 'application_details_url' ) );
-
 		add_filter( 'wp_insert_post_data', array( $this, 'fix_post_name' ), 10, 2 );
 		add_action( 'add_post_meta', array( $this, 'maybe_add_geolocation_data' ), 10, 3 );
 		add_action( 'update_post_meta', array( $this, 'update_post_meta' ), 10, 4 );
@@ -497,24 +494,6 @@ class WP_Restaurant_Listings_Post_Types {
 			return;
 		}
 
-	}
-
-	/**
-	 * Displays the application content when the application method is an email.
-	 *
-	 * @param stdClass $apply
-	 */
-	public function application_details_email( $apply ) {
-		get_restaurant_listings_template( 'restaurant-application-email.php', array( 'apply' => $apply ) );
-	}
-
-	/**
-	 * Displays the application content when the application method is a url.
-	 *
-	 * @param stdClass $apply
-	 */
-	public function application_details_url( $apply ) {
-		get_restaurant_listings_template( 'restaurant-application-url.php', array( 'apply' => $apply ) );
 	}
 
 	/**

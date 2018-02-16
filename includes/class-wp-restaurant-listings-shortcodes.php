@@ -534,58 +534,6 @@ class WP_Restaurant_Listings_Shortcodes {
 		return ob_get_clean();
 	}
 
-	/**
-	 * Shows the application area.
-	 *
-	 * @param array $atts
-	 * @return string
-	 */
-	public function output_restaurant_apply( $atts ) {
-		extract( shortcode_atts( array(
-			'id'       => ''
-		), $atts ) );
-
-		ob_start();
-
-		$args = array(
-			'post_type'   => 'restaurant_listings',
-			'post_status' => 'publish'
-		);
-
-		if ( ! $id ) {
-			return '';
-		} else {
-			$args['p'] = absint( $id );
-		}
-
-		$restaurants = new WP_Query( $args );
-
-		if ( $restaurants->have_posts() ) : ?>
-
-			<?php while ( $restaurants->have_posts() ) :
-				$restaurants->the_post();
-				$apply = get_the_restaurant_application_method();
-				?>
-
-				<?php do_action( 'restaurant_listings_before_restaurant_apply_' . absint( $id ) ); ?>
-
-				<?php if ( apply_filters( 'restaurant_listings_show_restaurant_apply_' . absint( $id ), true ) ) : ?>
-					<div class="restaurant-listings-application-wrapper">
-						<?php do_action( 'restaurant_listings_application_details_' . $apply->type, $apply ); ?>
-					</div>
-				<?php endif; ?>
-
-				<?php do_action( 'restaurant_listings_after_restaurant_apply_' . absint( $id ) ); ?>
-
-			<?php endwhile; ?>
-
-		<?php endif;
-
-		wp_reset_postdata();
-
-		return ob_get_clean();
-	}
-
     /**
      *
      */

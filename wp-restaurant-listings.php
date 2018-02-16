@@ -266,7 +266,6 @@ class WP_Restaurant_Listing {
 
 		wp_register_script( 'wp-restaurant-listings-ajax-filters', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/ajax-filters.js', $ajax_filter_deps, RESTAURANT_LISTING_VERSION, true );
 		wp_register_script( 'wp-restaurant-listings-restaurant-dashboard', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/restaurant-dashboard.min.js', array( 'jquery' ), RESTAURANT_LISTING_VERSION, true );
-		wp_register_script( 'wp-restaurant-listings-restaurant-application', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/restaurant-application.min.js', array( 'jquery' ), RESTAURANT_LISTING_VERSION, true );
 		wp_register_script( 'wp-restaurant-listings-restaurant-submission', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/restaurant-submission.min.js', array( 'jquery' ), RESTAURANT_LISTING_VERSION, true );
 
         wp_register_script( 'wp-restaurant-listings-main', RESTAURANT_LISTING_PLUGIN_URL .'/assets/js/wp-restaurant-listings.min.js', array('jquery'), RESTAURANT_LISTING_VERSION );

@@ -237,18 +237,6 @@ class WP_Restaurant_Listings_Settings {
 							'type'       => 'checkbox',
 							'attributes' => array()
 						),
-						array(
-							'name'       => 'restaurant_listings_allowed_application_method',
-							'std'        => '',
-							'label'      => __( 'Application Method', 'wp-restaurant-listings' ),
-							'desc'       => __( 'Choose the application method restaurant listers will need to provide. Specify URL or email address only, or allow listers to choose which they prefer.', 'wp-restaurant-listings' ),
-							'type'       => 'radio',
-							'options'    => array(
-								''      => __( 'Email address or website URL', 'wp-restaurant-listings' ),
-								'email' => __( 'Email addresses only', 'wp-restaurant-listings' ),
-								'url'   => __( 'Website URLs only', 'wp-restaurant-listings' ),
-							)
-						),
 					)
 				),
 				'restaurant_pages' => array(

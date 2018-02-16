@@ -190,41 +190,6 @@ function get_the_restaurant_permalink( $post = null ) {
 }
 
 /**
- * Gets the application method for the restaurant listings.
- *
- * @since 1.0.0
- * @param int|WP_Post $post (default: null)
- * @return stdClass|bool|null
- */
-function get_the_restaurant_application_method( $post = null ) {
-	$post = get_post( $post );
-
-	if ( $post && $post->post_type !== 'restaurant_listings' ) {
-		return;
-	}
-
-	$method = new stdClass();
-	$apply  = $post->_application;
-
-	if ( empty( $apply ) )
-		return false;
-
-	if ( strstr( $apply, '@' ) && is_email( $apply ) ) {
-		$method->type      = 'email';
-		$method->raw_email = $apply;
-		$method->email     = antispambot( $apply );
-		$method->subject   = apply_filters( 'restaurant_listings_application_email_subject', sprintf( __( 'Application via "%s" listings on %s', 'wp-restaurant-listings' ), $post->post_title, home_url() ), $post );
-	} else {
-		if ( strpos( $apply, 'http' ) !== 0 )
-			$apply = 'http://' . $apply;
-		$method->type = 'url';
-		$method->url  = $apply;
-	}
-
-	return apply_filters( 'the_restaurant_application_method', $method, $post );
-}
-
-/**
  * Displays the restaurant title for the listings.
  *
  * @since 1.27.0
@@ -505,7 +470,7 @@ function get_the_restaurant_street( $post = null ) {
  * @param null $post
  */
 function the_restaurant_latest_story( $post = null ) {
- 
+
 	$comment = get_the_restaurant_latest_story( $post );
     if ( $comment instanceof WP_Comment ) {
         ?>

@@ -20,7 +20,6 @@ $options = array(
 	'restaurant_listings_registration_role',
 	'restaurant_listings_submission_requires_approval',
 	'restaurant_listings_user_can_edit_pending_submissions',
-	'restaurant_listings_allowed_application_method',
 	'restaurant_listings_submit_restaurant_form_page_id',
 	'restaurant_listings_restaurant_dashboard_page_id',
 	'restaurant_listings_restaurants_page_id',
