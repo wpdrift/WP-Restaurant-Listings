@@ -238,13 +238,6 @@ class WP_Restaurant_Listings_Settings {
 							'attributes' => array()
 						),
 						array(
-							'name'       => 'restaurant_listings_submission_duration',
-							'std'        => '30',
-							'label'      => __( 'Listings Duration', 'wp-restaurant-listings' ),
-							'desc'       => __( 'Listings will display for the set number of days, then expire. Leave this field blank if you don\'t want listings to have an expiration date.', 'wp-restaurant-listings' ),
-							'attributes' => array()
-						),
-						array(
 							'name'       => 'restaurant_listings_allowed_application_method',
 							'std'        => '',
 							'label'      => __( 'Application Method', 'wp-restaurant-listings' ),

@@ -738,10 +738,6 @@ class WP_Restaurant_Listings_Writepanels {
         if ( isset( $_POST[ 'restaurant_hours' ] ) ) {
             update_post_meta( $post_id, '_restaurant_hours',  $_POST[ 'restaurant_hours' ] );
         }
-
-		/* Set Post Status To Expired If Already Expired */
-		$expiry_date = get_post_meta( $post_id, '_restaurant_expires', true );
-		$today_date  = date( 'Y-m-d', current_time( 'timestamp' ) );
 	}
 
 }

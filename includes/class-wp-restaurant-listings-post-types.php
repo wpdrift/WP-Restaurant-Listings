@@ -35,14 +35,12 @@ class WP_Restaurant_Listings_Post_Types {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_types' ), 0 );
 		add_filter( 'admin_head', array( $this, 'admin_head' ) );
-		add_action( 'restaurant_listings_check_for_expired_restaurants', array( $this, 'check_for_expired_restaurants' ) );
 		add_action( 'restaurant_listings_delete_old_previews', array( $this, 'delete_old_previews' ) );
 
 		add_action( 'pending_to_publish', array( $this, 'set_expiry' ) );
 		add_action( 'preview_to_publish', array( $this, 'set_expiry' ) );
 		add_action( 'draft_to_publish', array( $this, 'set_expiry' ) );
 		add_action( 'auto-draft_to_publish', array( $this, 'set_expiry' ) );
-		add_action( 'expired_to_publish', array( $this, 'set_expiry' ) );
 
 		add_filter( 'the_restaurant_description', 'wptexturize'        );
 		add_filter( 'the_restaurant_description', 'convert_smilies'    );
@@ -254,15 +252,6 @@ class WP_Restaurant_Listings_Post_Types {
 		/**
 		 * Post status
 		 */
-		register_post_status( 'expired', array(
-			'label'                     => _x( 'Expired', 'post status', 'wp-restaurant-listings' ),
-			'public'                    => true,
-			'protected'                 => true,
-			'exclude_from_search'       => true,
-			'show_in_admin_all_list'    => true,
-			'show_in_admin_status_list' => true,
-			'label_count'               => _n_noop( 'Expired <span class="count">(%s)</span>', 'Expired <span class="count">(%s)</span>', 'wp-restaurant-listings' ),
-		) );
 		register_post_status( 'preview', array(
 			'label'                     => _x( 'Preview', 'post status', 'wp-restaurant-listings' ),
 			'public'                    => false,

@@ -971,29 +971,6 @@ function restaurant_listings_get_allowed_mime_types( $field = '' ){
 }
 
 /**
- * Calculates and returns the restaurant expiry date.
- *
- * @since 1.22.0
- * @param  int $restaurant_id
- * @return string
- */
-function calculate_restaurant_expiry( $restaurant_id ) {
-	// Get duration from the product if set...
-	$duration = get_post_meta( $restaurant_id, '_restaurant_duration', true );
-
-	// ...otherwise use the global option
-	if ( ! $duration ) {
-		$duration = absint( get_option( 'restaurant_listings_submission_duration' ) );
-	}
-
-	if ( $duration ) {
-		return date( 'Y-m-d', strtotime( "+{$duration} days", current_time( 'timestamp' ) ) );
-	}
-
-	return '';
-}
-
-/**
  * Duplicates a listings.
  *
  * @since 1.25.0

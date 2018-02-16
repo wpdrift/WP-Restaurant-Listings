@@ -160,9 +160,6 @@ class WP_Restaurant_Listing {
 		if ( ! wp_next_scheduled( 'restaurant_listings_delete_old_previews' ) ) {
 			wp_schedule_event( time(), 'daily', 'restaurant_listings_delete_old_previews' );
 		}
-		if ( ! wp_next_scheduled( 'restaurant_listings_clear_expired_transients' ) ) {
-			wp_schedule_event( time(), 'twicedaily', 'restaurant_listings_clear_expired_transients' );
-		}
 	}
 
 	/**
