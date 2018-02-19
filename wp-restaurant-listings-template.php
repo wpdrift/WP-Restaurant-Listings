@@ -24,7 +24,7 @@ function get_restaurant_listings_template( $template_name, $args = array(), $tem
 		extract( $args );
 	}
 
-	include( locate_restaurant_listings_template( $template_name, $template_path, $default_path ) );
+	include locate_restaurant_listings_template( $template_name, $template_path, $default_path );
 }
 
 /**
