@@ -541,7 +541,7 @@ class WP_Restaurant_Listings_Shortcodes {
             'orderby' =>'menu_order',
             'paged' => $paged ) );
 
-        echo '<ul class="restaurants restaurant-directory">';
+        echo '<ul class="restaurants restaurant_listings restaurant-directory">';
         while ( have_posts() ) { the_post();
 
             $args = array(
