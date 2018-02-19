@@ -1127,6 +1127,10 @@ function wprl_add_post_class( $classes, $class, $post_id ) {
 		}
 	}
 
+	if ( is_restaurant_featured( $post ) ) {
+		$classes[] = 'restaurant_status_featured';
+	}
+
 	return $classes;
 }
 add_action( 'post_class', 'wprl_add_post_class', 10, 3 );
