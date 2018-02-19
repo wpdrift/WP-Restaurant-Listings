@@ -12,7 +12,7 @@
 
 global $post; ?>
 
-<li class="<?php post_class() ?>" <?php restaurant_listings_class(); ?> data-longitude="<?php echo esc_attr( $post->geolocation_lat ); ?>" data-latitude="<?php echo esc_attr( $post->geolocation_long ); ?>">
+<li <?php restaurant_listings_class(); ?> data-longitude="<?php echo esc_attr( $post->geolocation_lat ); ?>" data-latitude="<?php echo esc_attr( $post->geolocation_long ); ?>">
     <div class="restaurant-result">
         <div class="first-row">
             <div class="main-area">
