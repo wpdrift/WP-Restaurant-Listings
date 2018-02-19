@@ -925,7 +925,7 @@ function the_restaurant_rating( $post = null ) {
             <div class="star-rating">
                 <?php echo get_restaurant_star_rating_html( $average, $rating_count ); ?>
             </div>
-            <?php if ( comments_open() ) : ?><a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $review_count, 'woocommerce' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?>)</a><?php endif ?>
+            <?php if ( comments_open() ) : ?><a href="#reviews" class="restaurant-listings-review-link" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $review_count, 'wp-restaurant-listings' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?>)</a><?php endif ?>
         </div>
 
     <?php endif;
@@ -1315,10 +1315,10 @@ function restaurant_listings_get_star_rating_html( $rating, $count = 0 ) {
 
     if ( 0 < $count ) {
         /* translators: 1: rating 2: rating count */
-        $html .= sprintf( _n( 'Rated %1$s out of 5 based on %2$s customer rating', 'Rated %1$s out of 5 based on %2$s customer ratings', $count, 'woocommerce' ), '<strong class="rating">' . esc_html( $rating ) . '</strong>', '<span class="rating">' . esc_html( $count ) . '</span>' );
+        $html .= sprintf( _n( 'Rated %1$s out of 5 based on %2$s customer rating', 'Rated %1$s out of 5 based on %2$s customer ratings', $count, 'wp-restaurant-listings' ), '<strong class="rating">' . esc_html( $rating ) . '</strong>', '<span class="rating">' . esc_html( $count ) . '</span>' );
     } else {
         /* translators: %s: rating */
-        $html .= sprintf( esc_html__( 'Rated %s out of 5', 'woocommerce' ), '<strong class="rating">' . esc_html( $rating ) . '</strong>' );
+        $html .= sprintf( esc_html__( 'Rated %s out of 5', 'wp-restaurant-listings' ), '<strong class="rating">' . esc_html( $rating ) . '</strong>' );
     }
 
     $html .= '</span>';
