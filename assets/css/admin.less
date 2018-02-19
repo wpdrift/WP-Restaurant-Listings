@@ -11,12 +11,12 @@
 	}
 }
 .widefat {
-	td.column-featured_restaurant, td.column-filled, td.column-restaurant_status {
+	td.column-featured_restaurant, td.column-restaurant_status {
 		width: 46px;
 		text-align: left;
 		padding-left: 11px;
 	}
-	th.column-featured_restaurant, th.column-filled, th.column-restaurant_status {
+	th.column-featured_restaurant, th.column-restaurant_status {
 		width: 1em;
 		span {
 			display: block;
@@ -28,13 +28,6 @@
 			&:before {
 				content: '\e803';
 				.jm-icon;
-			}
-		}
-	}
-	th.column-filled {
-		span {
-			&:before {
-				content: '\e807';
 			}
 		}
 	}
@@ -83,10 +76,6 @@
 		.status-publish:before {
 			content: '\e82f';
 			color: #73a724;
-		}
-		.status-expired:before {
-			content: '\e82e';
-			color: #a00;
 		}
 	}
 	.column-restaurant_listings_type {
