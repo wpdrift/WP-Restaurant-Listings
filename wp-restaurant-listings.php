@@ -7,7 +7,7 @@
  * Author: WPdrift
  * Author URI: https://wpdrift.com/
  * Requires at least: 4.1
- * Tested up to: 4.8
+ * Tested up to: 4.9
  * Text Domain: wp-restaurant-listings
  * Domain Path: /languages/
  * License: GPL3+
