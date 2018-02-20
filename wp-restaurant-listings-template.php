@@ -4,10 +4,8 @@
  *
  * Template functions specifically created for restaurant listings
  *
- * @author 		Mike Jolley
- * @category 	Core
- * @package 	RestaurantListings/Template
- * @version     1.25.3
+ * @package RestaurantListings/Template
+ * @version 1.0.0
  */
 
 /**
@@ -1067,7 +1065,7 @@ function google_maps_url() {
  * @param int|WP_Post $post_id (default: null)
  */
 function restaurant_listings_class( $class = '', $post_id = null ) {
-	// Separates classes with a single space, collates classes for post DIV
+	// Separates classes with a single space, collates classes for post DIV.
 	echo 'class="' . join( ' ', get_restaurant_listings_class( $class, $post_id ) ) . '"';
 }
 
@@ -1075,14 +1073,14 @@ function restaurant_listings_class( $class = '', $post_id = null ) {
  * Gets the restaurant listings class.
  *
  * @since 1.0.0
- * @param string      $class
- * @param int|WP_Post $post_id (default: null)
+ * @param string      $class class.
+ * @param int|WP_Post $post_id (default: null).
  * @return array
  */
 function get_restaurant_listings_class( $class = '', $post_id = null ) {
 	$post = get_post( $post_id );
 
-	if (  empty( $post ) || 'restaurant_listings' !== $post->post_type ) {
+	if ( empty( $post ) || 'restaurant_listings' !== $post->post_type ) {
 		return array();
 	}
 
@@ -1111,7 +1109,7 @@ function get_restaurant_listings_class( $class = '', $post_id = null ) {
 function wprl_add_post_class( $classes, $class, $post_id ) {
 	$post = get_post( $post_id );
 
-	if (  empty( $post ) || 'restaurant_listings' !== $post->post_type ) {
+	if ( empty( $post ) || 'restaurant_listings' !== $post->post_type ) {
 		return $classes;
 	}
 
@@ -1157,19 +1155,17 @@ add_action( 'single_restaurant_listings_start', 'restaurant_listings_restaurant_
 add_action( 'single_restaurant_listings_end', 'restaurant_listings_output_data_tabs', 10 );
 
 if ( ! function_exists( 'restaurant_listings_output_data_tabs' ) ) {
+	/**
+	 * Output the tabs.
+	 *
+	 * @subpackage Product/Tabs
+	 */
+	function restaurant_listings_output_data_tabs() {
 
-
-    /**
-     * Output the tabs.
-     *
-     * @subpackage	Product/Tabs
-     */
-    function restaurant_listings_output_data_tabs() {
-
-        if ( 'publish' == get_post_status() ) {
-            get_restaurant_listings_template( 'single-restaurant_listings/tabs/tabs.php' );
-        }
-    }
+		if ( 'publish' === get_post_status() ) {
+			get_restaurant_listings_template( 'single-restaurant_listings/tabs/tabs.php' );
+		}
+	}
 }
 
 /**
@@ -1178,29 +1174,29 @@ if ( ! function_exists( 'restaurant_listings_output_data_tabs' ) ) {
  * @since 1.0.0
  */
 function restaurant_listings_photoswipe_template() {
-    get_restaurant_listings_template( 'restaurant-gallery-photoswipe.php', array() );
+	get_restaurant_listings_template( 'restaurant-gallery-photoswipe.php', array() );
 }
 
 add_action( 'single_restaurant_listings_end', 'restaurant_listings_photoswipe_template', 20 );
 
 /**
- * page tabs.
+ * Page tabs.
  */
 add_filter( 'restaurant_listings_tabs', 'restaurant_listings_default_tabs' );
 
 if ( ! function_exists( 'restaurant_listings_comments' ) ) {
 
-    /**
-     * Output the Review comments template.
-     *
-     * @param WP_Comment $comment
-     * @param array $args
-     * @param int $depth
-     */
-    function restaurant_listings_comments( $comment, $args, $depth ) {
-        $GLOBALS['comment'] = $comment;
-        get_restaurant_listings_template( 'single-restaurant_listings/review.php', array( 'comment' => $comment, 'args' => $args, 'depth' => $depth ) );
-    }
+	/**
+	 * Output the Review comments template.
+	 *
+	 * @param WP_Comment $comment comment.
+	 * @param array      $args args.
+	 * @param int        $depth depth.
+	 */
+	function restaurant_listings_comments( $comment, $args, $depth ) {
+		$GLOBALS['comment'] = $comment;
+		get_restaurant_listings_template( 'single-restaurant_listings/review.php', array( 'comment' => $comment, 'args' => $args, 'depth' => $depth ) );
+	}
 }
 
 /**
@@ -1212,72 +1208,75 @@ add_action( 'restaurant_listings_review_meta', 'restaurant_listings_review_displ
 add_action( 'restaurant_listings_review_comment_text', 'restaurant_listings_review_display_comment_text', 10 );
 
 if ( ! function_exists( 'restaurant_listings_review_display_gravatar' ) ) {
-    /**
-     * Display the review authors gravatar
-     */
-    function restaurant_listings_review_display_gravatar( $comment ) {
-        echo get_avatar( $comment, apply_filters( 'restaurant_listings_review_gravatar_size', '60' ), '' );
-    }
+	/**
+	 * Display the review authors gravatar
+	 *
+	 * @param WP_Comment $comment comment.
+	 * @return void
+	 */
+	function restaurant_listings_review_display_gravatar( $comment ) {
+		echo get_avatar( $comment, apply_filters( 'restaurant_listings_review_gravatar_size', '60' ), '' );
+	}
 }
 
 if ( ! function_exists( 'restaurant_listings_review_display_rating' ) ) {
-    /**
-     * Display the reviewers star rating
-     *
-     * @return void
-     */
-    function restaurant_listings_review_display_rating() {
-        if ( post_type_supports( 'restaurant_listings', 'comments' ) ) {
-            get_restaurant_listings_template( 'single-restaurant_listings/review-rating.php' );
-        }
-    }
+	/**
+	 * Display the reviewers star rating
+	 *
+	 * @return void
+	 */
+	function restaurant_listings_review_display_rating() {
+		if ( post_type_supports( 'restaurant_listings', 'comments' ) ) {
+			get_restaurant_listings_template( 'single-restaurant_listings/review-rating.php' );
+		}
+	}
 }
 
 if ( ! function_exists( 'restaurant_listings_review_display_meta' ) ) {
-    /**
-     * Display the review authors meta (name, verified owner, review date)
-     *
-     * @return void
-     */
-    function restaurant_listings_review_display_meta() {
-        get_restaurant_listings_template( 'single-restaurant_listings/review-meta.php' );
-    }
+	/**
+	 * Display the review authors meta (name, verified owner, review date)
+	 *
+	 * @return void
+	 */
+	function restaurant_listings_review_display_meta() {
+		get_restaurant_listings_template( 'single-restaurant_listings/review-meta.php' );
+	}
 }
 
 if ( ! function_exists( 'restaurant_listings_overview_tab' ) ) {
 
-    /**
-     * Output the overview tab content.
-     *
-     * @subpackage	Product/Tabs
-     */
-    function restaurant_listings_overview_tab() {
-        get_restaurant_listings_template( 'single-restaurant_listings/tabs/overview.php' );
-    }
+	/**
+	 * Output the overview tab content.
+	 *
+	 * @subpackage Product/Tabs
+	 */
+	function restaurant_listings_overview_tab() {
+		get_restaurant_listings_template( 'single-restaurant_listings/tabs/overview.php' );
+	}
 }
 
 if ( ! function_exists( 'restaurant_listings_menu_tab' ) ) {
 
-    /**
-     * Output the attributes tab content.
-     *
-     * @subpackage	Product/Tabs
-     */
-    function restaurant_listings_menu_tab() {
-        get_restaurant_listings_template( 'single-restaurant_listings/tabs/menu.php' );
-    }
+	/**
+	 * Output the attributes tab content.
+	 *
+	 * @subpackage Product/Tabs
+	 */
+	function restaurant_listings_menu_tab() {
+		get_restaurant_listings_template( 'single-restaurant_listings/tabs/menu.php' );
+	}
 }
 
 if ( ! function_exists( 'restaurant_listings_review_display_comment_text' ) ) {
 
-    /**
-     * Display the review content.
-     */
-    function restaurant_listings_review_display_comment_text() {
-        echo '<div class="description">';
-        comment_text();
-        echo '</div>';
-    }
+	/**
+	 * Display the review content.
+	 */
+	function restaurant_listings_review_display_comment_text() {
+		echo '<div class="description">';
+		comment_text();
+		echo '</div>';
+	}
 }
 
 /**
@@ -1289,15 +1288,15 @@ if ( ! function_exists( 'restaurant_listings_review_display_comment_text' ) ) {
  */
 function restaurant_listings_get_rating_html( $rating, $count = 0 ) {
 
-    if ( 0 < $rating ) {
-        $html  = '<div class="star-rating">';
-        $html .= restaurant_listings_get_star_rating_html( $rating, $count );
-        $html .= '</div>';
-    } else {
-        $html  = '';
-    }
+	if ( 0 < $rating ) {
+		$html  = '<div class="star-rating">';
+		$html .= restaurant_listings_get_star_rating_html( $rating, $count );
+		$html .= '</div>';
+	} else {
+		$html = '';
+	}
 
-    return apply_filters( 'restaurant_listings_get_rating_html', $html, $rating, $count );
+	return apply_filters( 'restaurant_listings_get_rating_html', $html, $rating, $count );
 }
 
 /**
@@ -1308,19 +1307,17 @@ function restaurant_listings_get_rating_html( $rating, $count = 0 ) {
  * @return string
  */
 function restaurant_listings_get_star_rating_html( $rating, $count = 0 ) {
+	$html = '<span style="width:' . ( ( $rating / 5 ) * 100 ) . '%">';
 
+	if ( 0 < $count ) {
+		/* translators: 1: rating 2: rating count */
+		$html .= sprintf( _n( 'Rated %1$s out of 5 based on %2$s customer rating', 'Rated %1$s out of 5 based on %2$s customer ratings', $count, 'wp-restaurant-listings' ), '<strong class="rating">' . esc_html( $rating ) . '</strong>', '<span class="rating">' . esc_html( $count ) . '</span>' );
+	} else {
+		/* translators: %s: rating */
+		$html .= sprintf( esc_html__( 'Rated %s out of 5', 'wp-restaurant-listings' ), '<strong class="rating">' . esc_html( $rating ) . '</strong>' );
+	}
 
-    $html = '<span style="width:' . ( ( $rating / 5 ) * 100 ) . '%">';
+	$html .= '</span>';
 
-    if ( 0 < $count ) {
-        /* translators: 1: rating 2: rating count */
-        $html .= sprintf( _n( 'Rated %1$s out of 5 based on %2$s customer rating', 'Rated %1$s out of 5 based on %2$s customer ratings', $count, 'wp-restaurant-listings' ), '<strong class="rating">' . esc_html( $rating ) . '</strong>', '<span class="rating">' . esc_html( $count ) . '</span>' );
-    } else {
-        /* translators: %s: rating */
-        $html .= sprintf( esc_html__( 'Rated %s out of 5', 'wp-restaurant-listings' ), '<strong class="rating">' . esc_html( $rating ) . '</strong>' );
-    }
-
-    $html .= '</span>';
-
-    return apply_filters( 'restaurant_listings_get_star_rating_html', $html, $rating, $count );
+	return apply_filters( 'restaurant_listings_get_star_rating_html', $html, $rating, $count );
 }
