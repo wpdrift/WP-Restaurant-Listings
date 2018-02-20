@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Restaurant photo gallery widget.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  */
 class WP_Restaurant_Listings_Widget_Restaurant_Gallery extends WP_Restaurant_Listings_Widget {
 

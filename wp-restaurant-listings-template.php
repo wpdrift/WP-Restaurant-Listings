@@ -6,7 +6,7 @@
  *
  * @author 		Mike Jolley
  * @category 	Core
- * @package 	Restaurant Listings/Template
+ * @package 	RestaurantListings/Template
  * @version     1.25.3
  */
 

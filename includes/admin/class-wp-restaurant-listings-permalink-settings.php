@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Handles front admin page for WP Restaurant Listings.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @see https://github.com/woocommerce/woocommerce/blob/3.0.8/includes/admin/class-wc-admin-permalink-settings.php  Based on WooCommerce's implementation.
  * @since 1.27.0
  */

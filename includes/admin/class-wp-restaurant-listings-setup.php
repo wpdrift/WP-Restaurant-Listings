@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handles initial environment setup after plugin is first activated.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.16.0
  */
 class WP_Restaurant_Listings_Setup {

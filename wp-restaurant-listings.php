@@ -10,7 +10,7 @@
  * Text Domain: wp-restaurant-listings
  * Domain Path: /languages/
  *
- * @package WP_Restaurant_Listings
+ * @package RestaurantListings
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

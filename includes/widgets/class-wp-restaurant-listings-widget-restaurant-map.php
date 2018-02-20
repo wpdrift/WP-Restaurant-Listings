@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Restaurant map widget.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0
  */
 class WP_Restaurant_Listings_Widget_Restaurant_Map extends WP_Restaurant_Listings_Widget {

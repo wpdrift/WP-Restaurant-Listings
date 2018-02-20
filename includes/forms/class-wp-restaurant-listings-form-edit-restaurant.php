@@ -5,7 +5,7 @@ include_once( 'class-wp-restaurant-listings-form-submit-restaurant.php' );
 /**
  * Handles the editing of Restaurant Listings from the public facing frontend (from within `[restaurant_dashboard]` shortcode).
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  * @extends WP_Restaurant_Listings_Form_Submit_Restaurant
  */

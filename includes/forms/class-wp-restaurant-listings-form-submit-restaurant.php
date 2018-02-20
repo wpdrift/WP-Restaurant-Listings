@@ -3,7 +3,7 @@
 /**
  * Handles the editing of Restaurant Listings from the public facing frontend (from within `[submit_restaurant_form]` shortcode).
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @extends WP_Restaurant_Listings_Form
  * @since 1.0.0
  */

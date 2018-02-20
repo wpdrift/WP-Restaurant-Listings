@@ -2,7 +2,7 @@
 /**
  * Base class for all WP Restaurant Listings forms.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Forms {

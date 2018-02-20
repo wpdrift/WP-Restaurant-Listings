@@ -2,7 +2,7 @@
 /**
  * Handles displays and hooks for the Restaurant Listings custom post type.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Post_Types {

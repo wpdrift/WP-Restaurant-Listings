@@ -18,7 +18,6 @@
     "grunt-contrib-jshint": "~1.1.0",
     "grunt-contrib-less": "~1.4.0",
     "grunt-contrib-sass": "~1.0.0",
-    "grunt-contrib-uglify": "^3.3.0",
     "grunt-contrib-uglify-es": "^3.3.0",
     "grunt-contrib-watch": "~1.0.0",
     "grunt-gitinfo": "^0.1.8",

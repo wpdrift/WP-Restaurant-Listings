@@ -7,7 +7,7 @@
  * @since 1.14.0
  * @version 1.27.0
  *
- * @package WP Restaurant Listings
+ * @package RestaurantListings
  * @category Template
  * @author Automattic
  */

@@ -2,7 +2,7 @@
 /**
  * WPRL setup
  *
- * @package  WP_Restaurant_Listings
+ * @package  RestaurantListings
  * @since    1.0.0
  */
 

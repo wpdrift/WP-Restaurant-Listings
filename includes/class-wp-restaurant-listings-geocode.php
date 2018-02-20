@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Obtains Geolocation data for posted restaurants from Google.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.6.1
  */
 class WP_Restaurant_Listings_Geocode {
