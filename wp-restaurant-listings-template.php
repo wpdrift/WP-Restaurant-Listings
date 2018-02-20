@@ -93,7 +93,7 @@ function get_restaurant_listings_template_part( $slug, $name = '', $template_pat
 /**
  * Adds custom body classes.
  *
- * @since 1.16.0
+ * @since 1.0.0
  * @param  array $classes
  * @return array
  */
@@ -109,7 +109,7 @@ add_filter( 'body_class', 'restaurant_listings_body_class' );
 /**
  * Get restaurants pagination for [restaurants] shortcode.
  *
- * @since 1.13.0
+ * @since 1.0.0
  * @param int $max_num_pages
  * @param int $current_page
  * @return string
@@ -133,7 +133,7 @@ function the_restaurant_status( $post = null ) {
 /**
  * Gets the restaurants status.
  *
- * @since 1.
+ * @since 1.0.0
  * @param int|WP_Post $post
  * @return string
  */
@@ -154,7 +154,7 @@ function get_the_restaurant_status( $post = null ) {
 /**
  * Checks whether or not the position has been featured.
  *
- * @since 1.2.0
+ * @since 1.0.0
  * @param  WP_Post|int $post
  * @return boolean
  */
@@ -192,7 +192,7 @@ function get_the_restaurant_permalink( $post = null ) {
 /**
  * Displays the restaurant title for the listings.
  *
- * @since 1.27.0
+ * @since 1.0.0
  * @param int|WP_Post $post
  * @return string
  */
@@ -205,7 +205,7 @@ function the_restaurant_title( $post = null ) {
 /**
  * Gets the restaurant title for the listings.
  *
- * @since 1.27.0
+ * @since 1.0.0
  * @param int|WP_Post $post (default: null)
  * @return string|bool|null
  */
@@ -220,7 +220,7 @@ function get_the_restaurant_title( $post = null ) {
 	/**
 	 * Filter for the restaurant title.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 * @param string      $title Title to be filtered.
 	 * @param int|WP_Post $post
 	 */
@@ -230,7 +230,7 @@ function get_the_restaurant_title( $post = null ) {
 /**
  * Displays multiple restaurant types for the listings.
  *
- * @since 1.27.0
+ * @since 1.0.0
  *
  * @param int|WP_Post $post Current post object.
  * @param string      $separator String to join the term names with.
@@ -252,7 +252,7 @@ function the_restaurant_types( $post = null, $separator = ', ' ) {
 /**
  * Gets the restaurant type for the listings.
  *
- * @since 1.27.0
+ * @since 1.0.0
  *
  * @param int|WP_Post $post (default: null).
  * @return bool|array
@@ -274,7 +274,7 @@ function get_the_restaurant_types( $post = null ) {
 	/**
 	 * Filter the returned restaurant types for a post.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param array   $types
 	 * @param WP_Post $post
@@ -306,7 +306,7 @@ function get_the_restaurant_price_range( $post = null ) {
 /**
  * Returns the registration fields used when an account is required.
  *
- * @since 1.27.0
+ * @since 1.0.0
  *
  * @return array $registration_fields
  */
@@ -355,7 +355,7 @@ function wprl_get_registration_fields() {
 	/**
 	 * Filters the fields used at registration.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param array $registration_fields
 	 */
@@ -365,7 +365,7 @@ function wprl_get_registration_fields() {
 /**
  * Displays the published date of the restaurant listings.
  *
- * @since 1.25.3
+ * @since 1.0.0
  * @param int|WP_Post $post (default: null)
  */
 function the_restaurant_publish_date( $post = null ) {
@@ -384,7 +384,7 @@ function the_restaurant_publish_date( $post = null ) {
 /**
  * Gets the published date of the restaurant listings.
  *
- * @since 1.25.3
+ * @since 1.0.0
  * @param int|WP_Post $post (default: null)
  * @return string|int|false
  */
@@ -556,7 +556,7 @@ function get_the_restaurant_logo( $post = null, $size = 'thumbnail' ) {
 /**
  * Resizes and returns the url of an image.
  *
- * @since 1.5.1
+ * @since 1.0.0
  * @param  string $logo
  * @param  string $size
  * @return string
@@ -617,7 +617,7 @@ function restaurant_listings_get_resized_image( $logo, $size ) {
 /**
  * Displays the restaurant video.
  *
- * @since 1.14.0
+ * @since 1.0.0
  * @param int|WP_Post $post
  */
 function the_restaurant_video( $post = null ) {
@@ -646,7 +646,7 @@ function the_restaurant_video( $post = null ) {
 /**
  * Gets the restaurant video URL.
  *
- * @since 1.14.0
+ * @since 1.0.0
  * @param int|WP_Post $post (default: null)
  * @return string|null
  */
@@ -662,7 +662,6 @@ function get_the_restaurant_video( $post = null ) {
  * Displays or retrieves the current restaurant name with optional content.
  *
  * @since 1.0.0
- * @since 1.0.1 Add the `$post` argument.
  * @param string           $before (default: '')
  * @param string           $after (default: '')
  * @param bool             $echo (default: true)
@@ -839,7 +838,7 @@ function the_restaurant_phone() {
 /**
  * Listings Email
  *
- * @since Listify 1.5.0
+ * @since 1.0.0
  *
  * @return void
  */
@@ -1102,7 +1101,7 @@ function get_restaurant_listings_class( $class = '', $post_id = null ) {
 /**
  * Adds post classes with meta info and the status of the restaurant listings.
  *
- * @since 1.27.0
+ * @since 1.0.0
  *
  * @param array $classes An array of post classes.
  * @param array $class   An array of additional classes added to the post.
@@ -1138,7 +1137,7 @@ add_action( 'post_class', 'wprl_add_post_class', 10, 3 );
 /**
  * Displays restaurant meta data on the single restaurant page.
  *
- * @since 1.14.0
+ * @since 1.0.0
  */
 function restaurant_listings_meta_display() {
 	get_restaurant_listings_template( 'content-single-restaurant_listings-meta.php', array() );
@@ -1148,7 +1147,7 @@ add_action( 'single_restaurant_listings_start', 'restaurant_listings_meta_displa
 /**
  * Displays restaurant restaurant data on the single restaurant page.
  *
- * @since 1.14.0
+ * @since 1.0.0
  */
 function restaurant_listings_restaurant_display() {
 	get_restaurant_listings_template( 'content-single-restaurant_listings-restaurant.php', array() );
@@ -1176,7 +1175,7 @@ if ( ! function_exists( 'restaurant_listings_output_data_tabs' ) ) {
 /**
  * Displays restaurant restaurant data on the single restaurant page.
  *
- * @since 1.14.0
+ * @since 1.0.0
  */
 function restaurant_listings_photoswipe_template() {
     get_restaurant_listings_template( 'restaurant-gallery-photoswipe.php', array() );

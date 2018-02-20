@@ -76,7 +76,7 @@ if ( ! function_exists( 'wprl_get_permalink_structure' ) ) :
 /**
  * Retrieves permalink settings. Moved to `WP_Restaurant_Listings_Post_Types` class in 1.27.1.
  *
- * @since 1.27.0
+ * @since 1.0.0
  * @deprecated 1.27.1
  * @return array
  */

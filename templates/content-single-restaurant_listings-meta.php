@@ -4,7 +4,7 @@
  *
  * Hooked into single_restaurant_listings_start priority 20
  *
- * @since 1.14.0
+ * @since 1.0.0
  * @version 1.27.0
  *
  * @package RestaurantListings

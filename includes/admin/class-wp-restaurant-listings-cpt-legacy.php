@@ -6,21 +6,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Handles legacy actions and filters specific to the custom post type for Restaurant Listings.
  *
  * @package RestaurantListings
- * @since 1.27.0
+ * @since 1.0.0
  */
 class WP_Restaurant_Listings_CPT_Legacy extends WP_Restaurant_Listings_CPT {
 	/**
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.27.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.27.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */

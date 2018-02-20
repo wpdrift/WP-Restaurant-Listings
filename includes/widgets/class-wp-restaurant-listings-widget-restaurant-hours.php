@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Restaurant hours widget.
  *
  * @package RestaurantListings
- * @since 1.0
+ * @since 1.0.0
  */
 class WP_Restaurant_Listings_Restaurant_Hours extends WP_Restaurant_Listings_Widget {
 

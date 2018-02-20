@@ -92,7 +92,7 @@ class WP_Restaurant_Listings {
 	/**
 	 * Hook into actions and filters.
 	 *
-	 * @since 2.3
+	 * @since 1.0.0
 	 */
 	private function init_hooks() {
 		// Init classes.
@@ -208,7 +208,7 @@ class WP_Restaurant_Listings {
 		/**
 		 * Retrieves the current language for use when caching requests.
 		 *
-		 * @since 1.26.0
+		 * @since 1.0.0
 		 *
 		 * @param string|null $lang
 		 */

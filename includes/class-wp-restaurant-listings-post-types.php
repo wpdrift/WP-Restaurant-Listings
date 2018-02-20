@@ -11,14 +11,14 @@ class WP_Restaurant_Listings_Post_Types {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -513,7 +513,7 @@ class WP_Restaurant_Listings_Post_Types {
 	/**
 	 * Retrieves permalink settings.
      *
-	 * @since 1.27.1
+	 * @since 1.0.0
 	 * @return array
 	 */
 	public static function get_permalink_structure() {

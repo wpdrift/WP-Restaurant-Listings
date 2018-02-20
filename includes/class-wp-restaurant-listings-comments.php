@@ -89,7 +89,7 @@ class WP_Restaurant_Listings_Comments {
     /**
      * Get restaurant review count for a restaurant (not replies). Please note this is not cached.
      *
-     * @since 3.0.0
+     * @since 1.0.0
      * @param WC_Product $product
      * @return int
      */
@@ -109,7 +109,7 @@ class WP_Restaurant_Listings_Comments {
     /**
      * Get restaurant rating count for a restaurant. Please note this is not cached.
      *
-     * @since 3.0.0
+     * @since 1.0.0
      * @param WC_Product $product
      * @return array of integers
      */

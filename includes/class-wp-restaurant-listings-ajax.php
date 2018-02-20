@@ -16,14 +16,14 @@ class WP_Restaurant_Listings_Ajax {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -103,7 +103,7 @@ class WP_Restaurant_Listings_Ajax {
 			 * Performs an Ajax action.
 			 * The dynamic part of the action, $action, is the predefined Ajax action to be performed.
 			 *
-			 * @since 1.23.0
+			 * @since 1.0.0
 			 */
 			do_action( 'restaurant_listings_ajax_' . sanitize_text_field( $action ) );
 			wp_die();
@@ -207,7 +207,7 @@ class WP_Restaurant_Listings_Ajax {
 		/**
 		 * Send back a response to the AJAX request without creating HTML.
 		 *
-		 * @since 1.26.0
+		 * @since 1.0.0
 		 *
 		 * @param array $result
 		 * @param WP_Query $restaurants

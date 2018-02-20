@@ -106,7 +106,7 @@ class WP_Restaurant_Listings_Cache_Helper {
 	 * When a supported post type status is updated, check if any cached count transients
 	 * need to be removed, and remove the
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param string  $new_status New post status.
 	 * @param string  $old_status Old post status.
@@ -118,7 +118,7 @@ class WP_Restaurant_Listings_Cache_Helper {
 		/**
 		 * Get supported post types for count caching
 		 *
-		 * @since 1.27.0
+		 * @since 1.0.0
 		 *
 		 * @param array   $post_types Post types that should be cached.
 		 * @param string  $new_status New post status.
@@ -135,7 +135,7 @@ class WP_Restaurant_Listings_Cache_Helper {
 		/**
 		 * Get supported post statuses for count caching
 		 *
-		 * @since 1.27.0
+		 * @since 1.0.0
 		 *
 		 * @param array   $post_statuses Post statuses that should be cached.
 		 * @param string  $new_status    New post status.
@@ -176,7 +176,7 @@ class WP_Restaurant_Listings_Cache_Helper {
 	/**
 	 * Get Listings Count from Cache
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param string $post_type
 	 * @param string $status

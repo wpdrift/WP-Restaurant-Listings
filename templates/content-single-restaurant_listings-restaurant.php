@@ -4,7 +4,7 @@
  *
  * Hooked into single_restaurant_listings_start priority 30
  *
- * @since  1.14.0
+ * @since 1.0.0
  */
 
 if ( ! get_the_restaurant_name() ) {

@@ -6,7 +6,7 @@
 /**
  * Load routines only if Polylang is loaded.
  *
- * @since 1.26.0
+ * @since 1.0.0
  */
 function polylang_wprl_init() {
 	add_filter( 'wprl_lang', 'polylang_wprl_get_restaurant_listings_lang' );
@@ -17,7 +17,7 @@ add_action( 'pll_init', 'polylang_wprl_init' );
 /**
  * Returns Polylang's current language.
  *
- * @since 1.26.0
+ * @since 1.0.0
  *
  * @param string $lang
  * @return string
@@ -34,7 +34,7 @@ function polylang_wprl_get_restaurant_listings_lang( $lang ) {
 /**
  * Returns the page ID for the current language.
  *
- * @since 1.26.0
+ * @since 1.0.0
  *
  * @param int $page_id
  * @return int
