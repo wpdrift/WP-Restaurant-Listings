@@ -84,7 +84,7 @@ class WP_Restaurant_Listings_Admin {
 			wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/' . $jquery_version . '/themes/smoothness/jquery-ui.css', array(), $jquery_version );
 			wp_enqueue_style( 'restaurant_listings_admin_css', RESTAURANT_LISTING_PLUGIN_URL . '/assets/css/admin.css', array(), RESTAURANT_LISTING_VERSION );
 			wp_register_script( 'jquery-tiptip', RESTAURANT_LISTING_PLUGIN_URL. '/assets/js/jquery-tiptip/jquery.tipTip.min.js', array( 'jquery' ), RESTAURANT_LISTING_VERSION, true );
-			wp_enqueue_script( 'restaurant_listings_admin_js', RESTAURANT_LISTING_PLUGIN_URL. '/assets/js/admin.js', array( 'jquery', 'jquery-tiptip', 'jquery-ui-datepicker' ), RESTAURANT_LISTING_VERSION, true );
+			wp_enqueue_script( 'restaurant_listings_admin_js', RESTAURANT_LISTING_PLUGIN_URL. '/assets/js/admin.js', array( 'jquery', 'jquery-tiptip' ), RESTAURANT_LISTING_VERSION, true );
 
 			wp_localize_script( 'restaurant_listings_admin_js', 'restaurant_listings_admin', array(
 				/* translators: jQuery date format, see http://api.jqueryui.com/datepicker/#utility-formatDate */
