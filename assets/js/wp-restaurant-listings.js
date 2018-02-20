@@ -1,3 +1,5 @@
+/* global restaurant_listings_vars */
+
 var drop;
 
 jQuery(function($) {
