@@ -281,7 +281,7 @@ class WP_Restaurant_Listings {
 		wp_register_style( 'mapbox-gl-geocoder', 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' );
 		wp_register_script( 'mapbox-gl-geocoder', 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js' );
 
-		wp_register_script( 'wp-restaurant-listings-ajax-filters', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/ajax-filters.js', $ajax_filter_deps, RESTAURANT_LISTING_VERSION, true );
+		wp_register_script( 'wp-restaurant-listings-ajax-filters', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/ajax-filters.min.js', $ajax_filter_deps, RESTAURANT_LISTING_VERSION, true );
 		wp_register_script( 'wp-restaurant-listings-restaurant-dashboard', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/restaurant-dashboard.min.js', array( 'jquery' ), RESTAURANT_LISTING_VERSION, true );
 		wp_register_script( 'wp-restaurant-listings-restaurant-submission', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/restaurant-submission.min.js', array( 'jquery' ), RESTAURANT_LISTING_VERSION, true );
 

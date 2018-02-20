@@ -16,7 +16,7 @@ jQuery( document ).ready( function ( $ ) {
 		var restaurant_types    = target.data( 'restaurant_types' );
 		var post_status  = target.data( 'post_status' );
 		var index        = $( 'div.restaurant_listings' ).index(this);
-		var categories, keywords, location;
+		var categories, keywords, location, price_range;
 
 		if ( index < 0 ) {
 			return;
@@ -85,10 +85,10 @@ jQuery( document ).ready( function ( $ ) {
 
 		} else {
 
-			categories = target.data( 'categories' );
-			keywords   = target.data( 'keywords' );
-			location   = target.data( 'location' );
-			price_range= target.data('price_range');
+			categories  = target.data( 'categories' );
+			keywords    = target.data( 'keywords' );
+			location    = target.data( 'location' );
+			price_range = target.data('price_range');
 
 			if ( categories ) {
 				categories = categories.split( ',' );
@@ -237,7 +237,7 @@ jQuery( document ).ready( function ( $ ) {
 		return false;
 	} );
 
-	$('.price_range_filter').on( 'click', 'li', function (event) {
+	$('.price_range_filter').on( 'click', 'li', function () {
         $('.price_range_filter li').attr('style', ''); // Reset button style
 		var $clickedLi = $(this);
 		$('input[name="search_price_range"]').attr( 'value', $clickedLi.attr('data-price_range') );
