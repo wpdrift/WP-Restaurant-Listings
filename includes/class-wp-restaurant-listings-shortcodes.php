@@ -52,7 +52,6 @@ class WP_Restaurant_Listings_Shortcodes {
 		add_shortcode( 'submit_restaurant_form', array( $this, 'submit_restaurant_form' ) );
 		add_shortcode( 'restaurant_dashboard', array( $this, 'restaurant_dashboard' ) );
 		add_shortcode( 'restaurants_locator', array( $this, 'restaurants_locator' ) );
-        add_shortcode( 'restaurants_directory', array( $this, 'output_restaurants_directory' ) );
 		add_shortcode( 'restaurants', array( $this, 'output_restaurants' ) );
 		add_shortcode( 'restaurant', array( $this, 'output_restaurant' ) );
 		add_shortcode( 'restaurant_summary', array( $this, 'output_restaurant_summary' ) );
@@ -524,39 +523,6 @@ class WP_Restaurant_Listings_Shortcodes {
 
 		return ob_get_clean();
 	}
-
-    /**
-     *
-     */
-    public function output_restaurants_directory( $attrs ) {
-
-       extract( shortcode_atts( array( 'per_page' => get_option('per_page')  ), $attrs ) );
-
-        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-
-        query_posts(  array (
-            'posts_per_page' => $per_page,
-            'post_type' => 'restaurant_listings',
-            'order' => 'ASC',
-            'orderby' =>'menu_order',
-            'paged' => $paged ) );
-
-        echo '<ul class="restaurants restaurant_listings restaurant-directory">';
-        while ( have_posts() ) { the_post();
-
-            $args = array(
-
-            );
-
-            get_restaurant_listings_template_part('shortcode', 'content-directory' );
-        }
-
-        echo '</ul>';
-
-        get_restaurant_listings_template( 'pagination.php', array( 'max_num_pages' => $GLOBALS['wp_query']->max_num_pages ) );
-
-        wp_reset_query();
-    }
 }
 
 WP_Restaurant_Listings_Shortcodes::instance();

@@ -270,13 +270,6 @@ class WP_Restaurant_Listings_Settings {
 							'desc'		=> __( 'Select the page where you\'ve used the [restaurants_locator] shortcode. This lets the plugin know the location of the restaurant listings page.', 'wp-restaurant-listings' ),
 							'type'      => 'page'
 						),
-                        array(
-							'name' 		=> 'restaurant_listings_restaurants_directory_page_id',
-							'std' 		=> '',
-							'label' 	=> __( 'Restaurants Directory Page', 'wp-restaurant-listings' ),
-							'desc'		=> __( 'Select the page where you\'ve used the [restaurants_directory] shortcode. This lets the plugin show the location of the restaurant on the  map.', 'wp-restaurant-listings' ),
-							'type'      => 'page'
-						),
 					)
 				)
 			)

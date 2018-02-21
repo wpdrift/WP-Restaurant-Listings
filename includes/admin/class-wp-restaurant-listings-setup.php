@@ -134,8 +134,7 @@ class WP_Restaurant_Listings_Setup {
 				'submit_restaurant_form'    => '[submit_restaurant_form]',
 				'restaurant_dashboard'      => '[restaurant_dashboard]',
 				'restaurants'               => '[restaurants]',
-				'restaurants_locator'       => '[restaurants_locator]',
-				'restaurants_directory'     => '[restaurants_directory]'
+				'restaurants_locator'       => '[restaurants_locator]'
 			);
 
 			foreach ( $pages_to_create as $page => $content ) {
@@ -218,12 +217,6 @@ class WP_Restaurant_Listings_Setup {
 								<td><input type="text" value="<?php echo esc_attr( _x( 'Restaurants Locator', 'Default page title (wizard)', 'wp-restaurant-listings' ) ); ?>" name="wp-restaurant-listings-page-title[restaurants_locator]" /></td>
 								<td><?php _e( 'This page allows users to locate near by restaurants on the front-end of your site.', 'wp-restaurant-listings' ); ?></td>
 								<td><code>[restaurants_locator]</code></td>
-							</tr>
-                            <tr>
-								<td><input type="checkbox" checked="checked" name="wp-restaurant-listings-create-page[restaurants_directory]" /></td>
-								<td><input type="text" value="<?php echo esc_attr( _x( 'Restaurants Directory', 'Default page title (wizard)', 'wp-restaurant-listings' ) ); ?>" name="wp-restaurant-listings-page-title[restaurants_directory]" /></td>
-								<td><?php _e( 'This page allows users to browse through all restaurants on the front-end of your site.', 'wp-restaurant-listings' ); ?></td>
-								<td><code>[restaurants_directory]</code></td>
 							</tr>
 						</tbody>
 						<tfoot>
