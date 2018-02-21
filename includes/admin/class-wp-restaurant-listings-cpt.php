@@ -289,7 +289,7 @@ class WP_Restaurant_Listings_CPT {
 		unset( $columns['date'], $columns['author'] );
 
 
-        $columns['title']                       = __( 'Name', 'wp-restaurant-lisitng' );
+        $columns['title']                       = __( 'Name', 'wp-restaurant-listings' );
 		$columns["restaurant_listings_type"]     = __( "Type", 'wp-restaurant-listings' );
 		$columns["restaurant_location"]         = __( "Location", 'wp-restaurant-listings' );
 		$columns['restaurant_status']           = '<span class="tips" data-tip="' . __( "Status", 'wp-restaurant-listings' ) . '">' . __( "Status", 'wp-restaurant-listings' ) . '</span>';

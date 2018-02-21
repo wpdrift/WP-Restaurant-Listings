@@ -22,7 +22,6 @@
     "grunt-contrib-watch": "~1.0.0",
     "grunt-gitinfo": "^0.1.8",
     "grunt-phpcs": "^0.4.0",
-    "grunt-phpunit": "^0.3.6",
     "grunt-postcss": "^0.8.0",
     "grunt-rtlcss": "2.0.1",
     "grunt-stylelint": "^0.6.0",

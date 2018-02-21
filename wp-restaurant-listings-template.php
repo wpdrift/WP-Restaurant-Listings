@@ -1025,7 +1025,7 @@ function the_restaurant_directions() {
     ?>
 
     <div class="restaurant_listings-directions">
-        <a href="<?php echo esc_url( google_maps_url() ); ?>" rel="nofollow" target="_blank" class="js-toggle-directions" id="get-directions"><?php _e( 'Get Directions', 'listify' ); ?></a>
+        <a href="<?php echo esc_url( google_maps_url() ); ?>" rel="nofollow" target="_blank" class="js-toggle-directions" id="get-directions"><?php _e( 'Get Directions', 'wp-restaurant-listings' ); ?></a>
     </div>
 
     <?php
