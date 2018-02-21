@@ -29,7 +29,7 @@ The plugin comes with several shortcodes to output restaurants in various format
 
 = Documentation =
 
-Documentation for the core plugin and add-ons can be found [on the docs site here](https://restaurants.wpdrift.com/documentation/). Please take a look before requesting support because it covers all frequently asked questions!
+Documentation for the core plugin and add-ons can be found [on the docs site here](https://wpdrift.com/docs/restaurants/). Please take a look before requesting support because it covers all frequently asked questions!
 
 = Support =
 
@@ -65,12 +65,12 @@ Once installed:
 
 **Note when using shortcodes**, if the content looks blown up/spaced out/poorly styled, edit your page and above the visual editor click on the 'text' tab. Then remove any 'pre' or 'code' tags wrapping your shortcode.
 
-For more information, [read the documentation](https://restaurants.wpdrift.com/documentation/).
+For more information, [read the documentation](https://wpdrift.com/docs/restaurants/).
 
 == Frequently Asked Questions ==
 
 = How do I setup WP Restaurant Listings? =
-View the getting [installation](https://restaurants.wpdrift.com/document/installation/) and [setup](https://restaurants.wpdrift.com/document/setting-up-wp-job-manager/) guide for advice getting started with the plugin. In most cases it's just a case of adding some shortcodes to your pages!
+View the getting [installation](https://wpdrift.com/docs/restaurants/installation/) and [setup](https://wpdrift.com/docs/restaurants/setting-up-wp-job-manager/) guide for advice getting started with the plugin. In most cases it's just a case of adding some shortcodes to your pages!
 
 = Can I use WP Restaurant Listings without frontend restaurant submission? =
 Yes! If you don't setup the [submit_restaurant_form] shortcode, you can just post from the admin backend.
@@ -79,7 +79,7 @@ Yes! If you don't setup the [submit_restaurant_form] shortcode, you can just pos
 There are three ways to customize the fields in WP Restaurant Listings;
 
 1. For simple text changes, using a localisation file or a plugin such as https://wordpress.org/plugins/say-what/
-2. For field changes, or adding new fields, using functions/filters inside your theme's functions.php file: [https://restaurants.wpdrift.com/document/editing-job-submission-fields/](https://restaurants.wpdrift.com/document/editing-job-submission-fields/)
+2. For field changes, or adding new fields, using functions/filters inside your theme's functions.php file: [https://wpdrift.com/docs/restaurants/editing-job-submission-fields/](https://wpdrift.com/docs/restaurants/editing-job-submission-fields/)
 3. Use a 3rd party plugin which has a UI for field editing.
 
 If you'd like to learn about WordPress filters, here is a great place to start: [https://pippinsplugins.com/a-quick-introduction-to-using-filters/](https://pippinsplugins.com/a-quick-introduction-to-using-filters/)
