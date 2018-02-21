@@ -1,17 +1,17 @@
 # WP Restaurant Listings #
-**Contributors:** [WPdrift](https://profiles.wordpress.org/wpdrift),[upnrunn](https://profiles.wordpress.org/upnrunn),[kishores](https://profiles.wordpress.org/kishores)    
-**Tags:** restaurant manager, restaurant listing, restaurant board, restaurant management, restaurant lists, restaurant list, restaurant
+**Contributors:** [WPdrift](https://profiles.wordpress.org/WPdrift), [upnrunn](https://profiles.wordpress.org/upnrunn)  
+**Tags:** restaurant manager, restaurant listing, restaurant board, restaurant management, restaurant lists, restaurant list, restaurant  
 **Requires at least:** 4.7  
-**Tested up to:** 4.9
+**Tested up to:** 4.9  
 **Stable tag:** 1.0.0  
 **License:** GPLv3  
-**License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
+**License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
 Manage restaurant listings from the WordPress admin panel, and allow users to post restaurants directly to your site.
 
 ## Description ##
 
-WP Restaurant Listings is a **lightweight** restaurant listing plugin for adding restaurant listing functionality to your WordPress site. Being shortcode based, it can work with any theme (given a bit of CSS styling) and is really simple to setup.
+WP Restaurant Listings is a lightweight restaurant listing plugin for adding restaurant listing functionality to your WordPress site. Being shortcode based, it can work with any theme (given a bit of CSS styling) and is really simple to setup.
 
 ### Features ###
 
@@ -19,6 +19,8 @@ WP Restaurant Listings is a **lightweight** restaurant listing plugin for adding
 * Searchable & filterable ajax powered restaurant listings added to your pages via shortcodes.
 * Frontend forms for guests and registered users to submit & manage restaurant listings.
 * Allow restaurant listers to preview their listing before it goes live. The preview matches the appearance of a live restaurant listing.
+* Searches also display RSS links to allow restaurant seekers to be alerted to new restaurants matching their search.
+* Allow logged in listers to view, edit, or delete their active restaurant listings.
 * Developer friendly code — Custom Post Types & template files.
 
 The plugin comes with several shortcodes to output restaurants in various formats, and since it's built with Custom Post Types you are free to extend it further through themes.
@@ -67,13 +69,13 @@ For more information, [read the documentation](https://wpdrift.com/docs/restaura
 
 ## Frequently Asked Questions ##
 
-= How do I setup WP Restaurant Listings? =
+### How do I setup WP Restaurant Listings? ###
 View the getting [installation](https://wpdrift.com/docs/restaurants/installation/) and [setup](https://wpdrift.com/docs/restaurants/setting-up-wp-job-manager/) guide for advice getting started with the plugin. In most cases it's just a case of adding some shortcodes to your pages!
 
-= Can I use WP Restaurant Listings without frontend restaurant submission? =
+### Can I use WP Restaurant Listings without frontend restaurant submission? ###
 Yes! If you don't setup the [submit_restaurant_form] shortcode, you can just post from the admin backend.
 
-= How can I customize the restaurant submission form? =
+### How can I customize the restaurant submission form? ###
 There are three ways to customize the fields in WP Restaurant Listings;
 
 1. For simple text changes, using a localisation file or a plugin such as https://wordpress.org/plugins/say-what/
@@ -82,10 +84,10 @@ There are three ways to customize the fields in WP Restaurant Listings;
 
 If you'd like to learn about WordPress filters, here is a great place to start: [https://pippinsplugins.com/a-quick-introduction-to-using-filters/](https://pippinsplugins.com/a-quick-introduction-to-using-filters/)
 
-= How can I be notified of new restaurants via email? =
+### How can I be notified of new restaurants via email? ###
 If you wish to be notified of new postings on your site you can use a plugin such as [Post Status Notifier](http://wordpress.org/plugins/post-status-notifier-lite/).
 
-= What language files are available? =
+### What language files are available? ###
 You can view (and contribute) translations via the [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wp-restaurant-listings).
 
 ## Screenshots ##
@@ -99,5 +101,5 @@ You can view (and contribute) translations via the [translate.wordpress.org](htt
 
 ## Changelog ##
 
-= 1.0.0 =
+### 1.0.0 ###
 * First stable release.
