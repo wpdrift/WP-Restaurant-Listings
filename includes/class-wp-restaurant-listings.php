@@ -152,7 +152,6 @@ class WP_Restaurant_Listings {
 	 * Loads plugin's core helper template functions.
 	 */
 	public function include_template_functions() {
-		include_once RESTAURANT_LISTING_PLUGIN_DIR . '/wp-restaurant-listings-deprecated.php';
 		include_once RESTAURANT_LISTING_PLUGIN_DIR . '/wp-restaurant-listings-functions.php';
 		include_once RESTAURANT_LISTING_PLUGIN_DIR . '/wp-restaurant-listings-template.php';
 	}
