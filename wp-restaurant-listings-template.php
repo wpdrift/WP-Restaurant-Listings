@@ -281,12 +281,16 @@ function get_the_restaurant_types( $post = null ) {
 }
 
 /**
- * @param $post
+ * Restaurant price range
+ *
+ * @param  WP_Post $post post object.
+ * @return void
  */
 function the_restaurant_price_range( $post = null ) {
-    if ( $restaurant_price_range = get_the_restaurant_price_range( $post ) ) {
-        echo '<div class="price-range">' . $restaurant_price_range . '</div>';
-    }
+	$restaurant_price_range = get_the_restaurant_price_range( $post );
+	if ( $restaurant_price_range ) {
+		echo '<div class="price-range">' . $restaurant_price_range . '</div>';
+	}
 }
 
 function get_the_restaurant_price_range( $post = null ) {
@@ -311,7 +315,7 @@ function get_the_restaurant_price_range( $post = null ) {
 function wprl_get_registration_fields() {
 	$generate_username_from_email      = restaurant_listings_generate_username_from_email();
 	$use_standard_password_setup_email = wprl_use_standard_password_setup_email();
-	$account_required  = restaurant_listings_user_requires_account();
+	$account_required                  = restaurant_listings_user_requires_account();
 
 	$registration_fields = array();
 	if ( restaurant_listings_enable_registration() ) {
