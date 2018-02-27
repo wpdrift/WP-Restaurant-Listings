@@ -25,7 +25,7 @@ WP Restaurant Listings is a lightweight restaurant listing plugin for adding res
 
 The plugin comes with several shortcodes to output restaurants in various formats, and since it's built with Custom Post Types you are free to extend it further through themes.
 
-[Read more about WP Restaurant Listings](https://restaurants.wpdrift.com/).
+[Read more about WP Restaurant Listings](https://wpdrift.com/restaurants/).
 
 ### Documentation ###
 
