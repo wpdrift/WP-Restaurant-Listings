@@ -84,12 +84,6 @@ There are three ways to customize the fields in WP Restaurant Listings;
 
 If you'd like to learn about WordPress filters, here is a great place to start: [https://pippinsplugins.com/a-quick-introduction-to-using-filters/](https://pippinsplugins.com/a-quick-introduction-to-using-filters/)
 
-### How can I be notified of new restaurants via email? ###
-If you wish to be notified of new postings on your site you can use a plugin such as [Post Status Notifier](http://wordpress.org/plugins/post-status-notifier-lite/).
-
-### What language files are available? ###
-You can view (and contribute) translations via the [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wp-restaurant-listings).
-
 ## Screenshots ##
 
 1. The submit restaurant form.

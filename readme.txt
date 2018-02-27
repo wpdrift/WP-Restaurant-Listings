@@ -84,12 +84,6 @@ There are three ways to customize the fields in WP Restaurant Listings;
 
 If you'd like to learn about WordPress filters, here is a great place to start: [https://pippinsplugins.com/a-quick-introduction-to-using-filters/](https://pippinsplugins.com/a-quick-introduction-to-using-filters/)
 
-= How can I be notified of new restaurants via email? =
-If you wish to be notified of new postings on your site you can use a plugin such as [Post Status Notifier](http://wordpress.org/plugins/post-status-notifier-lite/).
-
-= What language files are available? =
-You can view (and contribute) translations via the [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wp-restaurant-listings).
-
 == Screenshots ==
 
 1. The submit restaurant form.
@@ -103,29 +97,3 @@ You can view (and contribute) translations via the [translate.wordpress.org](htt
 
 = 1.0.0 =
 * First stable release.
-
-https://unsplash.com/photos/1x5fqDOPXDE
-https://unsplash.com/photos/jfdt5275nTc
-https://unsplash.com/photos/6e5hgWV2DAo
-https://unsplash.com/photos/NaKwyyh849o
-https://unsplash.com/photos/URjZkhqsuBk
-https://unsplash.com/photos/6hUR284gLJY
-https://unsplash.com/photos/sn5YdKelBsg
-https://unsplash.com/photos/l7o9Ab6vA4I
-https://unsplash.com/photos/qCrocisvGwc
-https://unsplash.com/photos/6bKpHAun4d8
-https://unsplash.com/photos/g-erOiuDxro
-https://unsplash.com/photos/a5ToDH34m0I
-https://unsplash.com/photos/QlnUpMED6Qs
-
-
-https://unsplash.com/photos/RwoKbjJdYvE
-https://unsplash.com/photos/MSxw2vpQzx4
-https://unsplash.com/photos/HlNcigvUi4Q
-https://unsplash.com/photos/nTZOILVZuOg
-https://unsplash.com/photos/lcZ9NxhOSlo
-https://unsplash.com/photos/qGOADX9b3Hg
-https://unsplash.com/photos/of0pMsWApZE
-https://unsplash.com/photos/Pt_YmiYm7a4
-https://unsplash.com/photos/tzl1UCXg5Es
-https://unsplash.com/photos/cARNiGpmf70
