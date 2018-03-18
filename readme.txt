@@ -1,5 +1,5 @@
 === WP Restaurant Listings ===
-Contributors: WPdrift, upnrunn
+Contributors: WPdrift, upnrunn, kishores, bhoot
 Tags: restaurant manager, restaurant listing, restaurant board, restaurant management, restaurant lists, restaurant list, restaurant
 Requires at least: 4.7
 Tested up to: 4.9
