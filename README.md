@@ -1,5 +1,5 @@
 # WP Restaurant Listings #
-**Contributors:** [WPdrift](https://profiles.wordpress.org/WPdrift), [upnrunn](https://profiles.wordpress.org/upnrunn),[Kishores](https://profiles.wordpress.org/kishores), [bhoot](https://profiles.wordpress.org/bhoot)
+**Contributors:** [WPdrift](https://profiles.wordpress.org/WPdrift), [upnrunn](https://profiles.wordpress.org/upnrunn),[Kishores](https://profiles.wordpress.org/kishores), [bhoot](https://profiles.wordpress.org/bhoot) <br />
 **Tags:** restaurant manager, restaurant listing, restaurant board, restaurant management, restaurant lists, restaurant list, restaurant  
 **Requires at least:** 4.7  
 **Tested up to:** 4.9  
