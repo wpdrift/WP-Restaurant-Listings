@@ -38,7 +38,7 @@ Use the WordPress.org forums for community support where we try to help all user
 
 If you need help with one of our add-ons, [please raise a ticket at our help desk](http://wpdrift.com/).
 
-If you want help with a customization, please consider hiring a developer! [http://jobs.wordpress.net/](http://jobs.wordpress.net/) is a good place to start.
+If you want help with a customization, please consider hiring a developer! [https://upnrunn.com/services/](https://upnrunn.com/services/) is a good place to start.
 
 ## Installation ##
 
