@@ -1,10 +1,10 @@
 {
   "name": "wp-restaurant-listings",
   "title": "WP Restaurant Listings",
-  "version": "1.27.0",
+  "version": "1.0.0",
   "homepage": "http://wordpress.org/plugins/wp-restaurant-listings/",
   "license": "GPL-2.0+",
-  "repository": "automattic/wp-restaurant-listings",
+  "repository": "wpdrift/wp-restaurant-listings",
   "main": "Gruntfile.js",
   "devDependencies": {
     "grunt": "~1.0.1",
