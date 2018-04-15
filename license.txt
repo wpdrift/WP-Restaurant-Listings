@@ -19,8 +19,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 This program incorporates work covered by the following copyright and
 permission notices:
 
-  WP Restaurant Listing is Copyright (c) 2017 WPdrift Ltd.
-  https://wpdrift.com/
+  WP Job Manager is Copyright (c) 2017 Automattic.
+  http://automattic.com - https://wpjobmanager.com
+
+  WP Job Manager is released under the GPL
+
+  and
+
+  WP Restaurant Listing is Copyright (c) 2017 upnrunn technologies.
+  https://upnrunn.com - https://wpdrift.com
 
   WP Restaurant Listing is released under the GPL
 
