@@ -26,10 +26,10 @@ permission notices:
 
   and
 
-  WP Restaurant Listing is Copyright (c) 2017 upnrunn technologies.
+  WP Restaurant Listings is Copyright (c) 2017 upnrunn technologies.
   https://upnrunn.com - https://wpdrift.com
 
-  WP Restaurant Listing is released under the GPL
+  WP Restaurant Listings is released under the GPL
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
