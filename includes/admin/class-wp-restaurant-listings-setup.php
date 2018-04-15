@@ -268,7 +268,7 @@ class WP_Restaurant_Listings_Setup {
 					<ul>
 						<li class="icon-review"><a href="https://wordpress.org/support/view/plugin-reviews/wp-restaurant-listings#postform"><?php _e( 'Leave a positive review', 'wp-restaurant-listings' ); ?></a></li>
 						<li class="icon-localization"><a href="https://translate.wordpress.org/projects/wp-plugins/wp-restaurant-listings"><?php _e( 'Contribute a localization', 'wp-restaurant-listings' ); ?></a></li>
-						<li class="icon-code"><a href="https://github.com/mikejolley/WP-Restaurant-Manager"><?php _e( 'Contribute code or report a bug', 'wp-restaurant-listings' ); ?></a></li>
+						<li class="icon-code"><a href="https://github.com/wpdrift/WP-Restaurant-Listings"><?php _e( 'Contribute code or report a bug', 'wp-restaurant-listings' ); ?></a></li>
 						<li class="icon-forum"><a href="https://wordpress.org/support/plugin/wp-restaurant-listings"><?php _e( 'Help other users on the forums', 'wp-restaurant-listings' ); ?></a></li>
 					</ul>
 				</div>
