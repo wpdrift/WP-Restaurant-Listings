@@ -118,6 +118,9 @@ class WP_Restaurant_Listings {
 		add_action( 'wp_loaded', array( $this, 'register_scripts' ) );
 		add_action( 'admin_init', array( $this, 'updater' ) );
 		add_action( 'wp_logout', array( $this, 'cleanup_restaurant_posting_cookies' ) );
+
+		// Defaults for WPRL core actions.
+		add_action( 'wprl_notify_new_user', 'wp_restaurant_listings_notify_new_user', 10, 2 );
 	}
 
 	/**
