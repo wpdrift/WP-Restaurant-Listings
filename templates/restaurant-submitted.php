@@ -1,4 +1,20 @@
 <?php
+/**
+ * Notice when restaurant has been submitted.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/restaurant-submitted.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 global $wp_post_types;
 
 switch ( $restaurant->post_status ) :

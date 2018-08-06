@@ -1,3 +1,20 @@
+<?php
+/**
+ * Shows info for an uploaded file on restaurant listing forms.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/form-fields/uploaded-file-html.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+?>
 <div class="restaurant-listings-uploaded-file">
 	<?php
 	if ( is_numeric( $value ) ) {

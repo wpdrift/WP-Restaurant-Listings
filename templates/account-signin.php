@@ -1,3 +1,20 @@
+<?php
+/**
+ * In restaurant listing creation flow, this template shows above the restaurant creation form.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/account-signin.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+?>
 <?php if ( is_user_logged_in() ) : ?>
 
 	<fieldset>

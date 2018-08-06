@@ -1,6 +1,24 @@
-<?php wp_enqueue_script( 'wp-restaurant-listings-ajax-filters' ); ?>
+<?php
+/**
+ * Filters in `[restaurants]` shortcode.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/restaurant-filters.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
 
-<?php do_action( 'restaurant_listings_restaurant_filters_before', $atts ); ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+wp_enqueue_script( 'wp-restaurant-listings-ajax-filters' );
+
+do_action( 'restaurant_listings_restaurant_filters_before', $atts );
+?>
 
 <form class="restaurant_filters">
 	<?php do_action( 'restaurant_listings_restaurant_filters_start', $atts ); ?>

@@ -1,4 +1,20 @@
 <?php
+/**
+ * Shows the right `textarea` form field with WP Editor on restaurant listing forms.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/form-fields/wp-editor-field.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 $editor = apply_filters( 'submit_restaurant_form_wp_editor_args', array(
 	'textarea_name' => isset( $field['name'] ) ? $field['name'] : $key,
 	'media_buttons' => false,

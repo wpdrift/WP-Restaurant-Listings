@@ -1,4 +1,20 @@
 <?php
+/**
+ * Shows the `file` form field on restaurant listing forms.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/form-fields/file-field.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 $classes            = array( 'input-text' );
 $allowed_mime_types = array_keys( ! empty( $field['allowed_mime_types'] ) ? $field['allowed_mime_types'] : get_allowed_mime_types() );
 $field_name         = isset( $field['name'] ) ? $field['name'] : $key;

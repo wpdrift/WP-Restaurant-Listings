@@ -1,16 +1,23 @@
 <?php
 /**
- * Restaurant listings in the loop.
+ * Restaurant listing in the loop.
  *
- * @since 1.0.0
- * @version 1.27.0
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/content-restaurant_listing.php.
  *
- * @package RestaurantListings
- * @category Template
- * @author Automattic
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @since       1.0.0
+ * @version     1.0.1
  */
 
-global $post; ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+global $post;
+?>
 
 <li <?php restaurant_listings_class(); ?> data-longitude="<?php echo esc_attr( $post->geolocation_lat ); ?>" data-latitude="<?php echo esc_attr( $post->geolocation_long ); ?>">
     <div class="restaurant-result">

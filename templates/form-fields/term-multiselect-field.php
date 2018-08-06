@@ -1,4 +1,20 @@
 <?php
+/**
+ * Shows term `select` (multiple) form field on restaurant listing forms.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/form-fields/term-multiselect-field.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 // Get selected value
 if ( isset( $field['value'] ) ) {
 	$selected = $field['value'];

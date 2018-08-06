@@ -1,4 +1,20 @@
 <?php
+/**
+ * Shows `select` form fields in a list from a list on restaurant listing hours.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/form-fields/business-hours-field.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 wp_enqueue_script( 'jquey-timepicker' );
 wp_enqueue_style( 'jquery-timepicker' );
 

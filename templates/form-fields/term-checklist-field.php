@@ -1,3 +1,20 @@
+<?php
+/**
+ * Shows `checkbox` form fields in a list from a list on restaurant listing forms.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/form-fields/term-checklist-field.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+?>
 <ul class="restaurant-listings-term-checklist restaurant-listings-term-checklist-<?php echo $key ?>">
 <?php
 	require_once( ABSPATH . '/wp-admin/includes/template.php' );
