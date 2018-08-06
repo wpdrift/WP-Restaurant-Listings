@@ -3,7 +3,7 @@ if ( ! function_exists( 'get_restaurant_listings' ) ) :
 /**
  * Queries restaurant listings with certain criteria and returns them.
  *
- * @since 1.0.5
+ * @since 1.0.0
  * @param string|array|object $args Arguments used to retrieve restaurant listings.
  * @return WP_Query
  */
@@ -22,14 +22,13 @@ function get_restaurant_listings( $args = array() ) {
 		'orderby'           => 'date',
 		'order'             => 'DESC',
 		'featured'          => null,
-		'filled'            => null,
 		'fields'            => 'all'
 	) );
 
 	/**
 	 * Perform actions that need to be done prior to the start of the restaurant listings query.
 	 *
-	 * @since 1.26.0
+	 * @since 1.0.0
 	 *
 	 * @param array $args Arguments used to retrieve restaurant listings.
 	 */
@@ -176,8 +175,8 @@ if ( ! function_exists( 'get_restaurant_listings_keyword_search' ) ) :
 	/**
 	 * Adds join and where query for keywords.
 	 *
-	 * @since 1.21.0
-	 * @since 1.26.0 Moved from the `posts_clauses` filter to the `posts_search` to use WP Query's keyword
+	 * @since 1.0.0
+	 * @since 1.0.0 Moved from the `posts_clauses` filter to the `posts_search` to use WP Query's keyword
 	 *               search for `post_title` and `post_content`.
 	 * @param string $search
 	 * @return string
@@ -219,7 +218,7 @@ if ( ! function_exists( 'get_restaurant_listings_keyword_search' ) ) :
 		/**
 		 * Filters the conditions to use when querying restaurant listings. Resulting array is joined with OR statements.
 		 *
-		 * @since 1.26.0
+		 * @since 1.0.0
 		 *
 		 * @param array  $conditions          Conditions to join by OR when querying restaurant listings.
 		 * @param string $restaurant_listings_keyword Search query.
@@ -246,7 +245,7 @@ if ( ! function_exists( 'get_restaurant_listings_post_statuses' ) ) :
 /**
  * Gets post statuses used for restaurants.
  *
- * @since 1.12.0
+ * @since 1.0.0
  * @return array
  */
 function get_restaurant_listings_post_statuses() {
@@ -264,7 +263,7 @@ if ( ! function_exists( 'get_featured_restaurant_ids' ) ) :
 /**
  * Gets the ids of featured restaurants.
  *
- * @since 1.0.4
+ * @since 1.0.0
  * @return array
  */
 function get_featured_restaurant_ids() {
@@ -332,7 +331,7 @@ if ( ! function_exists( 'restaurant_listings_get_filtered_links' ) ) :
 /**
  * Shows links after filtering restaurants
  *
- * @since 1.0.6
+ * @since 1.0.0
  * @param array $args
  * @return string
  */
@@ -402,7 +401,7 @@ if ( ! function_exists( 'wp_restaurant_listings_notify_new_user' ) ) :
 	/**
 	 * Handles notification of new users.
 	 *
-	 * @since 1.23.10
+	 * @since 1.0.0
 	 * @param  int         $user_id
 	 * @param  string|bool $password
 	 */
@@ -522,7 +521,7 @@ endif;
 /**
  * Checks if the user can upload a file via the Ajax endpoint.
  *
- * @since 1.26.2
+ * @since 1.0.0
  * @return bool
  */
 function restaurant_listings_user_can_upload_file_via_ajax() {
@@ -531,7 +530,7 @@ function restaurant_listings_user_can_upload_file_via_ajax() {
 	/**
 	 * Override ability of a user to upload a file via Ajax.
 	 *
-	 * @since 1.26.2
+	 * @since 1.0.0
 	 * @param bool $can_upload True if they can upload files from Ajax endpoint.
 	 */
 	return apply_filters( 'restaurant_listings_user_can_upload_file_via_ajax', $can_upload );
@@ -540,7 +539,7 @@ function restaurant_listings_user_can_upload_file_via_ajax() {
 /**
  * Checks if an the user can post a restaurant. If accounts are required, and reg is enabled, users can post (they signup at the same time).
  *
- * @since 1.5.1
+ * @since 1.0.0
  * @return bool
  */
 function restaurant_listings_user_can_post_restaurant() {
@@ -558,7 +557,7 @@ function restaurant_listings_user_can_post_restaurant() {
 /**
  * Checks if the user can edit a restaurant.
  *
- * @since 1.5.1
+ * @since 1.0.0
  * @param int|WP_Post $restaurant_id
  * @return bool
  */
@@ -581,7 +580,7 @@ function restaurant_listings_user_can_edit_restaurant( $restaurant_id ) {
 /**
  * Checks to see if the standard password setup email should be used.
  *
- * @since 1.27.0
+ * @since 1.0.0
  *
  * @return bool True if they are to use standard email, false to allow user to set password at first restaurant creation.
  */
@@ -596,7 +595,7 @@ function wprl_use_standard_password_setup_email() {
 	/**
 	 * Allows an override of the setting for if a password should be auto-generated for new users.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param bool $use_standard_password_setup_email True if a standard account setup email should be sent.
 	 */
@@ -606,7 +605,7 @@ function wprl_use_standard_password_setup_email() {
 /**
  * Checks if a password should be auto-generated for new users.
  *
- * @since 1.27.0
+ * @since 1.0.0
  *
  * @param string $password Password to validate.
  * @return bool True if password meets rules.
@@ -618,7 +617,7 @@ function wprl_validate_new_password( $password ) {
 	/**
 	 * Allows overriding default WPRL password validation rules.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param bool   $is_valid_password True if new password is validated.
 	 * @param string $password          Password to validate.
@@ -635,7 +634,7 @@ function wprl_get_password_rules_hint() {
 	/**
 	 * Allows overriding the hint shown below the new password input field. Describes rules set in `wprl_validate_new_password`.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param string $password_rules Password rules description.
 	 */
@@ -645,7 +644,7 @@ function wprl_get_password_rules_hint() {
 /**
  * Checks if only one type allowed per restaurant.
  *
- * @since 1.25.2
+ * @since 1.0.0
  * @return bool
  */
 function restaurant_listings_multi_restaurant_type() {
@@ -655,7 +654,7 @@ function restaurant_listings_multi_restaurant_type() {
 /**
  * Checks if registration is enabled.
  *
- * @since 1.5.1
+ * @since 1.0.0
  * @return bool
  */
 function restaurant_listings_enable_registration() {
@@ -665,7 +664,7 @@ function restaurant_listings_enable_registration() {
 /**
  * Checks if usernames are generated from email addresses.
  *
- * @since 1.20.0
+ * @since 1.0.0
  * @return bool
  */
 function restaurant_listings_generate_username_from_email() {
@@ -675,7 +674,7 @@ function restaurant_listings_generate_username_from_email() {
 /**
  * Checks if an account is required to post a restaurant.
  *
- * @since 1.5.1
+ * @since 1.0.0
  * @return bool
  */
 function restaurant_listings_user_requires_account() {
@@ -685,7 +684,7 @@ function restaurant_listings_user_requires_account() {
 /**
  * Checks if users are allowed to edit submissions that are pending approval.
  *
- * @since 1.16.1
+ * @since 1.0.0
  * @return bool
  */
 function restaurant_listings_user_can_edit_pending_submissions() {
@@ -697,7 +696,7 @@ function restaurant_listings_user_can_edit_pending_submissions() {
  *
  * Based on wp_dropdown_categories, with the exception of supporting multiple selected categories.
  *
- * @since 1.14.0
+ * @since 1.0.0
  * @see  wp_dropdown_categories
  * @param string|array|object $args
  * @return string
@@ -789,7 +788,7 @@ function restaurant_listings_dropdown_categories( $args = '' ) {
 /**
  * Gets the page ID of a page if set.
  *
- * @since 1.23.12
+ * @since 1.0.0
  * @param  string $page e.g. restaurant_dashboard, submit_restaurant_form, restaurants
  * @return int
  */
@@ -799,7 +798,7 @@ function restaurant_listings_get_page_id( $page ) {
 		/**
 		 * Filters the page ID for a WPRL page.
 		 *
-		 * @since 1.26.0
+		 * @since 1.0.0
 		 *
 		 * @param int $page_id
 		 */
@@ -812,7 +811,7 @@ function restaurant_listings_get_page_id( $page ) {
 /**
  * Gets the permalink of a page if set.
  *
- * @since 1.16.0
+ * @since 1.0.0
  * @param  string $page e.g. restaurant_dashboard, submit_restaurant_form, restaurants
  * @return string|bool
  */
@@ -827,7 +826,7 @@ function restaurant_listings_get_permalink( $page ) {
 /**
  * Prepares files for upload by standardizing them into an array. This adds support for multiple file upload fields.
  *
- * @since 1.21.0
+ * @since 1.0.0
  * @param  array $file_data
  * @return array
  */
@@ -859,7 +858,7 @@ function restaurant_listings_prepare_uploaded_files( $file_data ) {
 /**
  * Uploads a file using WordPress file API.
  *
- * @since 1.21.0
+ * @since 1.0.0
  * @param  array|WP_Error      $file Array of $_FILE data to upload.
  * @param  string|array|object $args Optional arguments
  * @return stdClass|WP_Error Object containing file information, or error
@@ -891,7 +890,7 @@ function restaurant_listings_upload_file( $file, $args = array() ) {
 	 * This filter can be used to modify the file arguments before being uploaded, or return a WP_Error
 	 * object to prevent the file from being uploaded, and return the error.
 	 *
-	 * @since 1.25.2
+	 * @since 1.0.0
 	 *
 	 * @param array $file               Array of $_FILE data to upload.
 	 * @param array $args               Optional file arguments
@@ -932,7 +931,7 @@ function restaurant_listings_upload_file( $file, $args = array() ) {
 /**
  * Returns mime types specifically for WPRL.
  *
- * @since 1.25.1
+ * @since 1.0.0
  * @param   string $field Field used.
  * @return  array  Array of allowed mime types
  */
@@ -959,7 +958,7 @@ function restaurant_listings_get_allowed_mime_types( $field = '' ){
 	 *
 	 * Default is image, pdf, and doc(x) files.
 	 *
-	 * @since 1.25.1
+	 * @since 1.0.0
 	 *
 	 * @param array  {
 	 *     Array of allowed file extensions and mime types.
@@ -971,32 +970,9 @@ function restaurant_listings_get_allowed_mime_types( $field = '' ){
 }
 
 /**
- * Calculates and returns the restaurant expiry date.
- *
- * @since 1.22.0
- * @param  int $restaurant_id
- * @return string
- */
-function calculate_restaurant_expiry( $restaurant_id ) {
-	// Get duration from the product if set...
-	$duration = get_post_meta( $restaurant_id, '_restaurant_duration', true );
-
-	// ...otherwise use the global option
-	if ( ! $duration ) {
-		$duration = absint( get_option( 'restaurant_listings_submission_duration' ) );
-	}
-
-	if ( $duration ) {
-		return date( 'Y-m-d', strtotime( "+{$duration} days", current_time( 'timestamp' ) ) );
-	}
-
-	return '';
-}
-
-/**
  * Duplicates a listings.
  *
- * @since 1.25.0
+ * @since 1.0.0
  * @param  int $post_id
  * @return int 0 on fail or the post ID.
  */
@@ -1051,7 +1027,6 @@ function restaurant_listings_duplicate_listing( $post_id ) {
 		}
 	}
 
-	update_post_meta( $new_post_id, '_filled', 0 );
 	update_post_meta( $new_post_id, '_featured', 0 );
 
 	return $new_post_id;

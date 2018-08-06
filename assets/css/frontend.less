@@ -224,88 +224,11 @@ ul.restaurant_listings {
 		margin: 0;
 		border-bottom: 1px solid #eee;
 
-		&.restaurant_position_filled {
-			a {
-				opacity: 0.25;
-			}
-		}
 		&.no_restaurant_listings_found {
 			padding: 1em;
 			border-bottom: 1px solid #eee;
 		}
-		a {
-			display: block;
-			padding: 1em 1em 1em 2em;
-			border: 0;
-			overflow: hidden;
-			zoom: 1;
-			position: relative;
-			line-height: 1.5em;
-			text-decoration: none;
 
-			&:hover, &:focus {
-				background-color: #fcfcfc;
-			}
-			img.restaurant_logo {
-				width: 42px;
-				height: 42px;
-				position: absolute;
-				left: 1em;
-				float: left;
-				margin-right: 1em;
-				vertical-align: middle;
-				box-shadow: none;
-			}
-			div.position, div.location, ul.meta {
-				-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-				-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-				box-sizing: border-box;         /* Opera/IE 8+ */
-			}
-			div.position {
-				float: left;
-				width: 55%;
-				padding: 0 0 0 42px;
-				line-height: 1.5em;
-				h3 {
-					margin: 0;
-					padding: 0;
-					line-height: inherit;
-					font-size: inherit;
-				}
-				.restaurant {
-					color: #999;
-					.tagline {
-						margin-left: .5em;
-					}
-				}
-			}
-			div.location {
-				float: left;
-				text-align: left;
-				width: 25%;
-				padding: 0 0 0 1em;
-				color: #999;
-				line-height: 1.5em;
-			}
-			.meta {
-				float: right;
-				text-align: right;
-				width: 20%;
-				padding: 0 0 0 1em;
-				margin: 0;
-				line-height: 1.5em;
-				color: #999;
-				list-style: none outside;
-				li {
-					list-style: none outside;
-					display: block;
-					margin: 0;
-				}
-				.restaurant-type {
-					font-weight: bold;
-				}
-			}
-		}
 		&.restaurant_position_featured {
 			a {
 				background: #fefee5;
@@ -337,6 +260,10 @@ ul.restaurant_listings {
 		&:first-of-type {
 			border-top: 1px solid #e6e6e6;
 			padding-top: 17px;
+		}
+
+		.restaurant-result {
+			padding: 1rem;
 		}
 
 		.first-row {
@@ -431,6 +358,10 @@ ul.restaurant_listings {
 		.content-single-restaurant_listings-title-category {
 			font-size: 14px;
 		}
+	}
+
+	.restaurant_status_featured {
+		background-color: #fefee5;
 	}
 }
 
@@ -648,22 +579,7 @@ button.pswp__button--zoom:hover {
 }
 .restaurant-listings, .restaurant_listings, .restaurant-types {
 	.restaurant-type {
-		color: @part-time;
-	}
-	.full-time {
-		color: @full-time;
-	}
-	.part-time {
-		color: @part-time;
-	}
-	.temporary {
-		color: @temporary;
-	}
-	.freelance {
-		color: @freelance;
-	}
-	.internship {
-		color: @internship;
+		color: @restaurant-type;
 	}
 }
 .single_restaurant_listing {
@@ -749,25 +665,7 @@ button.pswp__button--zoom:hover {
 		}
 		.restaurant-type {
 			color: #fff;
-			background-color: @part-time;
-		}
-		.full-time {
-			background-color: @full-time;
-		}
-		.part-time {
-			background-color: @part-time;
-		}
-		.temporary {
-			background-color: @temporary;
-		}
-		.freelance {
-			background-color: @freelance;
-		}
-		.internship {
-			background-color: @internship;
-		}
-		.position-filled, .listings-expired {
-			color: #b81c23;
+			background-color: @restaurant-type;
 		}
 		.location:before {
 			.display-icon;
@@ -777,86 +675,12 @@ button.pswp__button--zoom:hover {
 			.display-icon;
 			content: '\e80f';
 		}
-		.position-filled:before, .listings-expired:before {
-			.display-icon;
-			content: '\e80e';
-		}
 	}
 	.restaurant_description {
 		margin: 0 0 1.5em;
 	}
 }
-.restaurant-listings-application-wrapper {
-	clear: both;
-	border: 1px solid #eee;
-	padding: .75em 1em 0;
-	margin: 1em 0;
-	line-height: 1.5em;
-	display: block;
-	position: relative;
-	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-}
-.single_restaurant_listing, .restaurant-listings-application-wrapper {
-	.application {
-		padding: 0;
-		margin: 0 0 1em;
-		overflow: hidden;
 
-		.application_button, .application_details {
-			-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-			-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-			box-sizing: border-box;         /* Opera/IE 8+ */
-		}
-		.application_button {
-			text-align: center;
-			font-size: 1.1em;
-			line-height: 1em;
-			display: inline-block;
-			margin: 0 .5em 0 0;
-			padding: 1/1.1em 2em;
-			outline: 0;
-		}
-		.application_details {
-			clear: both;
-			border: 1px solid #eee;
-			padding: .75em 1em 0;
-			margin: 1em 0;
-			line-height: 1.5em;
-			display: block;
-			position: relative;
-			box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-
-			p {
-				margin: 0 0 .75em;
-			}
-
-			&:before {
-				content: "";
-				position: absolute;
-				margin: -10px 0 0 0;
-				top: 0;
-				left: 5em;
-				width: 0;
-				height: 0;
-				border-left: 10px solid transparent;
-				border-right: 10px solid transparent;
-				border-bottom:10px solid #eee;
-			}
-			&:after {
-				content: "";
-				position: absolute;
-				margin: -9px 0 0 1px;
-				left: 5em;
-				top: 0;
-				width: 0;
-				height: 0;
-				border-left: 9px solid transparent;
-				border-right: 9px solid transparent;
-				border-bottom: 9px solid #fff;
-			}
-		}
-	}
-}
 .restaurant_filters {
 	background: #eee;
 	.clearfix;
@@ -955,6 +779,7 @@ button.pswp__button--zoom:hover {
 
 		ul {
 			list-style: none;
+			margin-left: 0;
 
 			li {
 				display: inline;
@@ -1112,22 +937,6 @@ div.restaurant_listings {
 		vertical-align: middle;
 		line-height: 1em;
 		margin: -.5em -.5em 0 0;
-
-		&.full-time {
-			background-color: @full-time;
-		}
-		&.part-time {
-			background-color: @part-time;
-		}
-		&.temporary {
-			background-color: @temporary;
-		}
-		&.freelance {
-			background-color: @freelance;
-		}
-		&.internship {
-			background-color: @internship;
-		}
 	}
 }
 
@@ -1572,9 +1381,6 @@ p.stars {
 		.restaurant_title small {
 			color: #999;
 		}
-		.filled, .expires, .applications {
-			text-align: center;
-		}
 	}
 }
 
@@ -1614,13 +1420,6 @@ nav.restaurant-listings-pagination, #content nav.restaurant-listings-pagination 
 			}
 		}
 	}
-}
-
-/**
- * Restaurant directory
- */
-ul.restaurants.restaurant-directory {
-
 }
 
 /**
@@ -1838,41 +1637,6 @@ gets 2/3 of the page. You can adjust this to your personal liking. */
 /**
  * Mobile styles
  */
-@media only screen and (max-width: 767px) {
-	ul.restaurant_listings {
-		li.restaurant_listings, li.no_restaurant_listings_found {
-			a {
-				padding: 1em;
-				img.restaurant_logo {
-					visibility: hidden;
-				}
-				div.position {
-					float: left;
-					width: 60%;
-					padding: 0;
-				}
-				div.location {
-					float: right;
-					width: 40%;
-					line-height: 2em;
-					font-size: .75em;
-					padding: 0 0 0 1em;
-					text-align: right;
-				}
-				.meta {
-					float: right;
-					width: 40%;
-					line-height: 2em;
-					font-size: .75em;
-					li {
-						font-size: 1em;
-					}
-				}
-			}
-		}
-	}
-}
-
 @media (max-width: 600px) {
 	body.single-restaurant_listings article.type-restaurant_listings {
 		.restaurant-listings-tabs {
@@ -1901,6 +1665,11 @@ gets 2/3 of the page. You can adjust this to your personal liking. */
 .chosen-container {
 	width: 100% !important;
 }
+
+// Slick slider fixes
+.slides { display: none; }
+.slides.slick-initialized { display: block; }
+
 
 // Default theme fixes
 .twenty-eleven {

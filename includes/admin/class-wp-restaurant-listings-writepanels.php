@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Handles the listings of Restaurant Listings meta fields.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Writepanels {
@@ -13,14 +13,14 @@ class WP_Restaurant_Listings_Writepanels {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -141,7 +141,6 @@ class WP_Restaurant_Listings_Writepanels {
 		 * Filters restaurant listings data fields for WP Admin post editor.
 		 *
 		 * @since 1.0.0
-		 * @since 1.27.0 $post_id was added
 		 *
 		 * @param array $fields
 		 * @param int   $post_id
@@ -363,7 +362,7 @@ class WP_Restaurant_Listings_Writepanels {
 	/**
 	 * Just displays information.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param string $key
 	 * @param array  $field
@@ -375,7 +374,7 @@ class WP_Restaurant_Listings_Writepanels {
 	/**
 	 * Displays information and/or hidden input.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param string $key
 	 * @param array  $field
@@ -675,7 +674,6 @@ class WP_Restaurant_Listings_Writepanels {
 		global $wpdb;
 
 		// These need to exist
-		add_post_meta( $post_id, '_filled', 0, true );
 		add_post_meta( $post_id, '_featured', 0, true );
 
 		// Save fields
@@ -738,10 +736,6 @@ class WP_Restaurant_Listings_Writepanels {
         if ( isset( $_POST[ 'restaurant_hours' ] ) ) {
             update_post_meta( $post_id, '_restaurant_hours',  $_POST[ 'restaurant_hours' ] );
         }
-
-		/* Set Post Status To Expired If Already Expired */
-		$expiry_date = get_post_meta( $post_id, '_restaurant_expires', true );
-		$today_date  = date( 'Y-m-d', current_time( 'timestamp' ) );
 	}
 
 }

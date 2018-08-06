@@ -4,7 +4,7 @@
  * Parent abstract class for form classes.
  *
  * @abstract
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 abstract class WP_Restaurant_Listings_Form {
@@ -148,7 +148,7 @@ abstract class WP_Restaurant_Listings_Form {
 	/**
 	 * Gets form name.
 	 *
-	 * @since 1.24.0
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public function get_form_name() {
@@ -158,7 +158,7 @@ abstract class WP_Restaurant_Listings_Form {
 	/**
 	 * Gets steps from outside of the class.
 	 *
-	 * @since 1.24.0
+	 * @since 1.0.0
 	 */
 	public function get_steps() {
 		return $this->steps;
@@ -174,7 +174,7 @@ abstract class WP_Restaurant_Listings_Form {
 	/**
 	 * Gets step key from outside of the class.
 	 *
-	 * @since 1.24.0
+	 * @since 1.0.0
 	 * @param string|int $step
 	 * @return string
 	 */
@@ -189,7 +189,7 @@ abstract class WP_Restaurant_Listings_Form {
 	/**
 	 * Sets step from outside of the class.
 	 *
-	 * @since 1.24.0
+	 * @since 1.0.0
 	 * @param int $step
 	 */
 	public function set_step( $step ) {

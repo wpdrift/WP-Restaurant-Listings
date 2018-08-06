@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Obtains Geolocation data for posted restaurants from Google.
  *
- * @package wp-restaurant-listings
- * @since 1.6.1
+ * @package RestaurantListings
+ * @since 1.0.0
  */
 class WP_Restaurant_Listings_Geocode {
 
@@ -16,14 +16,14 @@ class WP_Restaurant_Listings_Geocode {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */

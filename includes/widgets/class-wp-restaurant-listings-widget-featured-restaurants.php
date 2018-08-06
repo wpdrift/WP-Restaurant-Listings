@@ -6,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Featured Restaurants widget.
  *
- * @package wp-restaurant-listings
- * @since 1.21.0
+ * @package RestaurantListings
+ * @since 1.0.0
  */
 class WP_Restaurant_Listings_Widget_Featured_Restaurants extends WP_Restaurant_Listings_Widget {
 

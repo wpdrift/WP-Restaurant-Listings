@@ -2,7 +2,7 @@
 /**
  * Handles displays and hooks for the Restaurant Listings custom post type.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Post_Types {
@@ -11,14 +11,14 @@ class WP_Restaurant_Listings_Post_Types {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -35,14 +35,12 @@ class WP_Restaurant_Listings_Post_Types {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_types' ), 0 );
 		add_filter( 'admin_head', array( $this, 'admin_head' ) );
-		add_action( 'restaurant_listings_check_for_expired_restaurants', array( $this, 'check_for_expired_restaurants' ) );
 		add_action( 'restaurant_listings_delete_old_previews', array( $this, 'delete_old_previews' ) );
 
 		add_action( 'pending_to_publish', array( $this, 'set_expiry' ) );
 		add_action( 'preview_to_publish', array( $this, 'set_expiry' ) );
 		add_action( 'draft_to_publish', array( $this, 'set_expiry' ) );
 		add_action( 'auto-draft_to_publish', array( $this, 'set_expiry' ) );
-		add_action( 'expired_to_publish', array( $this, 'set_expiry' ) );
 
 		add_filter( 'the_restaurant_description', 'wptexturize'        );
 		add_filter( 'the_restaurant_description', 'convert_smilies'    );
@@ -54,9 +52,6 @@ class WP_Restaurant_Listings_Post_Types {
 			add_filter( 'the_restaurant_description', array( $GLOBALS['wp_embed'], 'run_shortcode' ), 8 );
 			add_filter( 'the_restaurant_description', array( $GLOBALS['wp_embed'], 'autoembed' ), 8 );
 		}
-
-		add_action( 'restaurant_listings_application_details_email', array( $this, 'application_details_email' ) );
-		add_action( 'restaurant_listings_application_details_url', array( $this, 'application_details_url' ) );
 
 		add_filter( 'wp_insert_post_data', array( $this, 'fix_post_name' ), 10, 2 );
 		add_action( 'add_post_meta', array( $this, 'maybe_add_geolocation_data' ), 10, 3 );
@@ -254,15 +249,6 @@ class WP_Restaurant_Listings_Post_Types {
 		/**
 		 * Post status
 		 */
-		register_post_status( 'expired', array(
-			'label'                     => _x( 'Expired', 'post status', 'wp-restaurant-listings' ),
-			'public'                    => true,
-			'protected'                 => true,
-			'exclude_from_search'       => true,
-			'show_in_admin_all_list'    => true,
-			'show_in_admin_status_list' => true,
-			'label_count'               => _n_noop( 'Expired <span class="count">(%s)</span>', 'Expired <span class="count">(%s)</span>', 'wp-restaurant-listings' ),
-		) );
 		register_post_status( 'preview', array(
 			'label'                     => _x( 'Preview', 'post status', 'wp-restaurant-listings' ),
 			'public'                    => false,
@@ -511,24 +497,6 @@ class WP_Restaurant_Listings_Post_Types {
 	}
 
 	/**
-	 * Displays the application content when the application method is an email.
-	 *
-	 * @param stdClass $apply
-	 */
-	public function application_details_email( $apply ) {
-		get_restaurant_listings_template( 'restaurant-application-email.php', array( 'apply' => $apply ) );
-	}
-
-	/**
-	 * Displays the application content when the application method is a url.
-	 *
-	 * @param stdClass $apply
-	 */
-	public function application_details_url( $apply ) {
-		get_restaurant_listings_template( 'restaurant-application-url.php', array( 'apply' => $apply ) );
-	}
-
-	/**
 	 * Fixes post name when wp_update_post changes it.
 	 *
 	 * @param array $data
@@ -545,7 +513,7 @@ class WP_Restaurant_Listings_Post_Types {
 	/**
 	 * Retrieves permalink settings.
      *
-	 * @since 1.27.1
+	 * @since 1.0.0
 	 * @return array
 	 */
 	public static function get_permalink_structure() {
@@ -660,7 +628,6 @@ class WP_Restaurant_Listings_Post_Types {
 	 */
 	public function maybe_add_default_meta_data( $post_id, $post = '' ) {
 		if ( empty( $post ) || 'restaurant_listings' === $post->post_type ) {
-			add_post_meta( $post_id, '_filled', 0, true );
 			add_post_meta( $post_id, '_featured', 0, true );
 		}
 	}

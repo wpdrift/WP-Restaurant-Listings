@@ -11,12 +11,12 @@
 	}
 }
 .widefat {
-	td.column-featured_restaurant, td.column-filled, td.column-restaurant_status {
+	td.column-featured_restaurant, td.column-restaurant_status {
 		width: 46px;
 		text-align: left;
 		padding-left: 11px;
 	}
-	th.column-featured_restaurant, th.column-filled, th.column-restaurant_status {
+	th.column-featured_restaurant, th.column-restaurant_status {
 		width: 1em;
 		span {
 			display: block;
@@ -28,13 +28,6 @@
 			&:before {
 				content: '\e803';
 				.jm-icon;
-			}
-		}
-	}
-	th.column-filled {
-		span {
-			&:before {
-				content: '\e807';
 			}
 		}
 	}
@@ -84,10 +77,6 @@
 			content: '\e82f';
 			color: #73a724;
 		}
-		.status-expired:before {
-			content: '\e82e';
-			color: #a00;
-		}
 	}
 	.column-restaurant_listings_type {
 		text-align: left;
@@ -99,55 +88,11 @@
 			font-size: 11px;
 			.border_radius( 2px );
 			display:block;
-			background-color: @part-time;
+			background-color: @restaurant-type;
 			text-align: center;
 		}
-		.full-time {
-			background-color: @full-time;
-		}
-		.part-time {
-			background-color: @part-time;
-		}
-		.temporary {
-			background-color: @temporary;
-		}
-		.freelance {
-			background-color: @freelance;
-		}
-		.internship {
-			background-color: @internship;
-		}
 	}
-	th.column-restaurant_position {
-		width: 20%;
-	}
-	td.column-restaurant_position {
-		width: 20%;
-		height: 34px;
-		.restaurant_position {
-			position: relative;
-			padding-right: 50px !important;
-		}
-		a.restaurant_title {
-			font-weight: bold;
-		}
-		img {
-			width: 32px;
-			height: 32px;
-			position: absolute;
-			right: 7px;
-			top: 0;
-			.border_radius( 50% );
-			.box_shadow( 0, 1px, 0, 1px, rgba( 0,0,0,0.1 ) );
-			border: 1px solid #fff;
-		}
-		.restaurant {
-			margin-top: .2em;
-			display: block;
-			padding-top: 2px;
-			color: #bbbbbb;
-		}
-	}
+
 	.column-restaurant_actions {
 		text-align: right;
 		width: 128px;
@@ -464,7 +409,7 @@
  */
 @media only screen and (max-width: 782px) {
 	.widefat {
-		.restaurant_position.column-primary{
+		.column-title.column-primary{
 			display: table-cell !important;
 		}
 		.toggle-row:before{

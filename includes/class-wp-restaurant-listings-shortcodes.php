@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Handles the shortcodes for WP Restaurant Listings.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Shortcodes {
@@ -22,14 +22,14 @@ class WP_Restaurant_Listings_Shortcodes {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -52,7 +52,6 @@ class WP_Restaurant_Listings_Shortcodes {
 		add_shortcode( 'submit_restaurant_form', array( $this, 'submit_restaurant_form' ) );
 		add_shortcode( 'restaurant_dashboard', array( $this, 'restaurant_dashboard' ) );
 		add_shortcode( 'restaurants_locator', array( $this, 'restaurants_locator' ) );
-        add_shortcode( 'restaurants_directory', array( $this, 'output_restaurants_directory' ) );
 		add_shortcode( 'restaurants', array( $this, 'output_restaurants' ) );
 		add_shortcode( 'restaurant', array( $this, 'output_restaurant' ) );
 		add_shortcode( 'restaurant_summary', array( $this, 'output_restaurant_summary' ) );
@@ -263,7 +262,6 @@ class WP_Restaurant_Listings_Shortcodes {
 			'restaurant_types'                 => '',
 			'post_status'               => '',
 			'featured'                  => null, // True to show only featured, false to hide featured, leave null to show both.
-			'filled'                    => null, // True to show only filled, false to hide filled, leave null to show both/use the settings.
 
 			// Default values for filters
 			'location'                  => '',
@@ -287,10 +285,6 @@ class WP_Restaurant_Listings_Shortcodes {
 
 		if ( ! is_null( $featured ) ) {
 			$featured = ( is_bool( $featured ) && $featured ) || in_array( $featured, array( '1', 'true', 'yes' ) ) ? true : false;
-		}
-
-		if ( ! is_null( $filled ) ) {
-			$filled = ( is_bool( $filled ) && $filled ) || in_array( $filled, array( '1', 'true', 'yes' ) ) ? true : false;
 		}
 
 		// Array handling
@@ -342,7 +336,6 @@ class WP_Restaurant_Listings_Shortcodes {
 				'order'             => $order,
 				'posts_per_page'    => $per_page,
 				'featured'          => $featured,
-				'filled'            => $filled
 			) ) );
 
 			if ( ! empty( $restaurant_types ) ) {
@@ -381,9 +374,6 @@ class WP_Restaurant_Listings_Shortcodes {
 		$data_attributes_string = '';
 		if ( ! is_null( $featured ) ) {
 			$data_attributes[ 'featured' ]    = $featured ? 'true' : 'false';
-		}
-		if ( ! is_null( $filled ) ) {
-			$data_attributes[ 'filled' ]      = $filled ? 'true' : 'false';
 		}
 		if ( ! empty( $post_status ) ) {
 			$data_attributes[ 'post_status' ] = implode( ',', $post_status );
@@ -533,91 +523,6 @@ class WP_Restaurant_Listings_Shortcodes {
 
 		return ob_get_clean();
 	}
-
-	/**
-	 * Shows the application area.
-	 *
-	 * @param array $atts
-	 * @return string
-	 */
-	public function output_restaurant_apply( $atts ) {
-		extract( shortcode_atts( array(
-			'id'       => ''
-		), $atts ) );
-
-		ob_start();
-
-		$args = array(
-			'post_type'   => 'restaurant_listings',
-			'post_status' => 'publish'
-		);
-
-		if ( ! $id ) {
-			return '';
-		} else {
-			$args['p'] = absint( $id );
-		}
-
-		$restaurants = new WP_Query( $args );
-
-		if ( $restaurants->have_posts() ) : ?>
-
-			<?php while ( $restaurants->have_posts() ) :
-				$restaurants->the_post();
-				$apply = get_the_restaurant_application_method();
-				?>
-
-				<?php do_action( 'restaurant_listings_before_restaurant_apply_' . absint( $id ) ); ?>
-
-				<?php if ( apply_filters( 'restaurant_listings_show_restaurant_apply_' . absint( $id ), true ) ) : ?>
-					<div class="restaurant-listings-application-wrapper">
-						<?php do_action( 'restaurant_listings_application_details_' . $apply->type, $apply ); ?>
-					</div>
-				<?php endif; ?>
-
-				<?php do_action( 'restaurant_listings_after_restaurant_apply_' . absint( $id ) ); ?>
-
-			<?php endwhile; ?>
-
-		<?php endif;
-
-		wp_reset_postdata();
-
-		return ob_get_clean();
-	}
-
-    /**
-     *
-     */
-    public function output_restaurants_directory( $attrs ) {
-
-       extract( shortcode_atts( array( 'per_page' => get_option('per_page')  ), $attrs ) );
-
-        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-
-        query_posts(  array (
-            'posts_per_page' => $per_page,
-            'post_type' => 'restaurant_listings',
-            'order' => 'ASC',
-            'orderby' =>'menu_order',
-            'paged' => $paged ) );
-
-        echo '<ul class="restaurants restaurant-directory">';
-        while ( have_posts() ) { the_post();
-
-            $args = array(
-
-            );
-
-            get_restaurant_listings_template_part('shortcode', 'content-directory' );
-        }
-
-        echo '</ul>';
-
-        get_restaurant_listings_template( 'pagination.php', array( 'max_num_pages' => $GLOBALS['wp_query']->max_num_pages ) );
-
-        wp_reset_query();
-    }
 }
 
 WP_Restaurant_Listings_Shortcodes::instance();

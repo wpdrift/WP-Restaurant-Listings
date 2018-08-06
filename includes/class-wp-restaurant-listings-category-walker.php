@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Walks through categories.
  *
  * @extends Walker
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Category_Walker extends Walker {
@@ -26,7 +26,7 @@ class WP_Restaurant_Listings_Category_Walker extends Walker {
 
 	/**
 	 * @see Walker::start_el()
-	 * @since 2.1.0
+	 * @since 1.0.0
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param object $object Category data object.

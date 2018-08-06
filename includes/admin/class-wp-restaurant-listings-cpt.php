@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Handles actions and filters specific to the custom post type for Restaurant Listings.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_CPT {
@@ -14,14 +14,14 @@ class WP_Restaurant_Listings_CPT {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -73,21 +73,10 @@ class WP_Restaurant_Listings_CPT {
 			'handler' => array( $this, 'bulk_action_handle_approve_restaurant' ),
 		);
 
-		$actions_handled['mark_restaurants_filled'] = array(
-			'label' => __( 'Mark %s Filled', 'wp-restaurant-listings' ),
-			'notice' => __( '%s marked as filled', 'wp-restaurant-listings' ),
-			'handler' => array( $this, 'bulk_action_handle_mark_restaurant_filled' ),
-		);
-		$actions_handled['mark_restaurants_not_filled'] = array(
-			'label' => __( 'Mark %s Not Filled', 'wp-restaurant-listings' ),
-			'notice' => __( '%s marked as not filled', 'wp-restaurant-listings' ),
-			'handler' => array( $this, 'bulk_action_handle_mark_restaurant_not_filled' ),
-		);
-
 		/**
 		 * Filters the bulk actions that can be applied to restaurant listings.
 		 *
-		 * @since 1.27.0
+		 * @since 1.0.0
 		 *
 		 * @param array $actions_handled {
 		 *     Bulk actions that can be handled, indexed by a unique key name (approve_restaurants, expire_restaurants, etc). Handlers
@@ -122,7 +111,7 @@ class WP_Restaurant_Listings_CPT {
 	/**
 	 * Performs bulk actions on Restaurant Listings admin page.
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param string $redirect_url The redirect URL.
 	 * @param string $action       The action being taken.
@@ -160,38 +149,6 @@ class WP_Restaurant_Listings_CPT {
 		if ( in_array( get_post_status( $post_id ), array( 'pending', 'pending_payment' ) )
 		     && current_user_can( 'publish_post', $post_id )
 		     && wp_update_post( $restaurant_data )
-		) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Performs bulk action to mark a single restaurant listings as filled.
-	 *
-	 * @param $post_id
-	 *
-	 * @return bool
-	 */
-	public function bulk_action_handle_mark_restaurant_filled( $post_id ) {
-		if ( current_user_can( 'manage_restaurant_listings', $post_id )
-		     && update_post_meta( $post_id, '_filled', 1 )
-		) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Performs bulk action to mark a single restaurant listings as not filled.
-	 *
-	 * @param $post_id
-	 *
-	 * @return bool
-	 */
-	public function bulk_action_handle_mark_restaurant_not_filled( $post_id ) {
-		if ( current_user_can( 'manage_restaurant_listings', $post_id )
-		     && update_post_meta( $post_id, '_filled', 0 )
 		) {
 			return true;
 		}
@@ -332,14 +289,13 @@ class WP_Restaurant_Listings_CPT {
 		unset( $columns['date'], $columns['author'] );
 
 
-        $columns['title']                       = __( 'Name', 'wp-restaurant-lisitng' );
+        $columns['title']                       = __( 'Name', 'wp-restaurant-listings' );
 		$columns["restaurant_listings_type"]     = __( "Type", 'wp-restaurant-listings' );
 		$columns["restaurant_location"]         = __( "Location", 'wp-restaurant-listings' );
 		$columns['restaurant_status']           = '<span class="tips" data-tip="' . __( "Status", 'wp-restaurant-listings' ) . '">' . __( "Status", 'wp-restaurant-listings' ) . '</span>';
 		$columns["restaurant_posted"]           = __( "Posted", 'wp-restaurant-listings' );
 		$columns["restaurant_listings_category"] = __( "Categories", 'wp-restaurant-listings' );
 		$columns['featured_restaurant']         = '<span class="tips" data-tip="' . __( "Featured?", 'wp-restaurant-listings' ) . '">' . __( "Featured?", 'wp-restaurant-listings' ) . '</span>';
-		$columns['filled']               = '<span class="tips" data-tip="' . __( "Filled?", 'wp-restaurant-listings' ) . '">' . __( "Filled?", 'wp-restaurant-listings' ) . '</span>';
 		$columns['restaurant_actions']          = __( "Actions", 'wp-restaurant-listings' );
 
 		if ( ! get_option( 'restaurant_listings_enable_categories' ) ) {

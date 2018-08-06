@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handles Restaurant Listings's Ajax endpoints.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Ajax {
@@ -16,14 +16,14 @@ class WP_Restaurant_Listings_Ajax {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -103,7 +103,7 @@ class WP_Restaurant_Listings_Ajax {
 			 * Performs an Ajax action.
 			 * The dynamic part of the action, $action, is the predefined Ajax action to be performed.
 			 *
-			 * @since 1.23.0
+			 * @since 1.0.0
 			 */
 			do_action( 'restaurant_listings_ajax_' . sanitize_text_field( $action ) );
 			wp_die();
@@ -145,10 +145,6 @@ class WP_Restaurant_Listings_Ajax {
 			'offset'             => ( absint( $_REQUEST['page'] ) - 1 ) * absint( $_REQUEST['per_page'] ),
 			'posts_per_page'     => absint( $_REQUEST['per_page'] ),
 		);
-
-		if ( isset( $_REQUEST['filled'] ) && ( $_REQUEST['filled'] === 'true' || $_REQUEST['filled'] === 'false' ) ) {
-			$args['filled'] = $_REQUEST['filled'] === 'true' ? true : false;
-		}
 
 		if ( isset( $_REQUEST['featured'] ) && ( $_REQUEST['featured'] === 'true' || $_REQUEST['featured'] === 'false' ) ) {
 			$args['featured'] = $_REQUEST['featured'] === 'true' ? true : false;
@@ -211,7 +207,7 @@ class WP_Restaurant_Listings_Ajax {
 		/**
 		 * Send back a response to the AJAX request without creating HTML.
 		 *
-		 * @since 1.26.0
+		 * @since 1.0.0
 		 *
 		 * @param array $result
 		 * @param WP_Query $restaurants
@@ -312,9 +308,9 @@ class WP_Restaurant_Listings_Ajax {
 
         // Source: https://stackoverflow.com/questions/29553895/querying-mysql-for-latitude-and-longitude-coordinates-that-are-within-a-given-mi
         // Spherical Law of Cosines Formula
-        $query_posts = "SELECT l.post_id, l.lat, l.lng, p.post_title, ( 3959 * acos( cos( radians({$restaurnat_lat}) ) * cos( radians( l.lat ) ) 
-                    	* cos( radians( l.lng ) - radians({$restaurant_lng}) ) + sin( radians({$restaurnat_lat}) ) * sin(radians(l.lat)) ) ) as distance 
-                    	FROM {$wpdb->prefix}restaurants_location l INNER JOIN {$wpdb->posts} p ON p.ID = l.post_id HAVING distance < {$radius} 
+        $query_posts = "SELECT l.post_id, l.lat, l.lng, p.post_title, ( 3959 * acos( cos( radians({$restaurnat_lat}) ) * cos( radians( l.lat ) )
+                    	* cos( radians( l.lng ) - radians({$restaurant_lng}) ) + sin( radians({$restaurnat_lat}) ) * sin(radians(l.lat)) ) ) as distance
+                    	FROM {$wpdb->prefix}restaurants_location l INNER JOIN {$wpdb->posts} p ON p.ID = l.post_id HAVING distance < {$radius}
                     	ORDER BY distance";
 
         $restaurants = $wpdb->get_results( $query_posts );

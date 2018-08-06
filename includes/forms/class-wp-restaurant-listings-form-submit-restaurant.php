@@ -3,7 +3,7 @@
 /**
  * Handles the editing of Restaurant Listings from the public facing frontend (from within `[submit_restaurant_form]` shortcode).
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @extends WP_Restaurant_Listings_Form
  * @since 1.0.0
  */
@@ -132,22 +132,6 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 			return;
 		}
 
-		$allowed_application_method = get_option( 'restaurant_listings_allowed_application_method', '' );
-		switch ( $allowed_application_method ) {
-			case 'email' :
-				$application_method_label       = __( 'Application email', 'wp-restaurant-listings' );
-				$application_method_placeholder = __( 'you@yourdomain.com', 'wp-restaurant-listings' );
-			break;
-			case 'url' :
-				$application_method_label       = __( 'Application URL', 'wp-restaurant-listings' );
-				$application_method_placeholder = __( 'http://', 'wp-restaurant-listings' );
-			break;
-			default :
-				$application_method_label       = __( 'Restaurant email', 'wp-restaurant-listings' );
-				$application_method_placeholder = __( 'Enter an email address or website URL', 'wp-restaurant-listings' );
-			break;
-		}
-
 		if ( restaurant_listings_multi_restaurant_type() ) {
 			$restaurant_type = 'term-multiselect';
 		} else {
@@ -213,10 +197,10 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 					'priority'    => 6
 				),
 				'application' => array(
-					'label'       => $application_method_label,
+					'label'       => __( 'Restaurant email', 'wp-restaurant-listings' ),
 					'type'        => 'text',
 					'required'    => true,
-					'placeholder' => $application_method_placeholder,
+					'placeholder' => __( 'Enter an email address or website URL', 'wp-restaurant-listings' ),
 					'priority'    => 7
 				)
 			),
@@ -235,26 +219,33 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 					'placeholder' => __( 'http://', 'wp-restaurant-listings' ),
 					'priority'    => 2
 				),
+				'restaurant_tagline' => array(
+					'label'       => __( 'Tagline', 'wp-restaurant-listings' ),
+					'type'        => 'text',
+					'required'    => false,
+					'placeholder' => __( 'Brief description about the restaurant', 'wp-restaurant-listings' ),
+					'priority'    => 3
+				),
 				'restaurant_video' => array(
 					'label'       => __( 'Video', 'wp-restaurant-listings' ),
 					'type'        => 'text',
 					'required'    => false,
 					'placeholder' => __( 'A link to a video about your restaurant', 'wp-restaurant-listings' ),
-					'priority'    => 3
+					'priority'    => 4
 				),
 				'restaurant_twitter' => array(
 					'label'       => __( 'Twitter username', 'wp-restaurant-listings' ),
 					'type'        => 'text',
 					'required'    => false,
 					'placeholder' => __( '@yourcompany', 'wp-restaurant-listings' ),
-					'priority'    => 4
+					'priority'    => 5
 				),
 				'restaurant_logo' => array(
 					'label'       => __( 'Logo', 'wp-restaurant-listings' ),
 					'type'        => 'file',
 					'required'    => false,
 					'placeholder' => '',
-					'priority'    => 5,
+					'priority'    => 6,
 					'ajax'        => true,
 					'multiple'    => false,
 					'allowed_mime_types' => array(
@@ -270,7 +261,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
                     'multiple'    => true,
                     'required'    => false,
                     'placeholder' => '',
-                    'priority'    => 6,
+                    'priority'    => 7,
                     'ajax'        => true,
                     'allowed_mime_types' => array(
                         'jpg'  => 'image/jpeg',
@@ -285,7 +276,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
                     'multiple'    => true,
                     'required'    => false,
                     'placeholder' => '',
-                    'priority'    => 7,
+                    'priority'    => 8,
                     'ajax'        => true,
                     'allowed_mime_types' => array(
                         'jpg'  => 'image/jpeg',
@@ -299,7 +290,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
                     'type'        => 'business-hours',
                     'required'    => false,
                     'placeholder' => '',
-                    'priority'    => 8,
+                    'priority'    => 9,
                     'default'     => ''
                 ),
 			)
@@ -360,34 +351,16 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 
 		// Application method
 		if ( isset( $values['restaurant']['application'] ) && ! empty( $values['restaurant']['application'] ) ) {
-			$allowed_application_method = get_option( 'restaurant_listings_allowed_application_method', '' );
 			$values['restaurant']['application'] = str_replace( ' ', '+', $values['restaurant']['application'] );
-			switch ( $allowed_application_method ) {
-				case 'email' :
-					if ( ! is_email( $values['restaurant']['application'] ) ) {
-						throw new Exception( __( 'Please enter a valid application email address', 'wp-restaurant-listings' ) );
-					}
-				break;
-				case 'url' :
-					// Prefix http if needed
-					if ( ! strstr( $values['restaurant']['application'], 'http:' ) && ! strstr( $values['restaurant']['application'], 'https:' ) ) {
-						$values['restaurant']['application'] = 'http://' . $values['restaurant']['application'];
-					}
-					if ( ! filter_var( $values['restaurant']['application'], FILTER_VALIDATE_URL ) ) {
-						throw new Exception( __( 'Please enter a valid application URL', 'wp-restaurant-listings' ) );
-					}
-				break;
-				default :
-					if ( ! is_email( $values['restaurant']['application'] ) ) {
-						// Prefix http if needed
-						if ( ! strstr( $values['restaurant']['application'], 'http:' ) && ! strstr( $values['restaurant']['application'], 'https:' ) ) {
-							$values['restaurant']['application'] = 'http://' . $values['restaurant']['application'];
-						}
-						if ( ! filter_var( $values['restaurant']['application'], FILTER_VALIDATE_URL ) ) {
-							throw new Exception( __( 'Please enter a valid application email address or URL', 'wp-restaurant-listings' ) );
-						}
-					}
-				break;
+
+			if ( ! is_email( $values['restaurant']['application'] ) ) {
+				// Prefix http if needed
+				if ( ! strstr( $values['restaurant']['application'], 'http:' ) && ! strstr( $values['restaurant']['application'], 'https:' ) ) {
+					$values['restaurant']['application'] = 'http://' . $values['restaurant']['application'];
+				}
+				if ( ! filter_var( $values['restaurant']['application'], FILTER_VALIDATE_URL ) ) {
+					throw new Exception( __( 'Please enter a valid application email address or URL', 'wp-restaurant-listings' ) );
+				}
 			}
 		}
 
@@ -462,11 +435,8 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 				}
 			}
 			if ( ! empty( $this->fields['restaurant']['application'] ) ) {
-				$allowed_application_method = get_option( 'restaurant_listings_allowed_application_method', '' );
-				if ( $allowed_application_method !== 'url' ) {
-					$current_user = wp_get_current_user();
-					$this->fields['restaurant']['application']['value'] = $current_user->user_email;
-				}
+				$current_user = wp_get_current_user();
+				$this->fields['restaurant']['application']['value'] = $current_user->user_email;
 			}
 			$this->fields = apply_filters( 'submit_restaurant_form_fields_get_user_data', $this->fields, get_current_user_id() );
 		}
@@ -695,7 +665,6 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 	 */
 	protected function update_restaurant_data( $values ) {
 		// Set defaults
-		add_post_meta( $this->restaurant_id, '_filled', 0, true );
 		add_post_meta( $this->restaurant_id, '_featured', 0, true );
 
 		$maybe_attach = array();
@@ -730,22 +699,22 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
                     $field_values = $values[$group_key][$key];
 
                     if (is_array($field_values) && sizeof($field_values) >0 ) {
-	
+
 	                    foreach ( $field_values as $image ) {
 		                    $attachment_id = is_numeric( $image ) ? absint( $image ) : $this->create_attachment( $image );
 		                    if ( !empty( $attachment_id ) ) {
 			                    $image_gallery[] = $attachment_id;
 		                    }
 	                    }
-	
+
 	                    $image_gallery = array_filter( $image_gallery );
-	
+
 	                    if ( sizeof( $image_gallery ) ) {
 		                    $this->fields['extra']['restaurant_image_gallery']['value'] = $image_gallery;
 		                    update_post_meta( $this->restaurant_id, '_restaurant_image_gallery', join( ',', $image_gallery ) );
 	                    }
                     }
-                    
+
                     // Restaurant menu
                 } elseif ( 'restaurant_menu' === $key ) {
 
@@ -758,9 +727,9 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 			                    $menu[] = $attachment_id;
 		                    }
 	                    }
-	
+
 	                    $menu = array_filter( $menu );
-	
+
 	                    if ( sizeof( $menu ) ) {
 		                    $this->fields['extra']['restaurant_menu']['value'] = $menu;
 		                    update_post_meta( $this->restaurant_id, '_restaurant_menu', join( ',', $menu ) );

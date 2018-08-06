@@ -1,6 +1,6 @@
 <li <?php restaurant_listings_class(); ?>>
 	<a href="<?php the_restaurant_permalink(); ?>">
-		<div class="position">
+		<div class="name">
 			<h3><?php the_restaurant_title(); ?></h3>
 		</div>
 		<ul class="meta">

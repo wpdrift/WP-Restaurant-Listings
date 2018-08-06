@@ -5,16 +5,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Handles front admin page for WP Restaurant Listings.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @see https://github.com/woocommerce/woocommerce/blob/3.0.8/includes/admin/class-wc-admin-permalink-settings.php  Based on WooCommerce's implementation.
- * @since 1.27.0
+ * @since 1.0.0
  */
 class WP_Restaurant_Listings_Permalink_Settings {
 	/**
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.27.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
@@ -22,14 +22,14 @@ class WP_Restaurant_Listings_Permalink_Settings {
 	 * Permalink settings.
 	 *
 	 * @var array
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 */
 	private $permalinks = array();
 
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.27.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */

@@ -11,7 +11,7 @@ global $comment;
 
 if ( '0' === $comment->comment_approved ) { ?>
 
-	<p class="meta"><em class="restaurants-review__awaiting-approval"><?php esc_attr_e( 'Your review is awaiting approval', 'wp-restaurants-listings' ); ?></em></p>
+	<p class="meta"><em class="restaurants-review__awaiting-approval"><?php esc_attr_e( 'Your review is awaiting approval', 'wp-restaurant-listings' ); ?></em></p>
 
 <?php } else { ?>
 

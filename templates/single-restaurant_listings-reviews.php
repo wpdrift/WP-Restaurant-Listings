@@ -3,8 +3,9 @@
  * Display single reviews (comments)
  *
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 if ( ! comments_open() ) {
@@ -14,7 +15,7 @@ if ( ! comments_open() ) {
 global $post;
 
 if ( WP_Restaurant_Listings_Template_Loader::$comment_template_loaded ) {
-    return;
+	return;
 }
 WP_Restaurant_Listings_Template_Loader::$comment_template_loaded = true;
 
@@ -23,7 +24,7 @@ WP_Restaurant_Listings_Template_Loader::$comment_template_loaded = true;
 	<div id="comments">
 		<h2 class="restaurant-listings-Reviews-title"><?php
 			    $count = restaurant_listings_get_review_count($post->ID);
-			    
+
 				/* translators: 1: reviews count 2: name */
 				printf( esc_html( _n( '%1$s review for %2$s', '%1$s reviews for %2$s', 4, 'wp-restaurant-listings' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
 

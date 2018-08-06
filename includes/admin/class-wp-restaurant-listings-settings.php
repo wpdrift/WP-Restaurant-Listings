@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Handles the listings of plugin settings.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Settings {
@@ -14,7 +14,7 @@ class WP_Restaurant_Listings_Settings {
 	 * The single instance of the class.
 	 *
 	 * @var self
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 */
 	private static $_instance = null;
 
@@ -28,7 +28,7 @@ class WP_Restaurant_Listings_Settings {
 	/**
 	 * Allows for accessing single instance of class. Class should only be constructed once per call.
 	 *
-	 * @since  1.26.0
+	 * @since 1.0.0
 	 * @static
 	 * @return self Main instance.
 	 */
@@ -237,25 +237,6 @@ class WP_Restaurant_Listings_Settings {
 							'type'       => 'checkbox',
 							'attributes' => array()
 						),
-						array(
-							'name'       => 'restaurant_listings_submission_duration',
-							'std'        => '30',
-							'label'      => __( 'Listings Duration', 'wp-restaurant-listings' ),
-							'desc'       => __( 'Listings will display for the set number of days, then expire. Leave this field blank if you don\'t want listings to have an expiration date.', 'wp-restaurant-listings' ),
-							'attributes' => array()
-						),
-						array(
-							'name'       => 'restaurant_listings_allowed_application_method',
-							'std'        => '',
-							'label'      => __( 'Application Method', 'wp-restaurant-listings' ),
-							'desc'       => __( 'Choose the application method restaurant listers will need to provide. Specify URL or email address only, or allow listers to choose which they prefer.', 'wp-restaurant-listings' ),
-							'type'       => 'radio',
-							'options'    => array(
-								''      => __( 'Email address or website URL', 'wp-restaurant-listings' ),
-								'email' => __( 'Email addresses only', 'wp-restaurant-listings' ),
-								'url'   => __( 'Website URLs only', 'wp-restaurant-listings' ),
-							)
-						),
 					)
 				),
 				'restaurant_pages' => array(
@@ -287,13 +268,6 @@ class WP_Restaurant_Listings_Settings {
 							'std' 		=> '',
 							'label' 	=> __( 'Restaurant Locator Page', 'wp-restaurant-listings' ),
 							'desc'		=> __( 'Select the page where you\'ve used the [restaurants_locator] shortcode. This lets the plugin know the location of the restaurant listings page.', 'wp-restaurant-listings' ),
-							'type'      => 'page'
-						),
-                        array(
-							'name' 		=> 'restaurant_listings_restaurants_directory_page_id',
-							'std' 		=> '',
-							'label' 	=> __( 'Restaurants Directory Page', 'wp-restaurant-listings' ),
-							'desc'		=> __( 'Select the page where you\'ve used the [restaurants_directory] shortcode. This lets the plugin show the location of the restaurant on the  map.', 'wp-restaurant-listings' ),
 							'type'      => 'page'
 						),
 					)

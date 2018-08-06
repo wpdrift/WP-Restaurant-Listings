@@ -15,22 +15,6 @@ jQuery(document).ready(function($) {
 		return false;
 	});
 
-	// Datepicker
-	$( 'input.restaurant-listings-datepicker, input#_restaurant_expires' ).datepicker({
-		altFormat  : 'yy-mm-dd',
-		dateFormat : restaurant_listings_admin.date_format,
-	});
-
-	$( 'input.restaurant-listings-datepicker, input#_restaurant_expires' ).each( function(){
-		if ( $(this).val() ) {
-			var dateParts = $(this).val().split("-");
-			if ( 3 === dateParts.length ) {
-				var selectedDate = new Date(parseInt(dateParts[0], 10), (parseInt(dateParts[1], 10) - 1), parseInt(dateParts[2], 10));
-				$(this).datepicker('setDate', selectedDate);
-			}
-		}
-	});
-
     if ( $.isFunction( $.fn.timepicker ) ) {
         // Timepicker
         $('.timepicker').timepicker({

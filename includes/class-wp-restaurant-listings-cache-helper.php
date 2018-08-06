@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Assists in cache listings for WP Restaurant Management posts and terms.
  *
- * @package wp-restaurant-listings
+ * @package RestaurantListings
  * @since 1.0.0
  */
 class WP_Restaurant_Listings_Cache_Helper {
@@ -17,12 +17,10 @@ class WP_Restaurant_Listings_Cache_Helper {
 	 */
 	public static function init() {
 		add_action( 'save_post', array( __CLASS__, 'flush_get_restaurant_listings_cache' ) );
-		add_action( 'restaurant_listings_my_restaurant_do_action', array( __CLASS__, 'restaurant_listings_my_restaurant_do_action' ) );
 		add_action( 'set_object_terms', array( __CLASS__, 'set_term' ), 10, 4 );
 		add_action( 'edited_term', array( __CLASS__, 'edited_term' ), 10, 3 );
 		add_action( 'create_term', array( __CLASS__, 'edited_term' ), 10, 3 );
 		add_action( 'delete_term', array( __CLASS__, 'edited_term' ), 10, 3 );
-		add_action( 'restaurant_listings_clear_expired_transients', array( __CLASS__, 'clear_expired_transients' ), 10 );
 		add_action( 'transition_post_status', array( __CLASS__, 'maybe_clear_count_transients' ), 10, 3 );
 	}
 
@@ -33,17 +31,6 @@ class WP_Restaurant_Listings_Cache_Helper {
 	 */
 	public static function flush_get_restaurant_listings_cache( $post_id ) {
 		if ( 'restaurant_listings' === get_post_type( $post_id ) ) {
-			self::get_transient_version( 'get_restaurant_listings', true );
-		}
-	}
-
-	/**
-	 * Refreshes the Restaurant Listings cache when performing actions on it.
-	 *
-	 * @param string $action
-	 */
-	public static function restaurant_listings_my_restaurant_do_action( $action ) {
-		if ( 'mark_filled' === $action || 'mark_not_filled' === $action ) {
 			self::get_transient_version( 'get_restaurant_listings', true );
 		}
 	}
@@ -114,29 +101,12 @@ class WP_Restaurant_Listings_Cache_Helper {
 	}
 
 	/**
-	 * Clear expired transients.
-	 */
-	public static function clear_expired_transients() {
-		global $wpdb;
-
-		if ( ! wp_using_ext_object_cache() && ! defined( 'WP_SETUP_CONFIG' ) && ! defined( 'WP_INSTALLING' ) ) {
-			$sql   = "
-				DELETE a, b FROM $wpdb->options a, $wpdb->options b
-				WHERE a.option_name LIKE %s
-				AND a.option_name NOT LIKE %s
-				AND b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
-				AND b.option_value < %s;";
-			$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_jm_' ) . '%', $wpdb->esc_like( '_transient_timeout_jm_' ) . '%', time() ) );
-		}
-	}
-
-	/**
 	 * Maybe remove pending count transients
 	 *
 	 * When a supported post type status is updated, check if any cached count transients
 	 * need to be removed, and remove the
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param string  $new_status New post status.
 	 * @param string  $old_status Old post status.
@@ -148,7 +118,7 @@ class WP_Restaurant_Listings_Cache_Helper {
 		/**
 		 * Get supported post types for count caching
 		 *
-		 * @since 1.27.0
+		 * @since 1.0.0
 		 *
 		 * @param array   $post_types Post types that should be cached.
 		 * @param string  $new_status New post status.
@@ -165,7 +135,7 @@ class WP_Restaurant_Listings_Cache_Helper {
 		/**
 		 * Get supported post statuses for count caching
 		 *
-		 * @since 1.27.0
+		 * @since 1.0.0
 		 *
 		 * @param array   $post_statuses Post statuses that should be cached.
 		 * @param string  $new_status    New post status.
@@ -206,7 +176,7 @@ class WP_Restaurant_Listings_Cache_Helper {
 	/**
 	 * Get Listings Count from Cache
 	 *
-	 * @since 1.27.0
+	 * @since 1.0.0
 	 *
 	 * @param string $post_type
 	 * @param string $status
