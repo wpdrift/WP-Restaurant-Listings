@@ -15,7 +15,7 @@ function get_restaurant_listings( $args = array() ) {
 		'search_keywords'   => '',
 		'search_categories' => array(),
 		'restaurant_types'  => array(),
-        'search_price_range'=> '',
+		'search_price_range'=> '',
 		'post_status'       => array(),
 		'offset'            => 0,
 		'posts_per_page'    => 20,
@@ -90,12 +90,12 @@ function get_restaurant_listings( $args = array() ) {
 	}
 
 	if ( ! empty( $args['search_price_range'] ) ) {
-        $query_args['meta_query'][] = array(
-            'key'       => '_restaurant_price_range',
-            'value'     => (int)$args['search_price_range'],
-            'compare'   => '=',
-        );
-    }
+		$query_args['meta_query'][] = array(
+			'key'       => '_restaurant_price_range',
+			'value'     => (int)$args['search_price_range'],
+			'compare'   => '=',
+		);
+	}
 
 	if ( ! empty( $args['search_categories'] ) ) {
 		$field    = is_numeric( $args['search_categories'][0] ) ? 'term_id' : 'slug';
@@ -207,7 +207,7 @@ if ( ! function_exists( 'get_restaurant_listings_keyword_search' ) ) :
 			if( $searchable_meta_keys ) {
 				$conditions[] = "{$wpdb->posts}.ID IN ( SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key IN ( '" . implode( "','", array_map( 'esc_sql', $searchable_meta_keys ) ) . "' ) AND meta_value LIKE '%" . esc_sql( $restaurant_listings_keyword ) . "%' )";
 			} else {
-			    // No meta keys defined, search all post meta value
+				// No meta keys defined, search all post meta value
 				$conditions[] = "{$wpdb->posts}.ID IN ( SELECT post_id FROM {$wpdb->postmeta} WHERE meta_value LIKE '%" . esc_sql( $restaurant_listings_keyword ) . "%' )";
 			}
 		}
@@ -321,8 +321,8 @@ function get_restaurant_listings_categories() {
 
 	return get_terms( "restaurant_listings_category", array(
 		'orderby'       => 'name',
-	    'order'         => 'ASC',
-	    'hide_empty'    => false,
+		'order'         => 'ASC',
+		'hide_empty'    => false,
 	) );
 }
 endif;
@@ -507,8 +507,23 @@ function wp_restaurant_listings_create_account( $args, $deprecated = '' ) {
 		return $user_id;
 	}
 
-	// Notify
-	wp_restaurant_listings_notify_new_user( $user_id, $password, $new_user );
+	/**
+	 * Send notification to new users.
+	 *
+	 * @since 1.28.0
+	 *
+	 * @param  int         $user_id
+	 * @param  string|bool $password
+	 * @param  array       $new_user {
+	 *     Information about the new user.
+	 *
+	 *     @type string $user_login Username for the user.
+	 *     @type string $user_pass  Password for the user (may be blank).
+	 *     @type string $user_email Email for the new user account.
+	 *     @type string $role       New user's role.
+	 * }
+	 */
+	do_action( 'wprl_notify_new_user', $user_id, $password, $new_user );
 
 	// Login
 	wp_set_auth_cookie( $user_id, true, is_ssl() );
@@ -1038,14 +1053,14 @@ function restaurant_listings_duplicate_listing( $post_id ) {
  * @return array
  */
 function restaurant_listings_get_days_of_week() {
-    $days = array(0, 1, 2, 3, 4, 5, 6);
-    $start = get_option( 'start_of_week' );
+	$days = array(0, 1, 2, 3, 4, 5, 6);
+	$start = get_option( 'start_of_week' );
 
-    $first = array_splice( $days, $start, count( $days ) - $start );
-    $second = array_splice( $days, 0, $start );
-    $days = array_merge( $first, $second );
+	$first = array_splice( $days, $start, count( $days ) - $start );
+	$second = array_splice( $days, 0, $start );
+	$days = array_merge( $first, $second );
 
-    return $days;
+	return $days;
 }
 
 /**
@@ -1058,7 +1073,7 @@ function restaurant_listings_get_days_of_week() {
  * @return string
  */
 function restaurant_listings_category_list( $restaurant_id, $sep = ', ', $before = '', $after = '' ) {
-    return get_the_term_list( $restaurant_id, 'restaurant_listings_category', $before, $sep, $after );
+	return get_the_term_list( $restaurant_id, 'restaurant_listings_category', $before, $sep, $after );
 }
 
 /**
@@ -1068,53 +1083,53 @@ function restaurant_listings_category_list( $restaurant_id, $sep = ', ', $before
  * @return null|string
  */
 function restaurant_listings_get_review_count( $post_id ) {
-    global $wpdb;
+	global $wpdb;
 
-    $count = $wpdb->get_var( $wpdb->prepare("
+	$count = $wpdb->get_var( $wpdb->prepare("
 			SELECT COUNT(*) FROM $wpdb->comments
 			WHERE comment_parent = 0
 			AND comment_post_ID = %d
 			AND comment_approved = '1'
 		", $post_id ) );
 
-    return $count;
+	return $count;
 }
 
 
 if ( ! function_exists( 'restaurant_listings_default_tabs' ) ) {
 
-    /**
-     * Add default restaurant tabs to restaurant pages.
-     *
-     * @param array $tabs
-     * @return array
-     */
-    function restaurant_listings_default_tabs( $tabs = array() ) {
-        global  $post;
+	/**
+	 * Add default restaurant tabs to restaurant pages.
+	 *
+	 * @param array $tabs
+	 * @return array
+	 */
+	function restaurant_listings_default_tabs( $tabs = array() ) {
+		global  $post;
 
-        $tabs['overview'] = array(
-            'title'    => sprintf( __( 'Overview', 'wp-restaurant-listings' ) ),
-            'priority' => 20,
-            'callback' => 'restaurant_listings_overview_tab',
-        );
+		$tabs['overview'] = array(
+			'title'    => sprintf( __( 'Overview', 'wp-restaurant-listings' ) ),
+			'priority' => 20,
+			'callback' => 'restaurant_listings_overview_tab',
+		);
 
-        $tabs['menu'] = array(
-            'title'    => sprintf( __( 'Menu', 'wp-restaurant-listings' ) ),
-            'priority' => 30,
-            'callback' => 'restaurant_listings_menu_tab',
-        );
+		$tabs['menu'] = array(
+			'title'    => sprintf( __( 'Menu', 'wp-restaurant-listings' ) ),
+			'priority' => 30,
+			'callback' => 'restaurant_listings_menu_tab',
+		);
 
 
-        // Reviews tab - shows comments
-        if ( comments_open() ) {
+		// Reviews tab - shows comments
+		if ( comments_open() ) {
 
-            $tabs['reviews'] = array(
-                'title'    => sprintf( __( 'Reviews (%d)', 'wp-restaurant-listings' ), restaurant_listings_get_review_count( $post->ID ) ),
-                'priority' => 30,
-                'callback' => 'comments_template',
-            );
-        }
+			$tabs['reviews'] = array(
+				'title'    => sprintf( __( 'Reviews (%d)', 'wp-restaurant-listings' ), restaurant_listings_get_review_count( $post->ID ) ),
+				'priority' => 30,
+				'callback' => 'comments_template',
+			);
+		}
 
-        return $tabs;
-    }
+		return $tabs;
+	}
 }

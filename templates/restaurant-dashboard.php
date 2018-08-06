@@ -1,3 +1,20 @@
+<?php
+/**
+ * Restaurant dashboard shortcode content.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/restaurant-dashboard.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+?>
 <div id="restaurant-listings-restaurant-dashboard">
 	<p><?php _e( 'Your listings are shown in the table below.', 'wp-restaurant-listings' ); ?></p>
 	<table class="restaurant-listings-restaurants">

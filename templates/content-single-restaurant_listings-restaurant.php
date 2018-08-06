@@ -4,8 +4,19 @@
  *
  * Hooked into single_restaurant_listings_start priority 30
  *
- * @since 1.0.0
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/content-single-restaurant_listings-restaurant.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @since       1.0.0
+ * @version     1.0.1
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 if ( ! get_the_restaurant_name() ) {
 	return;

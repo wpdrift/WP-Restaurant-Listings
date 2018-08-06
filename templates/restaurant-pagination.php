@@ -1,8 +1,19 @@
 <?php
 /**
  * Pagination - Show numbered pagination for the [restaurants] shortcode
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/restaurant-pagination.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
  */
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 if ( $max_num_pages <= 1 ) {
 	return;

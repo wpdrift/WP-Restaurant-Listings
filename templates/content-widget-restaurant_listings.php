@@ -1,3 +1,20 @@
+<?php
+/**
+ * Single restaurant listing widget content.
+ *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/content-widget-restaurant_listings.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+?>
 <li <?php restaurant_listings_class(); ?>>
 	<a href="<?php the_restaurant_permalink(); ?>">
 		<div class="name">

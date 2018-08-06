@@ -2,6 +2,13 @@
 /**
  * Display single reviews (comments)
  *
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/single-restaurant_listings-reviews.php.
+ *
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @version     1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

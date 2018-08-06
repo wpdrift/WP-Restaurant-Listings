@@ -1,16 +1,22 @@
 <?php
 /**
- * Single view Restaurant meta box
+ * Single view restaurant meta box
  *
  * Hooked into single_restaurant_listings_start priority 20
  *
- * @since 1.0.0
- * @version 1.27.0
+ * This template can be overridden by copying it to yourtheme/restaurant_listings/content-single-restaurant_listings-meta.php.
  *
- * @package RestaurantListings
- * @category Template
- * @author Automattic
+ * @see         https://wpdrift.com/document/template-overrides/
+ * @author      WPdrift
+ * @package     WP Restaurant Listings
+ * @category    Template
+ * @since       1.0.0
+ * @version     1.0.1
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 global $post;
 
