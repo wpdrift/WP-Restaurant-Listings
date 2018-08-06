@@ -84,8 +84,8 @@ abstract class WP_Restaurant_Listings_Form {
 			get_post_meta( $_COOKIE[ 'wp-restaurant-listings-submitting-restaurant-id' ], '_submitting_key', true ) == $_COOKIE['wp-restaurant-listings-submitting-restaurant-key']
 		) {
 			delete_post_meta( $_COOKIE[ 'wp-restaurant-listings-submitting-restaurant-id' ], '_submitting_key' );
-			setcookie( 'wp-restaurant-listings-submitting-restaurant-id', '', time() - 3600, COOKIEPATH, COOKIE_DOMAIN, false );
-			setcookie( 'wp-restaurant-listings-submitting-restaurant-key', '', time() - 3600, COOKIEPATH, COOKIE_DOMAIN, false );
+			setcookie( 'wp-restaurant-listings-submitting-restaurant-id', '', 0, COOKIEPATH, COOKIE_DOMAIN, false );
+			setcookie( 'wp-restaurant-listings-submitting-restaurant-key', '', 0, COOKIEPATH, COOKIE_DOMAIN, false );
 			wp_redirect( remove_query_arg( array( 'new', 'key' ), $_SERVER[ 'REQUEST_URI' ] ) );
 		}
 

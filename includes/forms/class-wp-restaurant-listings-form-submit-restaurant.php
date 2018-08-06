@@ -611,8 +611,8 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 			if ( ! headers_sent() ) {
 				$submitting_key = uniqid();
 
-				setcookie( 'wp-restaurant-listings-submitting-restaurant-id', $this->restaurant_id, false, COOKIEPATH, COOKIE_DOMAIN, false );
-				setcookie( 'wp-restaurant-listings-submitting-restaurant-key', $submitting_key, false, COOKIEPATH, COOKIE_DOMAIN, false );
+				setcookie( 'wp-restaurant-listings-submitting-restaurant-id', $this->restaurant_id, 0, COOKIEPATH, COOKIE_DOMAIN, false );
+				setcookie( 'wp-restaurant-listings-submitting-restaurant-key', $submitting_key, 0, COOKIEPATH, COOKIE_DOMAIN, false );
 
 				update_post_meta( $this->restaurant_id, '_submitting_key', $submitting_key );
 			}
