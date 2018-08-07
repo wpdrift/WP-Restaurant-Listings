@@ -373,8 +373,8 @@ function wprl_get_registration_fields() {
 function the_restaurant_publish_date( $post = null ) {
 	$date_format = get_option( 'restaurant_listings_date_format' );
 
-	if ( $date_format === 'default' ) {
-		$display_date = __( 'Posted on ', 'wp-restaurant-listings' ) . get_post_time( get_option( 'date_format' ) );
+	if ( 'default' === $date_format ) {
+		$display_date = __( 'Posted on ', 'wp-restaurant-listings' ) . date_i18n( get_option( 'date_format' ), get_post_time( 'U' ) );
 	} else {
 		$display_date = sprintf( __( 'Posted %s ago', 'wp-restaurant-listings' ), human_time_diff( get_post_time( 'U' ), current_time( 'timestamp' ) ) );
 	}

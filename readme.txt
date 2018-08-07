@@ -95,5 +95,9 @@ If you'd like to learn about WordPress filters, here is a great place to start: 
 
 == Changelog ==
 
+= 1.0.1 =
+* Dev: Adds versions to template files so it is easier to tell when they are updated.
+* Dev: Adds a new `wprl_notify_new_user` action that allows you to override default behavior.
+
 = 1.0.0 =
 * First stable release.
