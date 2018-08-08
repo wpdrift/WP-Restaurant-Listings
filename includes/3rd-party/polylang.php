@@ -11,8 +11,24 @@
 function polylang_wprl_init() {
 	add_filter( 'wprl_lang', 'polylang_wprl_get_restaurant_listings_lang' );
 	add_filter( 'wprl_page_id', 'polylang_wprl_page_id' );
+	add_action( 'get_restaurant_listings_query_args', 'polylang_wprl_query_language' );
 }
 add_action( 'pll_init', 'polylang_wprl_init' );
+
+/**
+ * Sets the current language when running restaurant listings query.
+ *
+ * @since 1.0.1
+ *
+ * @param array $query_args
+ * @return array
+ */
+function polylang_wprl_query_language( $query_args ) {
+	if ( isset( $_POST['lang'] ) ) {
+		$query_args['lang'] = $_POST['lang'];
+	}
+	return $query_args;
+}
 
 /**
  * Returns Polylang's current language.
@@ -45,4 +61,3 @@ function polylang_wprl_page_id( $page_id ) {
 	}
 	return absint( $page_id );
 }
-
