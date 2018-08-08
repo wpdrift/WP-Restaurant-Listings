@@ -264,6 +264,10 @@ function get_the_restaurant_types( $post = null ) {
 
 	$types = get_the_terms( $post->ID, 'restaurant_listings_type' );
 
+	if ( empty( $types ) || is_wp_error( $types ) ) {
+		$types = array();
+	}
+
 	// Return single if not enabled.
 	if ( ! empty( $types ) && ! restaurant_listings_multi_restaurant_type() ) {
 		$types = array( current( $types ) );
