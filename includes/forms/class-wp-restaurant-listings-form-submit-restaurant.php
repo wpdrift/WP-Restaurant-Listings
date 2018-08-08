@@ -762,7 +762,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 		// Handle attachments
 		if ( sizeof( $maybe_attach ) && apply_filters( 'restaurant_listings_attach_uploaded_files', true ) ) {
 			// Get attachments
-			$attachments     = get_posts( 'post_parent=' . $this->restaurant_id . '&post_type=attachment&fields=ids&post_mime_type=image&numberposts=-1' );
+			$attachments     = get_posts( 'post_parent=' . $this->restaurant_id . '&post_type=attachment&fields=ids&numberposts=-1' );
 			$attachment_urls = array();
 			$attachment_ids  = array();
 

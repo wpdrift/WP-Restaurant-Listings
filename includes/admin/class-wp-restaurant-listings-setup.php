@@ -156,15 +156,15 @@ class WP_Restaurant_Listings_Setup {
 
 			<?php if ( 1 === $step ) : ?>
 
-				<h3><?php _e( 'Setup Wizard Introduction', 'wp-restaurant-listings' ); ?></h3>
+				<h3><?php _e( 'Welcome to the Setup Wizard!', 'wp-restaurant-listings' ); ?></h3>
 
-				<p><?php _e( 'Thanks for installing <em>WP Restaurant Listings</em>!', 'wp-restaurant-listings' ); ?></p>
-				<p><?php _e( 'This setup wizard will help you get started by creating the pages for restaurant submission, restaurant listings, and listings your restaurants.', 'wp-restaurant-listings' ); ?></p>
-				<p><?php printf( __( 'If you want to skip the wizard and setup the pages and shortcodes yourself manually, the process is still relatively simple. Refer to the %sdocumentation%s for help.', 'wp-restaurant-listings' ), '<a href="https://wpdrift.com/docs/restaurants/">', '</a>' ); ?></p>
+				<p><?php _e( 'Thanks for installing <em>WP Restaurant Listings</em>! Let\'s get your site ready to accept restaurant listings.', 'wp-restaurant-listings' ); ?></p>
+				<p><?php _e( 'This setup wizard will walk you through the process of creating the pages for restaurant submissions, management, and listings.', 'wp-restaurant-listings' ); ?></p>
+				<p><?php printf( __( 'If you\'d prefer to skip this and set up your pages manually, our %sdocumentation%s will walk you through each step.', 'wp-restaurant-listings' ), '<a href="https://wpdrift.com/docs/restaurants/">', '</a>' ); ?></p>
 
 				<p class="submit">
-					<a href="<?php echo esc_url( add_query_arg( 'step', 2 ) ); ?>" class="button button-primary"><?php _e( 'Continue to page setup', 'wp-restaurant-listings' ); ?></a>
-					<a href="<?php echo esc_url( add_query_arg( 'skip-restaurant-listings-setup', 1, admin_url( 'index.php?page=restaurant-listings-setup&step=3' ) ) ); ?>" class="button"><?php _e( 'Skip setup. I will setup the plugin manually', 'wp-restaurant-listings' ); ?></a>
+					<a href="<?php echo esc_url( add_query_arg( 'step', 2 ) ); ?>" class="button button-primary"><?php _e( 'Start setup', 'wp-restaurant-listings' ); ?></a>
+					<a href="<?php echo esc_url( add_query_arg( 'skip-restaurant-listings-setup', 1, admin_url( 'index.php?page=restaurant-listings-setup&step=3' ) ) ); ?>" class="button"><?php _e( 'Skip setup. I will set up the plugin manually.', 'wp-restaurant-listings' ); ?></a>
 				</p>
 
 			<?php endif; ?>
@@ -172,7 +172,8 @@ class WP_Restaurant_Listings_Setup {
 
 				<h3><?php _e( 'Page Setup', 'wp-restaurant-listings' ); ?></h3>
 
-				<p><?php printf( __( '<em>WP Restaurant Listings</em> includes %1$sshortcodes%2$s which can be used within your %3$spages%2$s to output content. These can be created for you below. For more information on the restaurant shortcodes view the %4$sshortcode documentation%2$s.', 'wp-restaurant-listings' ), '<a href="http://codex.wordpress.org/Shortcode" title="What is a shortcode?" target="_blank" class="help-page-link">', '</a>', '<a href="http://codex.wordpress.org/Pages" target="_blank" class="help-page-link">', '<a href="https://wpdrift.com/docs/restaurants/shortcode-reference/" target="_blank" class="help-page-link">' ); ?></p>
+				<p><?php _e( 'WP Restaurant Listings, users can post, manage, and browse restaurant listings right on your website. Tell us which of these common pages you\'d like your site to have and we\'ll create and configure them for you.', 'wp-restaurant-listings' ); ?></p>
+				<p><?php printf( __( '(These pages are created using %1$sshortcodes%2$s, which we take care of in this step. If you\'d like to build these pages yourself or want to add one of these options to an existing page on your site, you can skip this step and take a look at %4$sshortcode documentation%2$s for detailed instructions.)', 'wp-restaurant-listings' ), '<a href="http://codex.wordpress.org/Shortcode" title="What is a shortcode?" target="_blank" class="help-page-link">', '</a>', '<a href="http://codex.wordpress.org/Pages" target="_blank" class="help-page-link">', '<a href="https://wpdrift.com/docs/restaurants/shortcode-reference/" target="_blank" class="help-page-link">' ); ?></p>
 
 				<form action="<?php echo esc_url( add_query_arg( 'step', 3 ) ); ?>" method="post">
 				<?php wp_nonce_field( 'step_3', 'setup_wizard' ); ?>
@@ -190,9 +191,7 @@ class WP_Restaurant_Listings_Setup {
 								<td><input type="checkbox" checked="checked" name="wp-restaurant-listings-create-page[submit_restaurant_form]" /></td>
 								<td><input type="text" value="<?php echo esc_attr( _x( 'Post a Restaurant', 'Default page title (wizard)', 'wp-restaurant-listings' ) ); ?>" name="wp-restaurant-listings-page-title[submit_restaurant_form]" /></td>
 								<td>
-									<p><?php _e( 'This page allows employers to post restaurants to your website from the front-end.', 'wp-restaurant-listings' ); ?></p>
-
-									<p><?php _e( 'If you do not want to accept submissions from users in this way (for example you just want to post restaurants from the admin dashboard) you can skip creating this page.', 'wp-restaurant-listings' ); ?></p>
+									<p><?php _e( 'Creates a page that allows users to post new restaurants directly from a page on your website, instead of requiring them to log in to an admin area. If you\'d rather not allow this -- for example, if you want users to use the admin dashboard only -- you can uncheck this setting.', 'wp-restaurant-listings' ); ?></p>
 								</td>
 								<td><code>[submit_restaurant_form]</code></td>
 							</tr>
@@ -200,16 +199,14 @@ class WP_Restaurant_Listings_Setup {
 								<td><input type="checkbox" checked="checked" name="wp-restaurant-listings-create-page[restaurant_dashboard]" /></td>
 								<td><input type="text" value="<?php echo esc_attr( _x( 'Restaurant Dashboard', 'Default page title (wizard)', 'wp-restaurant-listings' ) ); ?>" name="wp-restaurant-listings-page-title[restaurant_dashboard]" /></td>
 								<td>
-									<p><?php _e( 'This page allows employers to manage and edit their own restaurants from the front-end.', 'wp-restaurant-listings' ); ?></p>
-
-									<p><?php _e( 'If you plan on managing all listings from the admin dashboard you can skip creating this page.', 'wp-restaurant-listings' ); ?></p>
+									<p><?php _e( 'Creates a page that allows users to manage their restaurant listings directly from a page on your website, instead of requiring them to log in to an admin area. If you want to manage all restaurant listings from the admin dashboard only, you can uncheck this setting.', 'wp-restaurant-listings' ); ?></p>
 								</td>
 								<td><code>[restaurant_dashboard]</code></td>
 							</tr>
 							<tr>
 								<td><input type="checkbox" checked="checked" name="wp-restaurant-listings-create-page[restaurants]" /></td>
 								<td><input type="text" value="<?php echo esc_attr( _x( 'Restaurants', 'Default page title (wizard)', 'wp-restaurant-listings' ) ); ?>" name="wp-restaurant-listings-page-title[restaurants]" /></td>
-								<td><?php _e( 'This page allows users to browse, search, and filter restaurant listings on the front-end of your site.', 'wp-restaurant-listings' ); ?></td>
+								<td><?php _e( 'Creates a page where visitors can browse, search, and filter restaurant listings.', 'wp-restaurant-listings' ); ?></td>
 								<td><code>[restaurants]</code></td>
 							</tr>
                             <tr>
@@ -233,38 +230,38 @@ class WP_Restaurant_Listings_Setup {
 			<?php endif; ?>
 			<?php if ( 3 === $step ) : ?>
 
-				<h3><?php _e( 'All Done!', 'wp-restaurant-listings' ); ?></h3>
+				<h3><?php _e( 'You\'re ready to start using WP Restaurant Listings!', 'wp-restaurant-listings' ); ?></h3>
 
-				<p><?php _e( 'Looks like you\'re all set to start using the plugin. In case you\'re wondering where to go next:', 'wp-restaurant-listings' ); ?></p>
+				<p><?php _e( 'Wondering what to do now? Here are some of the most common next steps:', 'wp-restaurant-listings' ); ?></p>
 
 				<ul class="wp-restaurant-listings-next-steps">
-					<li><a href="<?php echo admin_url( 'edit.php?post_type=restaurant_listings&page=restaurant-listings-settings' ); ?>"><?php _e( 'Tweak the plugin settings', 'wp-restaurant-listings' ); ?></a></li>
-					<li><a href="<?php echo admin_url( 'post-new.php?post_type=restaurant_listings' ); ?>"><?php _e( 'Add a restaurant via the back-end', 'wp-restaurant-listings' ); ?></a></li>
-
-					<?php if ( $permalink = restaurant_listings_get_permalink( 'submit_restaurant_form' ) ) : ?>
-						<li><a href="<?php echo esc_url( $permalink ); ?>"><?php _e( 'Add a restaurant via the front-end', 'wp-restaurant-listings' ); ?></a></li>
-					<?php else : ?>
-						<li><a href="https://wpdrift.com/docs/restaurants/the-restaurant-submission-form/"><?php _e( 'Find out more about the front-end restaurant submission form', 'wp-restaurant-listings' ); ?></a></li>
-					<?php endif; ?>
+					<li><a href="<?php echo admin_url( 'edit.php?post_type=restaurant_listings&page=restaurant-listings-settings' ); ?>"><?php _e( 'Tweak your settings', 'wp-restaurant-listings' ); ?></a></li>
+					<li><a href="<?php echo admin_url( 'post-new.php?post_type=restaurant_listings' ); ?>"><?php _e( 'Add a restaurant using the admin dashboard', 'wp-restaurant-listings' ); ?></a></li>
 
 					<?php if ( $permalink = restaurant_listings_get_permalink( 'restaurants' ) ) : ?>
 						<li><a href="<?php echo esc_url( $permalink ); ?>"><?php _e( 'View submitted restaurant listings', 'wp-restaurant-listings' ); ?></a></li>
 					<?php else : ?>
-						<li><a href="https://wpdrift.com/docs/restaurants/shortcode-reference/#section-1"><?php _e( 'Add the [restaurants] shortcode to a page to list restaurants', 'wp-restaurant-listings' ); ?></a></li>
+						<li><a href="https://wpdrift.com/docs/restaurants/shortcode-reference/#section-1"><?php _e( 'Add restaurant listings to a page using the [restaurants] shortcode', 'wp-restaurant-listings' ); ?></a></li>
+					<?php endif; ?>
+
+					<?php if ( $permalink = restaurant_listings_get_permalink( 'submit_restaurant_form' ) ) : ?>
+						<li><a href="<?php echo esc_url( $permalink ); ?>"><?php _e( 'Add a restaurant via the front-end', 'wp-restaurant-listings' ); ?></a></li>
+					<?php else : ?>
+						<li><a href="https://wpdrift.com/docs/restaurants/the-restaurant-submission-form/"><?php _e( 'Learn to use the front-end restaurant submission board', 'wp-restaurant-listings' ); ?></a></li>
 					<?php endif; ?>
 
 					<?php if ( $permalink = restaurant_listings_get_permalink( 'restaurant_dashboard' ) ) : ?>
 						<li><a href="<?php echo esc_url( $permalink ); ?>"><?php _e( 'View the restaurant dashboard', 'wp-restaurant-listings' ); ?></a></li>
 					<?php else : ?>
-						<li><a href="https://wpdrift.com/docs/restaurants/the-restaurant-dashboard/"><?php _e( 'Find out more about the front-end restaurant dashboard', 'wp-restaurant-listings' ); ?></a></li>
+						<li><a href="https://wpdrift.com/docs/restaurants/the-restaurant-dashboard/"><?php _e( 'Learn to use the front-end restaurant dashboard', 'wp-restaurant-listings' ); ?></a></li>
 					<?php endif; ?>
 				</ul>
 
-				<p><?php printf( __( 'And don\'t forget, if you need any more help using <em>WP Restaurant Listings</em> you can consult the %1$sdocumentation%2$s or %3$spost on the forums%2$s!', 'wp-restaurant-listings' ), '<a href="https://wpdrift.com/docs/restaurants/">', '</a>', '<a href="https://wordpress.org/support/plugin/wp-restaurant-listings">' ); ?></p>
+				<p><?php printf( __( 'If you need help, you can find more detail in our %1$ssupport documentation%2$s or post your question on the %3$sWP Restaurant Listings support forums%2$s.', 'wp-restaurant-listings' ), '<a href="https://wpdrift.com/docs/restaurants/">', '</a>', '<a href="https://wordpress.org/support/plugin/wp-restaurant-listings">' ); ?></p>
 
 				<div class="wp-restaurant-listings-support-the-plugin">
-					<h3><?php _e( 'Support the Ongoing Development of this Plugin', 'wp-restaurant-listings' ); ?></h3>
-					<p><?php _e( 'There are many ways to support open-source projects such as WP Restaurant Listings, for example code contribution, translation, or even telling your friends how awesome the plugin (hopefully) is. Thanks in advance for your support - it is much appreciated!', 'wp-restaurant-listings' ); ?></p>
+					<h3><?php _e( 'Support WP Restaurant Listings\'s Ongoing Development', 'wp-restaurant-listings' ); ?></h3>
+					<p><?php _e( 'There are lots of ways you can support open source software projects like this one: contributing code, fixing a bug, assisting with non-English translation, or just telling your friends about WP Restaurant Listings to help spread the word. We appreciate your support!', 'wp-restaurant-listings' ); ?></p>
 					<ul>
 						<li class="icon-review"><a href="https://wordpress.org/support/view/plugin-reviews/wp-restaurant-listings#postform"><?php _e( 'Leave a positive review', 'wp-restaurant-listings' ); ?></a></li>
 						<li class="icon-localization"><a href="https://translate.wordpress.org/projects/wp-plugins/wp-restaurant-listings"><?php _e( 'Contribute a localization', 'wp-restaurant-listings' ); ?></a></li>
