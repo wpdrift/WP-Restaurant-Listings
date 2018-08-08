@@ -138,17 +138,17 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 			$restaurant_type = 'term-select';
 		}
 
-        $currency_symbol = get_option('restaurant_listings_currency');
+		$currency_symbol = get_option('restaurant_listings_currency');
 
 		$this->fields = apply_filters( 'submit_restaurant_form_fields', array(
 			'basic' => array(
-                'restaurant_name' => array(
-                    'label'       => __( 'Restaurant name', 'wp-restaurant-listings' ),
-                    'type'        => 'text',
-                    'required'    => true,
-                    'placeholder' => __( 'Enter the name of the restaurant', 'wp-restaurant-listings' ),
-                    'priority'    => 1
-                ),
+				'restaurant_name' => array(
+					'label'       => __( 'Restaurant name', 'wp-restaurant-listings' ),
+					'type'        => 'text',
+					'required'    => true,
+					'placeholder' => __( 'Enter the name of the restaurant', 'wp-restaurant-listings' ),
+					'priority'    => 1
+				),
 				'restaurant_location' => array(
 					'label'       => __( 'Address', 'wp-restaurant-listings' ),
 					'description' => __( 'Leave this blank if the location is not important', 'wp-restaurant-listings' ),
@@ -176,19 +176,19 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 					'taxonomy'    => 'restaurant_listings_category'
 				),
 				'restaurant_price_range' => array(
-                    'label'       => __( 'Price Range', 'wp-restaurant-listings' ),
-                    'type'        => 'select',
-                    'default'     => 1,
-                    'options'     => array(
-                        1 => str_repeat( $currency_symbol, 1 ),
-                        2 => str_repeat( $currency_symbol, 2 ),
-                        3 => str_repeat( $currency_symbol, 3 ),
-                        4 => str_repeat( $currency_symbol, 4 ),
-                    ),
-                    'required'    => true,
-                    'priority'    => 5,
-                    'default'     => '',
-                ),
+					'label'       => __( 'Price Range', 'wp-restaurant-listings' ),
+					'type'        => 'select',
+					'default'     => 1,
+					'options'     => array(
+						1 => str_repeat( $currency_symbol, 1 ),
+						2 => str_repeat( $currency_symbol, 2 ),
+						3 => str_repeat( $currency_symbol, 3 ),
+						4 => str_repeat( $currency_symbol, 4 ),
+					),
+					'required'    => true,
+					'priority'    => 5,
+					'default'     => '',
+				),
 				'restaurant_description' => array(
 					'label'       => __( 'Description', 'wp-restaurant-listings' ),
 					'type'        => 'wp-editor',
@@ -199,6 +199,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 				'application' => array(
 					'label'       => __( 'Restaurant email', 'wp-restaurant-listings' ),
 					'type'        => 'text',
+					'sanitizer'   => 'url_or_email',
 					'required'    => true,
 					'placeholder' => __( 'Enter an email address or website URL', 'wp-restaurant-listings' ),
 					'priority'    => 7
@@ -212,9 +213,10 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 					'placeholder' => __( '(877) 273-3049', 'wp-restaurant-listings' ),
 					'priority'    => 1
 				),
-                'restaurant_website' => array(
+				'restaurant_website' => array(
 					'label'       => __( 'Website', 'wp-restaurant-listings' ),
 					'type'        => 'text',
+					'sanitizer'   => 'url',
 					'required'    => false,
 					'placeholder' => __( 'http://', 'wp-restaurant-listings' ),
 					'priority'    => 2
@@ -229,6 +231,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 				'restaurant_video' => array(
 					'label'       => __( 'Video', 'wp-restaurant-listings' ),
 					'type'        => 'text',
+					'sanitizer'   => 'url',
 					'required'    => false,
 					'placeholder' => __( 'A link to a video about your restaurant', 'wp-restaurant-listings' ),
 					'priority'    => 4
@@ -255,44 +258,44 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 						'png'  => 'image/png'
 					)
 				),
-                'restaurant_image_gallery' => array(
-                    'label'       => __( 'Gallery Images',  'wp-restaurant-listings' ),
-                    'type'        => 'file',
-                    'multiple'    => true,
-                    'required'    => false,
-                    'placeholder' => '',
-                    'priority'    => 7,
-                    'ajax'        => true,
-                    'allowed_mime_types' => array(
-                        'jpg'  => 'image/jpeg',
-                        'jpeg' => 'image/jpeg',
-                        'gif'  => 'image/gif',
-                        'png'  => 'image/png'
-                    )
-                ),
-                'restaurant_menu' => array(
-                    'label'       => __( 'Menu',  'wp-restaurant-listings' ),
-                    'type'        => 'file',
-                    'multiple'    => true,
-                    'required'    => false,
-                    'placeholder' => '',
-                    'priority'    => 8,
-                    'ajax'        => true,
-                    'allowed_mime_types' => array(
-                        'jpg'  => 'image/jpeg',
-                        'jpeg' => 'image/jpeg',
-                        'gif'  => 'image/gif',
-                        'png'  => 'image/png'
-                    )
-                ),
-                'restaurant_hours' => array(
-                    'label'       => __( 'Hours of Operation', 'wp-restaurant-listings' ),
-                    'type'        => 'business-hours',
-                    'required'    => false,
-                    'placeholder' => '',
-                    'priority'    => 9,
-                    'default'     => ''
-                ),
+				'restaurant_image_gallery' => array(
+					'label'       => __( 'Gallery Images',  'wp-restaurant-listings' ),
+					'type'        => 'file',
+					'multiple'    => true,
+					'required'    => false,
+					'placeholder' => '',
+					'priority'    => 7,
+					'ajax'        => true,
+					'allowed_mime_types' => array(
+						'jpg'  => 'image/jpeg',
+						'jpeg' => 'image/jpeg',
+						'gif'  => 'image/gif',
+						'png'  => 'image/png'
+					)
+				),
+				'restaurant_menu' => array(
+					'label'       => __( 'Menu',  'wp-restaurant-listings' ),
+					'type'        => 'file',
+					'multiple'    => true,
+					'required'    => false,
+					'placeholder' => '',
+					'priority'    => 8,
+					'ajax'        => true,
+					'allowed_mime_types' => array(
+						'jpg'  => 'image/jpeg',
+						'jpeg' => 'image/jpeg',
+						'gif'  => 'image/gif',
+						'png'  => 'image/png'
+					)
+				),
+				'restaurant_hours' => array(
+					'label'       => __( 'Hours of Operation', 'wp-restaurant-listings' ),
+					'type'        => 'business-hours',
+					'required'    => false,
+					'placeholder' => '',
+					'priority'    => 9,
+					'default'     => ''
+				),
 			)
 		) );
 
@@ -412,12 +415,12 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 						case 'restaurant_logo' :
 							$this->fields[ $group_key ][ $key ]['value'] = has_post_thumbnail( $restaurant->ID ) ? get_post_thumbnail_id( $restaurant->ID ) : get_post_meta( $restaurant->ID, '_' . $key, true );
 						break;
-                        case 'restaurant_image_gallery' :
-                            $this->fields[ $group_key ][ $key ]['value'] = explode( ',', $restaurant->_restaurant_image_gallery );
-                            break;
-                        case 'restaurant_menu' :
-                            $this->fields[ $group_key ][ $key ]['value'] = explode( ',', $restaurant->_restauruant_menu );
-                            break;
+						case 'restaurant_image_gallery' :
+							$this->fields[ $group_key ][ $key ]['value'] = explode( ',', $restaurant->_restaurant_image_gallery );
+							break;
+						case 'restaurant_menu' :
+							$this->fields[ $group_key ][ $key ]['value'] = explode( ',', $restaurant->_restauruant_menu );
+							break;
 						default:
 							$this->fields[ $group_key ][ $key ]['value'] = get_post_meta( $restaurant->ID, '_' . $key, true );
 						break;
@@ -443,10 +446,10 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 
 		wp_enqueue_script( 'wp-restaurant-listings-restaurant-submission' );
 
-        wp_localize_script( 'wp-restaurant-listings-restaurant-submission', 'restaurant_listings_restaurant_submission', array(
-            'time_format' => str_replace( '\\', '\\\\', get_option( 'time_format' ) ),
-            'i18n_closed' => __( 'Closed','wp-restaurant-listings' ),
-        ) );
+		wp_localize_script( 'wp-restaurant-listings-restaurant-submission', 'restaurant_listings_restaurant_submission', array(
+			'time_format' => str_replace( '\\', '\\\\', get_option( 'time_format' ) ),
+			'i18n_closed' => __( 'Closed','wp-restaurant-listings' ),
+		) );
 
 		get_restaurant_listings_template( 'restaurant-submit.php', array(
 			'form'               => $this->form_name,
@@ -684,64 +687,64 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 
 				// Restaurant logo is a featured image
 				} elseif ( 'restaurant_logo' === $key ) {
-                    $attachment_id = is_numeric($values[$group_key][$key]) ? absint($values[$group_key][$key]) : $this->create_attachment($values[$group_key][$key]);
-                    if (empty($attachment_id)) {
-                        delete_post_thumbnail($this->restaurant_id);
-                    } else {
-                        set_post_thumbnail($this->restaurant_id, $attachment_id);
-                    }
-                    update_user_meta(get_current_user_id(), '_restaurant_logo', $attachment_id);
+					$attachment_id = is_numeric($values[$group_key][$key]) ? absint($values[$group_key][$key]) : $this->create_attachment($values[$group_key][$key]);
+					if (empty($attachment_id)) {
+						delete_post_thumbnail($this->restaurant_id);
+					} else {
+						set_post_thumbnail($this->restaurant_id, $attachment_id);
+					}
+					update_user_meta(get_current_user_id(), '_restaurant_logo', $attachment_id);
 
 
-                // Restaurant image gallery
+				// Restaurant image gallery
 				} elseif ( 'restaurant_image_gallery' === $key ) {
 
-                    $field_values = $values[$group_key][$key];
+					$field_values = $values[$group_key][$key];
 
-                    if (is_array($field_values) && sizeof($field_values) >0 ) {
+					if (is_array($field_values) && sizeof($field_values) >0 ) {
 
-	                    foreach ( $field_values as $image ) {
-		                    $attachment_id = is_numeric( $image ) ? absint( $image ) : $this->create_attachment( $image );
-		                    if ( !empty( $attachment_id ) ) {
-			                    $image_gallery[] = $attachment_id;
-		                    }
-	                    }
+						foreach ( $field_values as $image ) {
+							$attachment_id = is_numeric( $image ) ? absint( $image ) : $this->create_attachment( $image );
+							if ( !empty( $attachment_id ) ) {
+								$image_gallery[] = $attachment_id;
+							}
+						}
 
-	                    $image_gallery = array_filter( $image_gallery );
+						$image_gallery = array_filter( $image_gallery );
 
-	                    if ( sizeof( $image_gallery ) ) {
-		                    $this->fields['extra']['restaurant_image_gallery']['value'] = $image_gallery;
-		                    update_post_meta( $this->restaurant_id, '_restaurant_image_gallery', join( ',', $image_gallery ) );
-	                    }
-                    }
+						if ( sizeof( $image_gallery ) ) {
+							$this->fields['extra']['restaurant_image_gallery']['value'] = $image_gallery;
+							update_post_meta( $this->restaurant_id, '_restaurant_image_gallery', join( ',', $image_gallery ) );
+						}
+					}
 
-                    // Restaurant menu
-                } elseif ( 'restaurant_menu' === $key ) {
+					// Restaurant menu
+				} elseif ( 'restaurant_menu' === $key ) {
 
-                    $field_values = $values[$group_key][$key];
+					$field_values = $values[$group_key][$key];
 
-                    if ( is_array($field_values) && sizeof($field_values) > 0 ) {
-	                    foreach ( $field_values as $image ) {
-		                    $attachment_id = is_numeric( $image ) ? absint( $image ) : $this->create_attachment( $image );
-		                    if ( !empty( $attachment_id ) ) {
-			                    $menu[] = $attachment_id;
-		                    }
-	                    }
+					if ( is_array($field_values) && sizeof($field_values) > 0 ) {
+						foreach ( $field_values as $image ) {
+							$attachment_id = is_numeric( $image ) ? absint( $image ) : $this->create_attachment( $image );
+							if ( !empty( $attachment_id ) ) {
+								$menu[] = $attachment_id;
+							}
+						}
 
-	                    $menu = array_filter( $menu );
+						$menu = array_filter( $menu );
 
-	                    if ( sizeof( $menu ) ) {
-		                    $this->fields['extra']['restaurant_menu']['value'] = $menu;
-		                    update_post_meta( $this->restaurant_id, '_restaurant_menu', join( ',', $menu ) );
-	                    }
-                    }
+						if ( sizeof( $menu ) ) {
+							$this->fields['extra']['restaurant_menu']['value'] = $menu;
+							update_post_meta( $this->restaurant_id, '_restaurant_menu', join( ',', $menu ) );
+						}
+					}
 
-                    // Save meta data
-                } else {
+					// Save meta data
+				} else {
 
-                    if (  'restaurant_image_gallery' !== $key ) {
-                        update_post_meta( $this->restaurant_id, '_' . $key, $values[ $group_key ][ $key ] );
-                    }
+					if (  'restaurant_image_gallery' !== $key ) {
+						update_post_meta( $this->restaurant_id, '_' . $key, $values[ $group_key ][ $key ] );
+					}
 
 					// Handle attachments
 					if ( 'file' === $field['type'] ) {
@@ -773,7 +776,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 
 			foreach ( $maybe_attach as $attachment_url ) {
 				if ( ! in_array( $attachment_url, $attachment_urls ) ) {
-                    $this->create_attachment( $attachment_url );
+					$this->create_attachment( $attachment_url );
 				}
 			}
 
