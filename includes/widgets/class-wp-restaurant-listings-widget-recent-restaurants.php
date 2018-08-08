@@ -76,6 +76,17 @@ class WP_Restaurant_Listings_Widget_Recent_Restaurants extends WP_Restaurant_Lis
 			'order'             => 'DESC',
 		) );
 
+		/**
+		 * Runs before Recent Restaurants widget content.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param array    $args
+		 * @param array    $instance
+		 * @param WP_Query $restaurants
+		 */
+		do_action( 'restaurant_listings_recent_restaurants_widget_before', $args, $instance, $restaurants );
+
 		if ( $restaurants->have_posts() ) : ?>
 
 			<?php echo $before_widget; ?>
@@ -99,6 +110,17 @@ class WP_Restaurant_Listings_Widget_Recent_Restaurants extends WP_Restaurant_Lis
 			<?php get_restaurant_listings_template_part( 'content-widget', 'no-restaurants-found' ); ?>
 
 		<?php endif;
+
+		/**
+		 * Runs after Recent Restaurants widget content.
+		 *
+		 * @since 1.29.1
+		 *
+		 * @param array    $args
+		 * @param array    $instance
+		 * @param WP_Query $restaurants
+		 */
+		do_action( 'restaurant_listings_recent_restaurants_widget_after', $args, $instance, $restaurants );
 
 		wp_reset_postdata();
 
