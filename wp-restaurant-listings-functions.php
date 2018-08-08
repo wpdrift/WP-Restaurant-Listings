@@ -1,174 +1,210 @@
 <?php
 if ( ! function_exists( 'get_restaurant_listings' ) ) :
-/**
- * Queries restaurant listings with certain criteria and returns them.
- *
- * @since 1.0.0
- * @param string|array|object $args Arguments used to retrieve restaurant listings.
- * @return WP_Query
- */
-function get_restaurant_listings( $args = array() ) {
-	global $wpdb, $restaurant_listings_keyword;
-
-	$args = wp_parse_args( $args, array(
-		'search_location'   => '',
-		'search_keywords'   => '',
-		'search_categories' => array(),
-		'restaurant_types'  => array(),
-		'search_price_range'=> '',
-		'post_status'       => array(),
-		'offset'            => 0,
-		'posts_per_page'    => 20,
-		'orderby'           => 'date',
-		'order'             => 'DESC',
-		'featured'          => null,
-		'fields'            => 'all'
-	) );
-
 	/**
-	 * Perform actions that need to be done prior to the start of the restaurant listings query.
+	 * Queries restaurant listings with certain criteria and returns them.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param array $args Arguments used to retrieve restaurant listings.
+	 * @param string|array|object $args Arguments used to retrieve restaurant listings.
+	 * @return WP_Query
 	 */
-	do_action( 'get_restaurant_listings_init', $args );
+	function get_restaurant_listings( $args = array() ) {
+		global $wpdb, $restaurant_listings_keyword;
 
-	if ( ! empty( $args['post_status'] ) ) {
-		$post_status = $args['post_status'];
-	} else {
-		$post_status = 'publish';
-	}
+		$args = wp_parse_args( $args, array(
+			'search_location'    => '',
+			'search_keywords'    => '',
+			'search_categories'  => array(),
+			'restaurant_types'   => array(),
+			'search_price_range' => '',
+			'post_status'        => array(),
+			'offset'             => 0,
+			'posts_per_page'     => 20,
+			'orderby'            => 'date',
+			'order'              => 'DESC',
+			'featured'           => null,
+			'fields'             => 'all',
+		) );
 
-	$query_args = array(
-		'post_type'              => 'restaurant_listings',
-		'post_status'            => $post_status,
-		'ignore_sticky_posts'    => 1,
-		'offset'                 => absint( $args['offset'] ),
-		'posts_per_page'         => intval( $args['posts_per_page'] ),
-		'orderby'                => $args['orderby'],
-		'order'                  => $args['order'],
-		'tax_query'              => array(),
-		'meta_query'             => array(),
-		'update_post_term_cache' => false,
-		'update_post_meta_cache' => false,
-		'cache_results'          => false,
-		'fields'                 => $args['fields']
-	);
+		/**
+		 * Perform actions that need to be done prior to the start of the restaurant listings query.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $args Arguments used to retrieve restaurant listings.
+		 */
+		do_action( 'get_restaurant_listings_init', $args );
 
-	if ( $args['posts_per_page'] < 0 ) {
-		$query_args['no_found_rows'] = true;
-	}
+		if ( ! empty( $args['post_status'] ) ) {
+			$post_status = $args['post_status'];
+		} else {
+			$post_status = 'publish';
+		}
 
-	if ( ! empty( $args['search_location'] ) ) {
-		$location_meta_keys = array( 'geolocation_formatted_address', '_restaurant_location', 'geolocation_state_long' );
-		$location_search    = array( 'relation' => 'OR' );
-		foreach ( $location_meta_keys as $meta_key ) {
-			$location_search[] = array(
-				'key'     => $meta_key,
-				'value'   => $args['search_location'],
-				'compare' => 'like'
+		$query_args = array(
+			'post_type'              => 'restaurant_listings',
+			'post_status'            => $post_status,
+			'ignore_sticky_posts'    => 1,
+			'offset'                 => absint( $args['offset'] ),
+			'posts_per_page'         => intval( $args['posts_per_page'] ),
+			'orderby'                => $args['orderby'],
+			'order'                  => $args['order'],
+			'tax_query'              => array(),
+			'meta_query'             => array(),
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+			'cache_results'          => false,
+			'fields'                 => $args['fields'],
+		);
+
+		if ( $args['posts_per_page'] < 0 ) {
+			$query_args['no_found_rows'] = true;
+		}
+
+		if ( ! empty( $args['search_location'] ) ) {
+			$location_meta_keys = array( 'geolocation_formatted_address', '_restaurant_location', 'geolocation_state_long' );
+			$location_search    = array( 'relation' => 'OR' );
+			foreach ( $location_meta_keys as $meta_key ) {
+				$location_search[] = array(
+					'key'     => $meta_key,
+					'value'   => $args['search_location'],
+					'compare' => 'like',
+				);
+			}
+			$query_args['meta_query'][] = $location_search;
+		}
+
+		if ( ! is_null( $args['featured'] ) ) {
+			$query_args['meta_query'][] = array(
+				'key'     => '_featured',
+				'value'   => '1',
+				'compare' => $args['featured'] ? '=' : '!=',
 			);
 		}
-		$query_args['meta_query'][] = $location_search;
-	}
 
-	if ( ! is_null( $args['featured'] ) ) {
-		$query_args['meta_query'][] = array(
-			'key'     => '_featured',
-			'value'   => '1',
-			'compare' => $args['featured'] ? '=' : '!='
-		);
-	}
+		if ( ! empty( $args['restaurant_types'] ) ) {
+			$query_args['tax_query'][] = array(
+				'taxonomy' => 'restaurant_listings_type',
+				'field'    => 'slug',
+				'terms'    => $args['restaurant_types'],
+			);
+		}
 
-	if ( ! empty( $args['restaurant_types'] ) ) {
-		$query_args['tax_query'][] = array(
-			'taxonomy' => 'restaurant_listings_type',
-			'field'    => 'slug',
-			'terms'    => $args['restaurant_types']
-		);
-	}
+		if ( ! empty( $args['search_price_range'] ) ) {
+			$query_args['meta_query'][] = array(
+				'key'       => '_restaurant_price_range',
+				'value'     => (int)$args['search_price_range'],
+				'compare'   => '=',
+			);
+		}
 
-	if ( ! empty( $args['search_price_range'] ) ) {
-		$query_args['meta_query'][] = array(
-			'key'       => '_restaurant_price_range',
-			'value'     => (int)$args['search_price_range'],
-			'compare'   => '=',
-		);
-	}
+		if ( ! empty( $args['search_categories'] ) ) {
+			$field                     = is_numeric( $args['search_categories'][0] ) ? 'term_id' : 'slug';
+			$operator                  = 'all' === get_option( 'restaurant_listings_category_filter_type', 'all' ) && sizeof( $args['search_categories'] ) > 1 ? 'AND' : 'IN';
+			$query_args['tax_query'][] = array(
+				'taxonomy'         => 'restaurant_listings_category',
+				'field'            => $field,
+				'terms'            => array_values( $args['search_categories'] ),
+				'include_children' => 'AND' !== $operator,
+				'operator'         => $operator,
+			);
+		}
 
-	if ( ! empty( $args['search_categories'] ) ) {
-		$field    = is_numeric( $args['search_categories'][0] ) ? 'term_id' : 'slug';
-		$operator = 'all' === get_option( 'restaurant_listings_category_filter_type', 'all' ) && sizeof( $args['search_categories'] ) > 1 ? 'AND' : 'IN';
-		$query_args['tax_query'][] = array(
-			'taxonomy'         => 'restaurant_listings_category',
-			'field'            => $field,
-			'terms'            => array_values( $args['search_categories'] ),
-			'include_children' => $operator !== 'AND' ,
-			'operator'         => $operator
-		);
-	}
+		if ( 'featured' === $args['orderby'] ) {
+			$query_args['orderby'] = array(
+				'menu_order' => 'ASC',
+				'date'       => 'DESC',
+			);
+		}
 
-	if ( 'featured' === $args['orderby'] ) {
-		$query_args['orderby'] = array(
-			'menu_order' => 'ASC',
-			'date'       => 'DESC'
-		);
-	}
+		if ( 'rand_featured' === $args['orderby'] ) {
+			$query_args['orderby'] = array(
+				'menu_order' => 'ASC',
+				'rand'       => 'ASC',
+			);
+		}
 
-	$restaurant_listings_keyword = sanitize_text_field( $args['search_keywords'] );
+		$restaurant_listings_keyword = sanitize_text_field( $args['search_keywords'] );
 
-	if ( ! empty( $restaurant_listings_keyword ) && strlen( $restaurant_listings_keyword ) >= apply_filters( 'restaurant_listings_get_listings_keyword_length_threshold', 2 ) ) {
-		$query_args['s'] = $restaurant_listings_keyword;
-		add_filter( 'posts_search', 'get_restaurant_listings_keyword_search' );
-	}
+		if ( ! empty( $restaurant_listings_keyword ) && strlen( $restaurant_listings_keyword ) >= apply_filters( 'restaurant_listings_get_listings_keyword_length_threshold', 2 ) ) {
+			$query_args['s'] = $restaurant_listings_keyword;
+			add_filter( 'posts_search', 'get_restaurant_listings_keyword_search' );
+		}
 
-	$query_args = apply_filters( 'restaurant_listings_get_listings', $query_args, $args );
+		$query_args = apply_filters( 'restaurant_listings_get_listings', $query_args, $args );
 
-	if ( empty( $query_args['meta_query'] ) ) {
-		unset( $query_args['meta_query'] );
-	}
+		if ( empty( $query_args['meta_query'] ) ) {
+			unset( $query_args['meta_query'] );
+		}
 
-	if ( empty( $query_args['tax_query'] ) ) {
-		unset( $query_args['tax_query'] );
-	}
+		if ( empty( $query_args['tax_query'] ) ) {
+			unset( $query_args['tax_query'] );
+		}
 
-	/** This filter is documented in wp-restaurant-listings.php */
-	$query_args['lang'] = apply_filters( 'wprl_lang', null );
+		/** This filter is documented in wp-restaurant-listings.php */
+		$query_args['lang'] = apply_filters( 'wprl_lang', null );
 
-	// Filter args
-	$query_args = apply_filters( 'get_restaurant_listings_query_args', $query_args, $args );
+		// Filter args.
+		$query_args = apply_filters( 'get_restaurant_listings_query_args', $query_args, $args );
 
-	// Generate hash
-	$to_hash         = json_encode( $query_args );
-	$query_args_hash = 'jm_' . md5( $to_hash ) . WP_Restaurant_Listings_Cache_Helper::get_transient_version( 'get_restaurant_listings' );
+		// Generate hash.
+		$to_hash         = json_encode( $query_args );
+		$query_args_hash = 'jm_' . md5( $to_hash ) . WP_Restaurant_Listings_Cache_Helper::get_transient_version( 'get_restaurant_listings' );
 
-	do_action( 'before_get_restaurant_listings', $query_args, $args );
+		do_action( 'before_get_restaurant_listings', $query_args, $args );
 
-	// Cache results
-	if ( apply_filters( 'get_restaurant_listings_cache_results', true ) ) {
+		// Cache results.
+		if ( apply_filters( 'get_restaurant_listings_cache_results', true ) ) {
 
-		if ( false === ( $result = get_transient( $query_args_hash ) ) ) {
+			$cached_query = true;
+			$result       = get_transient( $query_args_hash );
+			if ( false === $result ) {
+				$result       = new WP_Query( $query_args );
+				$cached_query = false;
+				set_transient( $query_args_hash, $result, DAY_IN_SECONDS );
+			}
+
+			if ( $cached_query ) {
+				// random order is cached so shuffle them.
+				if ( 'rand_featured' === $args['orderby'] ) {
+					usort( $result->posts, '_wprl_shuffle_featured_post_results_helper' );
+				} elseif ( 'rand' === $args['orderby'] ) {
+					shuffle( $result->posts );
+				}
+			}
+		} else {
 			$result = new WP_Query( $query_args );
-			set_transient( $query_args_hash, $result, DAY_IN_SECONDS );
 		}
 
-		// random order is cached so shuffle them
-		if ( $query_args[ 'orderby' ] == 'rand' ) {
-			shuffle( $result->posts );
+		do_action( 'after_get_restaurant_listings', $query_args, $args );
+
+		remove_filter( 'posts_search', 'get_restaurant_listings_keyword_search' );
+
+		return $result;
+	}
+endif;
+
+if ( ! function_exists( '_wprl_shuffle_featured_post_results_helper' ) ) :
+	/**
+	 * Helper function to maintain featured status when shuffling results.
+	 *
+	 * @param WP_Post $a
+	 * @param WP_Post $b
+	 *
+	 * @return bool
+	 */
+	function _wprl_shuffle_featured_post_results_helper( $a, $b ) {
+		if ( -1 === $a->menu_order || -1 === $b->menu_order ) {
+			// Left is featured.
+			if ( 0 === $b->menu_order ) {
+				return -1;
+			}
+			// Right is featured.
+			if ( 0 === $a->menu_order ) {
+				return 1;
+			}
 		}
-
+		return rand( -1, 1 );
 	}
-	else {
-		$result = new WP_Query( $query_args );
-	}
-
-	do_action( 'after_get_restaurant_listings', $query_args, $args );
-
-	remove_filter( 'posts_search', 'get_restaurant_listings_keyword_search' );
-
-	return $result;
-}
 endif;
 
 if ( ! function_exists( 'get_restaurant_listings_keyword_search' ) ) :
