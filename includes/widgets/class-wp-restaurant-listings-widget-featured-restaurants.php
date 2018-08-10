@@ -58,7 +58,11 @@ class WP_Restaurant_Listings_Widget_Featured_Restaurants extends WP_Restaurant_L
 
 		$title  = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
 		$number = absint( $instance['number'] );
-		$restaurants   = get_restaurant_listings( array(
+
+		$title_instance = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+		$number         = isset( $instance['number'] ) ? absint( $instance['number'] ) : '';
+		$title          = apply_filters( 'widget_title', $title_instance, $instance, $this->id_base );
+		$restaurants    = get_restaurant_listings( array(
 			'posts_per_page' => $number,
 			'orderby'        => 'date',
 			'order'          => 'DESC',
@@ -87,7 +91,8 @@ class WP_Restaurant_Listings_Widget_Featured_Restaurants extends WP_Restaurant_L
 
 			<?php get_restaurant_listings_template_part( 'content-widget', 'no-restaurants-found' ); ?>
 
-		<?php endif;
+		<?php
+		endif;
 
 		wp_reset_postdata();
 
