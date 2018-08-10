@@ -30,9 +30,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</fieldset>
 
 <?php else :
-	$account_required      = restaurant_listings_user_requires_account();
-	$registration_enabled  = restaurant_listings_enable_registration();
-	$registration_fields   = wprl_get_registration_fields();
+	$account_required            = restaurant_listings_user_requires_account();
+	$registration_enabled        = restaurant_listings_enable_registration();
+	$registration_fields         = wprl_get_registration_fields();
+	$use_standard_password_email = wprl_use_standard_password_setup_email();
 	?>
 	<fieldset>
 		<label><?php _e( 'Have an account?', 'wp-restaurant-listings' ); ?></label>
@@ -41,7 +42,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php if ( $registration_enabled ) : ?>
 
-				<?php printf( __( 'If you don&rsquo;t have an account you can %screate one below by entering your email address/username. Your account details will be confirmed via email.', 'wp-restaurant-listings' ), $account_required ? '' : __( 'optionally', 'wp-restaurant-listings' ) . ' ' ); ?>
+				<?php printf( __( 'If you don&rsquo;t have an account you can %screate one below by entering your email address/username.', 'wp-restaurant-listings' ), $account_required ? '' : __( 'optionally', 'wp-restaurant-listings' ) . ' ' ); ?>
+				<?php if ( $use_standard_password_email ) : ?>
+					<?php printf( __( 'Your account details will be confirmed via email.', 'wp-restaurant-listings' ) ); ?>
+				<?php endif; ?>
 
 			<?php elseif ( $account_required ) : ?>
 
