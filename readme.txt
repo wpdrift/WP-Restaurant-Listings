@@ -65,12 +65,12 @@ Once installed:
 
 **Note when using shortcodes**, if the content looks blown up/spaced out/poorly styled, edit your page and above the visual editor click on the 'text' tab. Then remove any 'pre' or 'code' tags wrapping your shortcode.
 
-For more information, [read the documentation](https://wpdrift.com/docs/restaurants/).
+For more information, [read the documentation](https://wpdrift.com/docs/article-categories/restaurants/).
 
 == Frequently Asked Questions ==
 
 = How do I setup WP Restaurant Listings? =
-View the getting [installation](https://wpdrift.com/docs/restaurants/installation/) and [setup](https://wpdrift.com/docs/restaurants/setting-up-wp-job-manager/) guide for advice getting started with the plugin. In most cases it's just a case of adding some shortcodes to your pages!
+View the getting [installation](https://wpdrift.com/docs/knowledge-base/installation-guide/) and [setup](https://wpdrift.com/docs/knowledge-base/setting-up-wp-restaurant-listings/) guide for advice getting started with the plugin. In most cases it's just a case of adding some shortcodes to your pages!
 
 = Can I use WP Restaurant Listings without frontend restaurant submission? =
 Yes! If you don't setup the [submit_restaurant_form] shortcode, you can just post from the admin backend.
@@ -79,7 +79,7 @@ Yes! If you don't setup the [submit_restaurant_form] shortcode, you can just pos
 There are three ways to customize the fields in WP Restaurant Listings;
 
 1. For simple text changes, using a localisation file or a plugin such as https://wordpress.org/plugins/say-what/
-2. For field changes, or adding new fields, using functions/filters inside your theme's functions.php file: [https://wpdrift.com/docs/restaurants/editing-job-submission-fields/](https://wpdrift.com/docs/restaurants/editing-job-submission-fields/)
+2. For field changes, or adding new fields, using functions/filters inside your theme's functions.php file: [https://wpdrift.com/docs/knowledge-base/editing-restaurant-submission-fields/](https://wpdrift.com/docs/knowledge-base/editing-restaurant-submission-fields/)
 3. Use a 3rd party plugin which has a UI for field editing.
 
 If you'd like to learn about WordPress filters, here is a great place to start: [https://pippinsplugins.com/a-quick-introduction-to-using-filters/](https://pippinsplugins.com/a-quick-introduction-to-using-filters/)
@@ -96,6 +96,18 @@ If you'd like to learn about WordPress filters, here is a great place to start: 
 == Changelog ==
 
 = 1.0.1 =
+* Enhancement: In WP Admin just strip tags from custom field labels instead of escaping them.
+* Fix: When using Polylang, only the active language's restaurant listings will be displayed in the [restaurants] shortcode.
+* Enhancement: Sanitize field input using different strategies.
+* Change: Updates account-signin.php template to warn users email will be confirmed only if that is enabled.
+* Enhancement: When retrieving listings in [restaurants] shortcode, setting orderby to rand_featured will still place featured listings at the top.
+* Dev: Runs new actions (restaurant_listings_recent_restaurants_widget_before and restaurant_listings_recent_restaurants_widget_after) inside Recent Restaurants widget.
+* Dev: Change get_the_restaurant_types() to return an empty array when restaurant types are disabled.
+* Enhancement: Update language for setup wizard with more clear descriptions.
+* Fix: Prevent duplicate attachments to restaurant listing posts for non-image media.
+* Fix: PHP error on registration form due to missing placeholder text.
+* Fix: Properly reset category selector on [restaurants] shortcode
+* Fix: Show restaurant listing's published date in localized format
 * Dev: Adds versions to template files so it is easier to tell when they are updated.
 * Dev: Adds a new `wprl_notify_new_user` action that allows you to override default behavior.
 
