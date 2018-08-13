@@ -236,10 +236,10 @@ abstract class WP_Restaurant_Listings_Form {
 	 * @return int
 	 */
 	protected function sort_by_priority( $a, $b ) {
-	    if ( $a['priority'] == $b['priority'] ) {
-	        return 0;
-	    }
-	    return ( $a['priority'] < $b['priority'] ) ? -1 : 1;
+		if ( $a['priority'] == $b['priority'] ) {
+			return 0;
+		}
+		return ( $a['priority'] < $b['priority'] ) ? -1 : 1;
 	}
 
 	/**
@@ -294,8 +294,13 @@ abstract class WP_Restaurant_Listings_Form {
 	protected function sanitize_posted_field( $value, $sanitizer = null ) {
 		// Sanitize value.
 		if ( is_array( $value ) ) {
-			return array_map( array( $this, 'sanitize_posted_field' ), $value, $sanitizer );
+			foreach ( $value as $key => $val ) {
+				$value[ $key ] = $this->sanitize_posted_field( $val, $sanitizer );
+			}
+
+			return $value;
 		}
+
 		$value = trim( $value );
 
 		if ( 'url' === $sanitizer ) {

@@ -38,16 +38,17 @@ class WP_Restaurant_Listings_Admin {
 	public function __construct() {
 		global $wp_version;
 
-		include_once( 'class-wp-restaurant-listings-cpt.php' );
+		include_once dirname( __FILE__ ) . '/class-wp-restaurant-listings-cpt.php';
 		if ( version_compare( $wp_version, '4.7.0', '<' ) ) {
-			include_once( 'class-wp-restaurant-listings-cpt-legacy.php' );
+			include_once dirname( __FILE__ ) . '/class-wp-restaurant-listings-cpt-legacy.php';
 			WP_Restaurant_Listings_CPT_Legacy::instance();
 		} else {
 			WP_Restaurant_Listings_CPT::instance();
 		}
-		include_once( 'class-wp-restaurant-listings-settings.php' );
-		include_once( 'class-wp-restaurant-listings-writepanels.php' );
-		include_once( 'class-wp-restaurant-listings-setup.php' );
+
+		include_once dirname( __FILE__ ) . '/class-wp-restaurant-listings-settings.php';
+		include_once dirname( __FILE__ ) . '/class-wp-restaurant-listings-writepanels.php';
+		include_once dirname( __FILE__ ) . '/class-wp-restaurant-listings-setup.php';
 
 		$this->settings_page = WP_Restaurant_Listings_Settings::instance();
 
@@ -60,12 +61,14 @@ class WP_Restaurant_Listings_Admin {
 	 * Include admin files conditionally.
 	 */
 	public function conditional_includes() {
-		if ( ! $screen = get_current_screen() ) {
+		$screen = get_current_screen();
+		if ( ! $screen ) {
 			return;
 		}
+
 		switch ( $screen->id ) {
-			case 'options-permalink' :
-				include( 'class-wp-restaurant-listings-permalink-settings.php' );
+			case 'options-permalink':
+				include dirname( __FILE__ ) . '/class-wp-restaurant-listings-permalink-settings.php';
 				break;
 		}
 	}
