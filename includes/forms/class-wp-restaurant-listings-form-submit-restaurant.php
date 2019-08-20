@@ -228,27 +228,12 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 					'placeholder' => __( 'Brief description about the restaurant', 'wp-restaurant-listings' ),
 					'priority'    => 3
 				),
-				'restaurant_video' => array(
-					'label'       => __( 'Video', 'wp-restaurant-listings' ),
-					'type'        => 'text',
-					'sanitizer'   => 'url',
-					'required'    => false,
-					'placeholder' => __( 'A link to a video about your restaurant', 'wp-restaurant-listings' ),
-					'priority'    => 4
-				),
-				'restaurant_twitter' => array(
-					'label'       => __( 'Twitter username', 'wp-restaurant-listings' ),
-					'type'        => 'text',
-					'required'    => false,
-					'placeholder' => __( '@yourcompany', 'wp-restaurant-listings' ),
-					'priority'    => 5
-				),
 				'restaurant_logo' => array(
 					'label'       => __( 'Logo', 'wp-restaurant-listings' ),
 					'type'        => 'file',
 					'required'    => false,
 					'placeholder' => '',
-					'priority'    => 6,
+					'priority'    => 4,
 					'ajax'        => true,
 					'multiple'    => false,
 					'allowed_mime_types' => array(
@@ -264,7 +249,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 					'multiple'    => true,
 					'required'    => false,
 					'placeholder' => '',
-					'priority'    => 7,
+					'priority'    => 5,
 					'ajax'        => true,
 					'allowed_mime_types' => array(
 						'jpg'  => 'image/jpeg',
@@ -279,7 +264,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 					'multiple'    => true,
 					'required'    => false,
 					'placeholder' => '',
-					'priority'    => 8,
+					'priority'    => 6,
 					'ajax'        => true,
 					'allowed_mime_types' => array(
 						'jpg'  => 'image/jpeg',
@@ -293,7 +278,7 @@ class WP_Restaurant_Listings_Form_Submit_Restaurant extends WP_Restaurant_Listin
 					'type'        => 'business-hours',
 					'required'    => false,
 					'placeholder' => '',
-					'priority'    => 9,
+					'priority'    => 7,
 					'default'     => ''
 				),
 			)
