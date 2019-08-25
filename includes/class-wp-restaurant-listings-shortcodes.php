@@ -55,7 +55,6 @@ class WP_Restaurant_Listings_Shortcodes {
 		add_shortcode( 'restaurants', array( $this, 'output_restaurants' ) );
 		add_shortcode( 'restaurant', array( $this, 'output_restaurant' ) );
 		add_shortcode( 'restaurant_summary', array( $this, 'output_restaurant_summary' ) );
-		add_shortcode( 'restaurant_apply', array( $this, 'output_restaurant_apply' ) );
 
 	}
 
