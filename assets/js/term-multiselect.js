@@ -1,4 +1,4 @@
-/* global restaurant_listings_chosen_multiselect_args */
+/* global restaurant_listings_select2_multiselect_args */
 jQuery(function(){
-	jQuery( '.restaurant-listings-category-dropdown' ).chosen( restaurant_listings_chosen_multiselect_args );
+	jQuery( '.restaurant-listings-category-dropdown' ).select2( restaurant_listings_select2_multiselect_args );
 });

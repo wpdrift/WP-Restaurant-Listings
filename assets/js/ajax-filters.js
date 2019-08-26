@@ -199,8 +199,8 @@ jQuery(document).ready(function ($) {
 		var target = $(this).closest('div.restaurant_listings');
 		var form = $(this).closest('form');
 
-		form.find(':input[name="search_keywords"], :input[name="search_location"], .restaurant-listings-filter').not(':input[type="hidden"]').val('').trigger('chosen:updated');
-		form.find(':input[name^="search_categories"]').not(':input[type="hidden"]').val('').trigger('chosen:updated');
+		form.find(':input[name="search_keywords"], :input[name="search_location"], .restaurant-listings-filter').not(':input[type="hidden"]').val('').trigger("change");
+		form.find(':input[name^="search_categories"]').not(':input[type="hidden"]').val('').trigger("change");
 		$(':input[name="filter_restaurant_type[]"]', form).not(':input[type="hidden"]').attr('checked', 'checked');
 		form.find(':input[name="search_price_range"]').val('');
 		form.find('.price_range_filter li').attr('style', ''); // Reset button style
@@ -260,11 +260,11 @@ jQuery(document).ready(function ($) {
 		return false;
 	});
 
-	if($.isFunction($.fn.chosen)) {
+	if($.isFunction($.fn.select2)) {
 		if(restaurant_listings_ajax_filters.is_rtl === 1) {
-			$('select[name^="search_categories"]').addClass('chosen-rtl');
+			$('select[name^="search_categories"]').addClass('select2-rtl');
 		}
-		$('select[name^="search_categories"]').chosen({ search_contains: true });
+		$('select[name^="search_categories"]').select2();
 	}
 
 	var $supports_html5_history = false;
@@ -296,7 +296,7 @@ jQuery(document).ready(function ($) {
 				if(state.id && 'restaurant_listings_state' === state.id && index === state.index) {
 					inital_page = state.page;
 					form.deserialize(state.data);
-					form.find(':input[name^="search_categories"]').not(':input[type="hidden"]').trigger('chosen:updated');
+					form.find(':input[name^="search_categories"]').not(':input[type="hidden"]').trigger("change");
 				}
 			}
 

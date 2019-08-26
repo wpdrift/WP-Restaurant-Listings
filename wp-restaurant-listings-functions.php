@@ -789,7 +789,7 @@ function restaurant_listings_dropdown_categories( $args = '' ) {
 		'hierarchical'    => 0,
 		'name'            => 'cat',
 		'id'              => '',
-		'class'           => 'restaurant-listings-category-dropdown ' . ( is_rtl() ? 'chosen-rtl' : '' ),
+		'class'           => 'restaurant-listings-category-dropdown ' . ( is_rtl() ? 'select2-rtl' : '' ),
 		'depth'           => 0,
 		'taxonomy'        => 'restaurant_listings_category',
 		'value'           => 'id',
@@ -797,7 +797,7 @@ function restaurant_listings_dropdown_categories( $args = '' ) {
 		'show_option_all' => false,
 		'placeholder'     => __( 'Choose a category&hellip;', 'wp-restaurant-listings' ),
 		'no_results_text' => __( 'No results match', 'wp-restaurant-listings' ),
-		'multiple_text'   => __( 'Select Some Options', 'wp-restaurant-listings' )
+		'multiple_text'   => __( 'Select Some Options', 'wp-restaurant-listings' ),
 	);
 
 	$r = wp_parse_args( $args, $defaults );

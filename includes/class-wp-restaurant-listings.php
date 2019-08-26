@@ -216,18 +216,25 @@ class WP_Restaurant_Listings {
 		 */
 		$ajax_data['lang'] = apply_filters( 'wprl_lang', null );
 
-		if ( apply_filters( 'restaurant_listings_chosen_enabled', true ) ) {
-			wp_register_script( 'chosen', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/jquery-chosen/chosen.jquery.min.js', array( 'jquery' ), '1.1.0', true );
-			wp_register_script( 'wp-restaurant-listings-term-multiselect', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/term-multiselect.min.js', array( 'jquery', 'chosen' ), RESTAURANT_LISTING_VERSION, true );
-			wp_register_script( 'wp-restaurant-listings-multiselect', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/multiselect.min.js', array( 'jquery', 'chosen' ), RESTAURANT_LISTING_VERSION, true );
-			wp_enqueue_style( 'chosen', RESTAURANT_LISTING_PLUGIN_URL . '/assets/css/chosen.css', array(), '1.1.0' );
-			$ajax_filter_deps[] = 'chosen';
+		if ( apply_filters( 'restaurant_listings_select2_enabled', true ) ) {
+			$ajax_filter_deps[] = 'select2';
 
-			wp_localize_script( 'chosen', 'restaurant_listings_chosen_multiselect_args',
-				apply_filters( 'restaurant_listings_chosen_multiselect_args', array(
-					'search_contains' => true,
-				) )
+			wp_register_script( 'select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js', array( 'jquery' ), '4.0.9', true );
+			wp_register_script( 'wp-restaurant-listings-term-multiselect', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/term-multiselect.min.js', array( 'jquery', 'select2' ), RESTAURANT_LISTING_VERSION, true );
+			wp_register_script( 'wp-restaurant-listings-multiselect', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/multiselect.min.js', array( 'jquery', 'select2' ), RESTAURANT_LISTING_VERSION, true );
+
+			wp_localize_script(
+				'select2',
+				'restaurant_listings_select2_multiselect_args',
+				apply_filters(
+					'restaurant_listings_select2_multiselect_args',
+					array(
+						'multiple' => true,
+					)
+				)
 			);
+
+			wp_enqueue_style( 'select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css', array(), '4.0.9' );
 		}
 
 		if ( apply_filters( 'restaurant_listings_ajax_file_upload_enabled', true ) ) {
@@ -236,27 +243,37 @@ class WP_Restaurant_Listings {
 			wp_register_script( 'wp-restaurant-listings-ajax-file-upload', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/ajax-file-upload.min.js', array( 'jquery', 'jquery-fileupload' ), RESTAURANT_LISTING_VERSION, true );
 
 			ob_start();
-			get_restaurant_listings_template( 'form-fields/uploaded-file-html.php', array(
-				'name'      => '',
-				'value'     => '',
-				'extension' => 'jpg',
-			) );
+			get_restaurant_listings_template(
+				'form-fields/uploaded-file-html.php',
+				array(
+					'name'      => '',
+					'value'     => '',
+					'extension' => 'jpg',
+				)
+			);
 			$js_field_html_img = ob_get_clean();
 
 			ob_start();
-			get_restaurant_listings_template( 'form-fields/uploaded-file-html.php', array(
-				'name'      => '',
-				'value'     => '',
-				'extension' => 'zip',
-			) );
+			get_restaurant_listings_template(
+				'form-fields/uploaded-file-html.php',
+				array(
+					'name'      => '',
+					'value'     => '',
+					'extension' => 'zip',
+				)
+			);
 			$js_field_html = ob_get_clean();
 
-			wp_localize_script( 'wp-restaurant-listings-ajax-file-upload', 'restaurant_listings_ajax_file_upload', array(
-				'ajax_url'               => $ajax_url,
-				'js_field_html_img'      => esc_js( str_replace( "\n", '', $js_field_html_img ) ),
-				'js_field_html'          => esc_js( str_replace( "\n", '', $js_field_html ) ),
-				'i18n_invalid_file_type' => __( 'Invalid file type. Accepted types:', 'wp-restaurant-listings' ),
-			) );
+			wp_localize_script(
+				'wp-restaurant-listings-ajax-file-upload',
+				'restaurant_listings_ajax_file_upload',
+				array(
+					'ajax_url'               => $ajax_url,
+					'js_field_html_img'      => esc_js( str_replace( "\n", '', $js_field_html_img ) ),
+					'js_field_html'          => esc_js( str_replace( "\n", '', $js_field_html ) ),
+					'i18n_invalid_file_type' => __( 'Invalid file type. Accepted types:', 'wp-restaurant-listings' ),
+				)
+			);
 		}
 
 		// Slick.
@@ -290,21 +307,29 @@ class WP_Restaurant_Listings {
 		wp_register_script( 'wp-restaurant-listings-main', RESTAURANT_LISTING_PLUGIN_URL . '/assets/js/wp-restaurant-listings.min.js', array( 'jquery' ), RESTAURANT_LISTING_VERSION );
 
 		wp_localize_script( 'wp-restaurant-listings-ajax-filters', 'restaurant_listings_ajax_filters', $ajax_data );
-		wp_localize_script( 'wp-restaurant-listings-restaurant-dashboard', 'restaurant_listings_restaurant_dashboard', array(
-			'i18n_confirm_delete' => __( 'Are you sure you want to delete this listings?', 'wp-restaurant-listings' ),
-		) );
+		wp_localize_script(
+			'wp-restaurant-listings-restaurant-dashboard',
+			'restaurant_listings_restaurant_dashboard',
+			array(
+				'i18n_confirm_delete' => __( 'Are you sure you want to delete this listings?', 'wp-restaurant-listings' ),
+			)
+		);
 
-		wp_localize_script( 'wp-restaurant-listings-main', 'restaurant_listings_vars', array(
-			'access_token'              => get_option( 'restaurant_listings_mapbox_access_token' ),
-			'ajax_url'                  => admin_url( 'admin-ajax.php' ),
-			'infowindowTemplatePath'    => RESTAURANT_LISTING_PLUGIN_URL . '/templates/storelocator/infowindow-description.html',
-			'listTemplatePath'          => RESTAURANT_LISTING_PLUGIN_URL . '/templates/storelocator/location-list-description.html',
-			'KMLinfowindowTemplatePath' => RESTAURANT_LISTING_PLUGIN_URL . '/templates/storelocator/kml-infowindow-description.html',
-			'KMLlistTemplatePath'       => RESTAURANT_LISTING_PLUGIN_URL . '/templates/storelocator/location-list-description.html',
-			'l10n'                      => array(
-				'close' => __( 'Close', 'wp-restaurant-listings' ),
-			),
-		) );
+		wp_localize_script(
+			'wp-restaurant-listings-main',
+			'restaurant_listings_vars',
+			array(
+				'access_token'              => get_option( 'restaurant_listings_mapbox_access_token' ),
+				'ajax_url'                  => admin_url( 'admin-ajax.php' ),
+				'infowindowTemplatePath'    => RESTAURANT_LISTING_PLUGIN_URL . '/templates/storelocator/infowindow-description.html',
+				'listTemplatePath'          => RESTAURANT_LISTING_PLUGIN_URL . '/templates/storelocator/location-list-description.html',
+				'KMLinfowindowTemplatePath' => RESTAURANT_LISTING_PLUGIN_URL . '/templates/storelocator/kml-infowindow-description.html',
+				'KMLlistTemplatePath'       => RESTAURANT_LISTING_PLUGIN_URL . '/templates/storelocator/location-list-description.html',
+				'l10n'                      => array(
+					'close' => __( 'Close', 'wp-restaurant-listings' ),
+				),
+			)
+		);
 
 		if ( is_singular( 'restaurant_listings' ) ) {
 			wp_enqueue_style( 'photoswipe' );

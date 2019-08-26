@@ -200,7 +200,6 @@ module.exports = function( grunt ){
 				'assets/js/**/*.js',
 				'!assets/js/**/*.min.js',
 				// External Libraries:
-				'!assets/js/jquery-chosen/*.js',
 				'!assets/js/jquery-deserialize/*.js',
 				'!assets/js/jquery-fileupload/*.js',
 				'!assets/js/jquery-tiptip/*.js'
