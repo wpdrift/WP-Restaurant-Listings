@@ -2,8 +2,8 @@
 **Contributors:** [WPdrift](https://profiles.wordpress.org/WPdrift), [upnrunn](https://profiles.wordpress.org/upnrunn), [kishores](https://profiles.wordpress.org/kishores), [bhoot](https://profiles.wordpress.org/bhoot)  
 **Tags:** restaurant manager, restaurant listing, restaurant board, restaurant management, restaurant lists, restaurant list, restaurant  
 **Requires at least:** 4.7  
-**Tested up to:** 4.9  
-**Stable tag:** 1.0.1  
+**Tested up to:** 5.2.2  
+**Stable tag:** 1.0.2  
 **License:** GPLv3  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -94,6 +94,10 @@ If you'd like to learn about WordPress filters, here is a great place to start: 
 6. Restaurant Listings in admin.
 
 ## Changelog ##
+
+### 1.0.2 ###
+* Replace Chosen with Select2 for enhanced dropdown handling and better mobile support.
+* Fix: Undefined variable: restaurant_image_gallery
 
 ### 1.0.1 ###
 * Enhancement: In WP Admin just strip tags from custom field labels instead of escaping them.
